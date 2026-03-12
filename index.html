@@ -56,7 +56,7 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 .h-proof strong{color:var(--wh)}
 
 /* SCROLL CARDS */
-#cards{position:relative;padding:56px 0 0;overflow:hidden}
+#cards{position:relative;padding:56px 0 0;overflow:hidden;min-height:260px}
 .fade-l{position:absolute;left:0;top:0;bottom:0;width:180px;z-index:10;background:linear-gradient(to right,var(--bg),transparent);pointer-events:none}
 .fade-r{position:absolute;right:0;top:0;bottom:0;width:180px;z-index:10;background:linear-gradient(to left,var(--bg),transparent);pointer-events:none}
 .c-track{display:flex;gap:16px;width:max-content;animation:scrollL 40s linear infinite;padding:16px 0 36px}
@@ -74,6 +74,19 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 .t-it{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mu);flex-shrink:0;white-space:nowrap}
 .t-it strong{color:var(--wh)}
 .t-sep{color:var(--or);font-size:18px}
+
+/* VSL */
+#vsl{padding:80px 0;background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.vsl-inner{max-width:860px;margin:0 auto;padding:0 48px;text-align:center}
+.vsl-title{font-family:var(--ss);font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:8px}
+.vsl-sub{font-size:14px;color:var(--mu);margin-bottom:32px}
+.vsl-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:18px;overflow:hidden;border:1px solid rgba(244,123,59,.25);box-shadow:0 0 60px rgba(244,123,59,.1)}
+.vsl-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vsl-ph{position:absolute;inset:0;background:linear-gradient(135deg,#1c0e06,#0c0c0c);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.vsl-play{width:72px;height:72px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(244,123,59,.5);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+.vsl-play:hover{transform:scale(1.1);box-shadow:0 0 60px rgba(244,123,59,.7)}
+.vsl-hint{font-size:13px;color:var(--mu)}
+.vsl-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:14px}
 
 /* SECTIONS */
 .sec{padding:110px 0}
@@ -268,11 +281,50 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 <!-- SCROLL CARDS -->
 <div id="cards">
   <div class="fade-l"></div><div class="fade-r"></div>
-  <div class="c-track" id="ct"></div>
+  <div class="c-track">
+    <div class="pc" style="--r:-3deg;background:linear-gradient(140deg,#0d0a06,#241508)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:11px;border-radius:6px;background:rgba(244,123,59,.45)"></div><div style="position:absolute;top:33px;left:14px;width:56%;height:7px;border-radius:6px;background:rgba(255,255,255,.1)"></div><div style="position:absolute;top:65px;left:14px;width:82px;height:22px;border-radius:100px;background:rgba(244,123,59,.5)"></div><div style="position:absolute;bottom:44px;left:14px;right:14px;height:52px;border-radius:9px;background:rgba(244,123,59,.1);border:1px solid rgba(244,123,59,.22)"></div></div><div class="pc-ov"><div class="pc-tag">SaaS B2B</div><div class="pc-name">Nexflow — +240% leads</div></div></div>
+    <div class="pc" style="--r:2.5deg;background:linear-gradient(140deg,#0e0e0e,#1c1c1c)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;background:rgba(244,123,59,.13);border:2px solid rgba(244,123,59,.28)"></div><div style="position:absolute;top:92px;left:18px;right:18px;height:7px;border-radius:6px;background:rgba(255,255,255,.1)"></div><div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:104px;height:26px;border-radius:100px;background:rgba(244,123,59,.38)"></div></div><div class="pc-ov"><div class="pc-tag">E-commerce</div><div class="pc-name">Lumara — ROAS ×4.2</div></div></div>
+    <div class="pc" style="--r:-2deg;background:linear-gradient(140deg,#0a0806,#1a120a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;width:82px;height:9px;border-radius:6px;background:rgba(244,123,59,.4)"></div><div style="position:absolute;top:63px;left:14px;width:72px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:7px"><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.07);border:1px solid rgba(244,123,59,.15)"></div><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.04)"></div><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.02)"></div></div></div><div class="pc-ov"><div class="pc-tag">Coaching</div><div class="pc-name">Méthode Élite — 8% CVR</div></div></div>
+    <div class="pc" style="--r:3deg;background:linear-gradient(140deg,#101010,#1a1a1a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:10px;background:rgba(244,123,59,.16);display:flex;align-items:center;justify-content:center;font-size:20px">🚀</div><div style="position:absolute;top:14px;left:14px;width:55%;height:9px;border-radius:6px;background:rgba(244,123,59,.32)"></div></div><div class="pc-ov"><div class="pc-tag">Startup</div><div class="pc-name">Vertix — lancé en 5 jours</div></div></div>
+    <div class="pc" style="--r:-1.5deg;background:linear-gradient(140deg,#0a0a0a,#181818)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:148px;height:21px;border-radius:100px;background:rgba(244,123,59,.22)"></div><div style="position:absolute;bottom:18px;left:14px;right:14px;height:44px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div></div><div class="pc-ov"><div class="pc-tag">Formation</div><div class="pc-name">ProAcademy — ×3 inscrits</div></div></div>
+    <div class="pc" style="--r:2deg;background:linear-gradient(140deg,#0c0a08,#1e1610)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:26px;background:rgba(244,123,59,.12);border-radius:7px"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:5px;align-items:flex-end"><div style="flex:1;background:rgba(244,123,59,.2);border-radius:3px 3px 0 0;height:34px"></div><div style="flex:1;background:rgba(244,123,59,.15);border-radius:3px 3px 0 0;height:52px"></div><div style="flex:1;background:rgba(244,123,59,.1);border-radius:3px 3px 0 0;height:24px"></div><div style="flex:1;background:rgba(244,123,59,.17);border-radius:3px 3px 0 0;height:44px"></div><div style="flex:1;background:rgba(244,123,59,.26);border-radius:3px 3px 0 0;height:60px"></div></div></div><div class="pc-ov"><div class="pc-tag">Consultant</div><div class="pc-name">Marchand & Co — +180%</div></div></div>
+    <div class="pc" style="--r:-2.5deg;background:linear-gradient(140deg,#080c0a,#101c14)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;left:18px;width:36px;height:36px;border-radius:9px;background:rgba(244,123,59,.15)"></div><div style="position:absolute;top:18px;left:62px;right:18px;height:9px;border-radius:6px;background:rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:14px;left:18px;width:70px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div></div><div class="pc-ov"><div class="pc-tag">Immobilier</div><div class="pc-name">Nexhabitat — top 3 Google</div></div></div>
+    <div class="pc" style="--r:1.5deg;background:linear-gradient(140deg,#0c0a0e,#18141e)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:26px">💎</div><div style="position:absolute;top:54px;left:18px;right:18px;height:9px;border-radius:6px;background:rgba(244,123,59,.26)"></div><div style="position:absolute;bottom:18px;left:18px;right:18px;height:38px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div></div><div class="pc-ov"><div class="pc-tag">Luxe</div><div class="pc-name">Orivon — brand premium</div></div></div>
+    <!-- Duplicate for loop -->
+    <div class="pc" style="--r:-3deg;background:linear-gradient(140deg,#0d0a06,#241508)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:11px;border-radius:6px;background:rgba(244,123,59,.45)"></div><div style="position:absolute;top:65px;left:14px;width:82px;height:22px;border-radius:100px;background:rgba(244,123,59,.5)"></div><div style="position:absolute;bottom:44px;left:14px;right:14px;height:52px;border-radius:9px;background:rgba(244,123,59,.1);border:1px solid rgba(244,123,59,.22)"></div></div><div class="pc-ov"><div class="pc-tag">SaaS B2B</div><div class="pc-name">Nexflow — +240% leads</div></div></div>
+    <div class="pc" style="--r:2.5deg;background:linear-gradient(140deg,#0e0e0e,#1c1c1c)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;background:rgba(244,123,59,.13);border:2px solid rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:104px;height:26px;border-radius:100px;background:rgba(244,123,59,.38)"></div></div><div class="pc-ov"><div class="pc-tag">E-commerce</div><div class="pc-name">Lumara — ROAS ×4.2</div></div></div>
+    <div class="pc" style="--r:-2deg;background:linear-gradient(140deg,#0a0806,#1a120a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;width:82px;height:9px;border-radius:6px;background:rgba(244,123,59,.4)"></div><div style="position:absolute;top:63px;left:14px;width:72px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div></div><div class="pc-ov"><div class="pc-tag">Coaching</div><div class="pc-name">Méthode Élite — 8% CVR</div></div></div>
+    <div class="pc" style="--r:3deg;background:linear-gradient(140deg,#101010,#1a1a1a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:10px;background:rgba(244,123,59,.16);font-size:20px;display:flex;align-items:center;justify-content:center">🚀</div></div><div class="pc-ov"><div class="pc-tag">Startup</div><div class="pc-name">Vertix — lancé en 5 jours</div></div></div>
+    <div class="pc" style="--r:-1.5deg;background:linear-gradient(140deg,#0a0a0a,#181818)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:148px;height:21px;border-radius:100px;background:rgba(244,123,59,.22)"></div></div><div class="pc-ov"><div class="pc-tag">Formation</div><div class="pc-name">ProAcademy — ×3 inscrits</div></div></div>
+    <div class="pc" style="--r:2deg;background:linear-gradient(140deg,#0c0a08,#1e1610)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:26px;background:rgba(244,123,59,.12);border-radius:7px"></div></div><div class="pc-ov"><div class="pc-tag">Consultant</div><div class="pc-name">Marchand & Co — +180%</div></div></div>
+    <div class="pc" style="--r:-2.5deg;background:linear-gradient(140deg,#080c0a,#101c14)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;left:18px;width:36px;height:36px;border-radius:9px;background:rgba(244,123,59,.15)"></div><div style="position:absolute;bottom:14px;left:18px;width:70px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div></div><div class="pc-ov"><div class="pc-tag">Immobilier</div><div class="pc-name">Nexhabitat — top 3 Google</div></div></div>
+    <div class="pc" style="--r:1.5deg;background:linear-gradient(140deg,#0c0a0e,#18141e)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:26px">💎</div><div style="position:absolute;bottom:18px;left:18px;right:18px;height:38px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div></div><div class="pc-ov"><div class="pc-tag">Luxe</div><div class="pc-name">Orivon — brand premium</div></div></div>
+  </div>
 </div>
 
 <!-- TICKER -->
 <div id="ticker"><div class="t-track" id="tt"></div></div>
+
+<!-- VSL -->
+<section id="vsl">
+  <div class="vsl-inner rv">
+    <div class="vsl-badge">▶ &nbsp;Découvre comment ça marche</div>
+    <h2 class="vsl-title">Vois ce qu'on peut faire<br>pour ton business</h2>
+    <p class="vsl-sub">Regarde comment Openshore transforme une idée en landing page qui convertit — en 7 jours chrono.</p>
+    <div class="vsl-frame">
+      <!-- Remplace src="TON_LIEN_YOUTUBE_OU_VIMEO" par ton vrai lien vidéo -->
+      <!-- Exemple YouTube : https://www.youtube.com/embed/IDENTIFIANT_VIDEO -->
+      <!-- Exemple Vimeo   : https://player.vimeo.com/video/IDENTIFIANT_VIDEO -->
+      <div class="vsl-ph" id="vsl-ph">
+        <button class="vsl-play" onclick="loadVSL()" aria-label="Lire la vidéo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="vsl-hint">Clique pour lancer la vidéo</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(244,123,59,.06),transparent);pointer-events:none;border-radius:18px"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROBLEM -->
 <section class="sec" id="problem">
@@ -573,28 +625,6 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// CARDS
-const CARDS=[
-  {bg:'linear-gradient(140deg,#0d0a06,#241508)',r:-3,tag:'SaaS B2B',name:'Nexflow — +240% leads',
-   deco:'<div style="position:absolute;top:14px;left:14px;right:14px;height:11px;border-radius:6px;background:rgba(244,123,59,.45)"></div><div style="position:absolute;top:33px;left:14px;width:56%;height:7px;border-radius:6px;background:rgba(255,255,255,.1)"></div><div style="position:absolute;top:65px;left:14px;width:82px;height:22px;border-radius:100px;background:rgba(244,123,59,.5)"></div><div style="position:absolute;bottom:44px;left:14px;right:14px;height:52px;border-radius:9px;background:rgba(244,123,59,.1);border:1px solid rgba(244,123,59,.22)"></div>'},
-  {bg:'linear-gradient(140deg,#0e0e0e,#1c1c1c)',r:2.5,tag:'E-commerce',name:'Lumara — ROAS ×4.2',
-   deco:'<div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;background:rgba(244,123,59,.13);border:2px solid rgba(244,123,59,.28)"></div><div style="position:absolute;top:92px;left:18px;right:18px;height:7px;border-radius:6px;background:rgba(255,255,255,.1)"></div><div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:104px;height:26px;border-radius:100px;background:rgba(244,123,59,.38)"></div>'},
-  {bg:'linear-gradient(140deg,#0a0806,#1a120a)',r:-2,tag:'Coaching',name:'Méthode Élite — 8% CVR',
-   deco:'<div style="position:absolute;top:14px;left:14px;width:82px;height:9px;border-radius:6px;background:rgba(244,123,59,.4)"></div><div style="position:absolute;top:63px;left:14px;width:72px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:7px"><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.07);border:1px solid rgba(244,123,59,.15)"></div><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.04)"></div><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.02)"></div></div>'},
-  {bg:'linear-gradient(140deg,#101010,#1a1a1a)',r:3,tag:'Startup',name:'Vertix — lancé en 5 jours',
-   deco:'<div style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:10px;background:rgba(244,123,59,.16);display:flex;align-items:center;justify-content:center;font-size:20px">🚀</div><div style="position:absolute;top:14px;left:14px;width:55%;height:9px;border-radius:6px;background:rgba(244,123,59,.32)"></div>'},
-  {bg:'linear-gradient(140deg,#0a0a0a,#181818)',r:-1.5,tag:'Formation',name:'ProAcademy — ×3 inscrits',
-   deco:'<div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:148px;height:21px;border-radius:100px;background:rgba(244,123,59,.22)"></div><div style="position:absolute;bottom:18px;left:14px;right:14px;height:44px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div>'},
-  {bg:'linear-gradient(140deg,#0c0a08,#1e1610)',r:2,tag:'Consultant',name:'Marchand & Co — +180%',
-   deco:'<div style="position:absolute;top:14px;left:14px;right:14px;height:26px;background:rgba(244,123,59,.12);border-radius:7px"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:5px;align-items:flex-end"><div style="flex:1;background:rgba(244,123,59,.2);border-radius:3px 3px 0 0;height:34px"></div><div style="flex:1;background:rgba(244,123,59,.15);border-radius:3px 3px 0 0;height:52px"></div><div style="flex:1;background:rgba(244,123,59,.1);border-radius:3px 3px 0 0;height:24px"></div><div style="flex:1;background:rgba(244,123,59,.17);border-radius:3px 3px 0 0;height:44px"></div><div style="flex:1;background:rgba(244,123,59,.26);border-radius:3px 3px 0 0;height:60px"></div></div>'},
-  {bg:'linear-gradient(140deg,#080c0a,#101c14)',r:-2.5,tag:'Immobilier',name:'Nexhabitat — top 3 Google',
-   deco:'<div style="position:absolute;top:18px;left:18px;width:36px;height:36px;border-radius:9px;background:rgba(244,123,59,.15)"></div><div style="position:absolute;top:18px;left:62px;right:18px;height:9px;border-radius:6px;background:rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:14px;left:18px;width:70px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div>'},
-  {bg:'linear-gradient(140deg,#0c0a0e,#18141e)',r:1.5,tag:'Luxe',name:'Orivon — brand premium',
-   deco:'<div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:26px">💎</div><div style="position:absolute;top:54px;left:18px;right:18px;height:9px;border-radius:6px;background:rgba(244,123,59,.26)"></div><div style="position:absolute;bottom:18px;left:18px;right:18px;height:38px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div>'}
-];
-const ct=document.getElementById('ct');
-ct.innerHTML=[...CARDS,...CARDS].map(c=>`<div class="pc" style="--r:${c.r}deg;background:${c.bg}"><div style="position:absolute;inset:0">${c.deco}</div><div class="pc-ov"><div class="pc-tag">${c.tag}</div><div class="pc-name">${c.name}</div></div></div>`).join('');
-
 // TICKER
 const TICKS=[
   ['+60 clients','font confiance à Openshore'],
@@ -607,7 +637,19 @@ const TICKS=[
 const tt=document.getElementById('tt');
 tt.innerHTML=[...TICKS,...TICKS].map(([a,b])=>`<div class="t-it"><span class="t-sep">✦</span><strong>${a}</strong>&nbsp;${b}</div>`).join('');
 
-// Add js-ready so animations only run when JS is active
+// VSL — remplace l'URL ci-dessous par ton lien YouTube ou Vimeo
+function loadVSL(){
+  var ph=document.getElementById('vsl-ph');
+  var frame=document.createElement('iframe');
+  // 👇 REMPLACE CETTE URL par ton lien embed (YouTube ou Vimeo)
+  frame.src='https://www.youtube.com/embed/TON_ID_VIDEO?autoplay=1&rel=0';
+  frame.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none';
+  frame.allow='autoplay; fullscreen';
+  ph.parentElement.appendChild(frame);
+  ph.style.display='none';
+}
+
+// js-ready pour animations scroll
 document.documentElement.classList.add('js-ready');
 
 // SCROLL REVEAL
@@ -617,4 +659,11 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 // FAQ
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    const it=btn.parentElement
+    const it=btn.parentElement,was=it.classList.contains('open');
+    document.querySelectorAll('.faq-i').forEach(i=>i.classList.remove('open'));
+    if(!was)it.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
