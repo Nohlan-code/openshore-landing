@@ -10,14 +10,23 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --bg:#0c0c0c;--bg2:#141414;
+  --bg:#0f0b09;
   --or:#F47B3B;--or2:#e06828;
   --wh:#f5f2ee;--mu:rgba(245,242,238,0.45);
-  --bd:rgba(255,255,255,0.08);
+  --bd:rgba(244,123,59,0.12);
   --sf:'Instrument Serif',Georgia,serif;
   --ss:'Bricolage Grotesque',sans-serif;
 }
 body{background:var(--bg);color:var(--wh);font-family:var(--ss);overflow-x:hidden;line-height:1.6}
+
+/* Fond uniforme orange subtil sur tout le site */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(244,123,59,0.13) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 60%,rgba(244,123,59,0.06) 0%,transparent 50%),
+    radial-gradient(ellipse 50% 40% at 0% 80%,rgba(244,123,59,0.05) 0%,transparent 50%);
+}
+section,nav,footer,#cards,#ticker,#vsl{position:relative;z-index:1}
 
 /* NAV */
 nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;padding:0 44px}
@@ -25,18 +34,16 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 .n-logo img{width:36px;height:36px;object-fit:contain;mix-blend-mode:screen}
 .n-logo-t{font-family:var(--ss);font-weight:800;font-size:19px;color:var(--wh);letter-spacing:-.4px}
 .n-logo-t span{color:var(--or)}
-.n-pill{background:rgba(20,20,20,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:100px;display:flex;gap:2px;align-items:center;padding:5px 7px}
+.n-pill{background:rgba(15,11,9,0.88);backdrop-filter:blur(20px);border:1px solid var(--bd);border-radius:100px;display:flex;gap:2px;align-items:center;padding:5px 7px}
 .n-pill a{color:rgba(245,242,238,0.55);text-decoration:none;font-size:13px;font-weight:500;padding:7px 15px;border-radius:100px;transition:color .2s,background .2s;white-space:nowrap}
 .n-pill a:hover{color:var(--wh);background:rgba(255,255,255,0.06)}
-.n-cta{background:rgba(20,20,20,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:5px}
+.n-cta{background:rgba(15,11,9,0.88);backdrop-filter:blur(20px);border:1px solid var(--bd);border-radius:100px;padding:5px}
 .n-cta a{display:inline-block;background:var(--or);color:#fff;font-family:var(--ss);font-size:13px;font-weight:700;padding:9px 22px;border-radius:100px;text-decoration:none;transition:background .2s,box-shadow .2s,transform .2s}
 .n-cta a:hover{background:var(--or2);box-shadow:0 4px 22px rgba(244,123,59,.45);transform:scale(1.03)}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 80px;position:relative;overflow:hidden}
-.h-glow{position:absolute;top:-8%;left:50%;transform:translateX(-50%);width:820px;height:640px;background:radial-gradient(ellipse at 50% 30%,rgba(244,123,59,0.22) 0%,rgba(200,80,20,0.08) 45%,transparent 70%);pointer-events:none}
-.h-gl{position:absolute;top:30%;left:-6%;width:320px;height:320px;background:radial-gradient(circle,rgba(244,123,59,0.08) 0%,transparent 70%);pointer-events:none}
-.h-gr{position:absolute;top:20%;right:-6%;width:280px;height:280px;background:radial-gradient(circle,rgba(244,123,59,0.06) 0%,transparent 70%);pointer-events:none}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 80px;overflow:hidden}
+.h-glow{position:absolute;top:-8%;left:50%;transform:translateX(-50%);width:820px;height:640px;background:radial-gradient(ellipse at 50% 30%,rgba(244,123,59,0.22) 0%,transparent 65%);pointer-events:none}
 .h-inner{position:relative;z-index:2;max-width:860px}
 .h-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--wh);margin-bottom:28px}
 .h-dot{width:7px;height:7px;border-radius:50%;background:var(--or);box-shadow:0 0 9px rgba(244,123,59,0.9);display:inline-block;animation:blink 1.8s infinite}
@@ -55,38 +62,40 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 .h-proof{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--mu)}
 .h-proof strong{color:var(--wh)}
 
-/* SCROLL CARDS */
-#cards{position:relative;padding:56px 0 0;overflow:hidden;min-height:260px}
-.fade-l{position:absolute;left:0;top:0;bottom:0;width:180px;z-index:10;background:linear-gradient(to right,var(--bg),transparent);pointer-events:none}
-.fade-r{position:absolute;right:0;top:0;bottom:0;width:180px;z-index:10;background:linear-gradient(to left,var(--bg),transparent);pointer-events:none}
-.c-track{display:flex;gap:16px;width:max-content;animation:scrollL 40s linear infinite;padding:16px 0 36px}
+/* SCROLL CARDS — 3 vraies images */
+#cards{padding:60px 0 0;overflow:hidden;min-height:300px}
+.cards-outer{position:relative}
+.fade-l{position:absolute;left:0;top:0;bottom:0;width:160px;z-index:10;background:linear-gradient(to right,var(--bg),transparent);pointer-events:none}
+.fade-r{position:absolute;right:0;top:0;bottom:0;width:160px;z-index:10;background:linear-gradient(to left,var(--bg),transparent);pointer-events:none}
+.c-track{display:flex;gap:24px;width:max-content;animation:scrollL 22s linear infinite;padding:20px 0 40px}
 .c-track:hover{animation-play-state:paused}
 @keyframes scrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.pc{width:272px;height:186px;border-radius:16px;overflow:hidden;position:relative;flex-shrink:0;border:1px solid rgba(255,255,255,0.07);transform:rotate(var(--r,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
-.pc:hover{transform:rotate(0deg) scale(1.07) translateY(-8px);box-shadow:0 20px 56px rgba(0,0,0,.7),0 0 36px rgba(244,123,59,.15);z-index:20}
-.pc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 16px}
-.pc-tag{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:3px}
-.pc-name{font-family:var(--ss);font-size:14px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.sc{width:480px;height:300px;border-radius:18px;overflow:hidden;flex-shrink:0;border:1px solid var(--bd);transform:rotate(var(--r,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;position:relative}
+.sc:hover{transform:rotate(0deg) scale(1.04) translateY(-8px);box-shadow:0 20px 56px rgba(0,0,0,.7),0 0 36px rgba(244,123,59,.2);z-index:20}
+.sc img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.sc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px}
+.sc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:4px}
+.sc-name{font-family:var(--ss);font-size:15px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.8)}
 
 /* TICKER */
-#ticker{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:15px 0;overflow:hidden;background:rgba(255,255,255,0.015)}
+#ticker{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:14px 0;overflow:hidden;background:rgba(244,123,59,0.03)}
 .t-track{display:flex;gap:52px;width:max-content;animation:scrollL 34s linear infinite}
 .t-it{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mu);flex-shrink:0;white-space:nowrap}
 .t-it strong{color:var(--wh)}
 .t-sep{color:var(--or);font-size:18px}
 
 /* VSL */
-#vsl{padding:80px 0;background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+#vsl{padding:80px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
 .vsl-inner{max-width:860px;margin:0 auto;padding:0 48px;text-align:center}
 .vsl-title{font-family:var(--ss);font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:8px}
 .vsl-sub{font-size:14px;color:var(--mu);margin-bottom:32px}
-.vsl-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:18px;overflow:hidden;border:1px solid rgba(244,123,59,.25);box-shadow:0 0 60px rgba(244,123,59,.1)}
+.vsl-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:18px;overflow:hidden;border:1px solid rgba(244,123,59,.3);box-shadow:0 0 60px rgba(244,123,59,.1)}
 .vsl-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .vsl-ph{position:absolute;inset:0;background:linear-gradient(135deg,#1c0e06,#0c0c0c);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .vsl-play{width:72px;height:72px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(244,123,59,.5);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
 .vsl-play:hover{transform:scale(1.1);box-shadow:0 0 60px rgba(244,123,59,.7)}
 .vsl-hint{font-size:13px;color:var(--mu)}
-.vsl-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+.vsl-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--or);margin-bottom:14px}
 
 /* SECTIONS */
 .sec{padding:110px 0}
@@ -96,79 +105,80 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 .sh2 .si{font-family:var(--sf);font-style:italic;font-weight:400;color:var(--or)}
 .sh2 .sm{color:rgba(245,242,238,0.35)}
 .rv{opacity:1;transform:translateY(0)}
-.js-ready .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.js-ready .rv.vis{opacity:1;transform:translateY(0)}
+.js-r .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.js-r .rv.vis{opacity:1;transform:translateY(0)}
 .body-txt{font-size:14.5px;color:var(--mu);margin-top:12px;line-height:1.8;max-width:500px}
+
+/* Séparateurs entre sections — juste une ligne orange subtile, fond identique */
+.sec-alt{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
 
 /* PROBLEM */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:48px}
-.card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:26px;transition:border-color .3s,background .3s}
-.card:hover{border-color:rgba(244,123,59,.25);background:rgba(244,123,59,.04)}
+.card{background:rgba(244,123,59,0.04);border:1px solid var(--bd);border-radius:14px;padding:26px;transition:border-color .3s,background .3s}
+.card:hover{border-color:rgba(244,123,59,.3);background:rgba(244,123,59,.07)}
 .card-e{font-size:24px;margin-bottom:12px}
-.card-t{font-family:var(--ss);font-size:16px;font-weight:700;margin-bottom:7px}
+.card-t{font-size:16px;font-weight:700;margin-bottom:7px}
 .card-d{font-size:13.5px;color:var(--mu);line-height:1.7}
 
 /* SOLUTION */
 .g-sol{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
 .sol-fs{display:flex;flex-direction:column;gap:12px;margin-top:36px}
 .sol-f{display:flex;gap:13px;align-items:flex-start;padding:16px 18px;border:1px solid var(--bd);border-radius:13px;transition:border-color .3s,background .3s}
-.sol-f:hover{border-color:rgba(244,123,59,.22);background:rgba(244,123,59,.04)}
+.sol-f:hover{border-color:rgba(244,123,59,.3);background:rgba(244,123,59,.05)}
 .sol-fi{width:40px;height:40px;flex-shrink:0;background:rgba(244,123,59,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
 .sol-fn{font-weight:700;font-size:14.5px;margin-bottom:2px}
 .sol-fd{font-size:13px;color:var(--mu)}
-.mok{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:22px;position:relative}
+.mok{background:rgba(244,123,59,.04);border:1px solid var(--bd);border-radius:18px;padding:22px;position:relative}
 .mok-bar{display:flex;gap:6px;margin-bottom:18px}
 .mok-d{width:10px;height:10px;border-radius:50%}
-.mok-s{background:var(--bg);border-radius:11px;padding:18px;display:flex;flex-direction:column;gap:9px}
+.mok-s{background:rgba(0,0,0,.3);border-radius:11px;padding:18px;display:flex;flex-direction:column;gap:9px}
 .ml{height:8px;border-radius:100px;background:rgba(255,255,255,0.08)}
-.mok-sc{position:absolute;bottom:-14px;right:-14px;width:72px;height:72px;border-radius:50%;background:var(--or);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--ss);font-weight:800;font-size:18px;box-shadow:0 4px 24px rgba(244,123,59,.5)}
+.mok-sc{position:absolute;bottom:-14px;right:-14px;width:72px;height:72px;border-radius:50%;background:var(--or);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:18px;box-shadow:0 4px 24px rgba(244,123,59,.5)}
 .mok-sc small{font-size:9px;font-weight:600}
 .mok-mn{display:flex;gap:8px;margin-top:12px}
-.mok-mn div{flex:1;padding:11px;background:var(--bg2);border:1px solid var(--bd);border-radius:9px;text-align:center}
-.mnv{font-family:var(--ss);font-size:20px;font-weight:800}
+.mok-mn div{flex:1;padding:11px;background:rgba(244,123,59,.04);border:1px solid var(--bd);border-radius:9px;text-align:center}
+.mnv{font-size:20px;font-weight:800}
 .mnl{font-size:10px;color:var(--mu);margin-top:2px}
 
-/* PROCESS */
+/* PROCESS — 3 cards illustrées */
 .g-proc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
-.step-card{background:var(--bg2);border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s}
+.step-card{background:rgba(244,123,59,.03);border:1px solid var(--bd);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s}
 .step-card:hover{transform:translateY(-5px);border-color:rgba(244,123,59,.3)}
-.step-visual{height:280px;position:relative;overflow:hidden;background:#0f0a08}
+.step-visual{height:280px;position:relative;overflow:hidden;background:#0d0906}
 .step-body{padding:28px 28px 32px}
 .step-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:10px}
-.step-t{font-family:var(--ss);font-size:20px;font-weight:800;margin-bottom:12px;letter-spacing:-.4px}
+.step-t{font-size:20px;font-weight:800;margin-bottom:12px;letter-spacing:-.4px}
 .step-d{font-size:14px;color:var(--mu);line-height:1.75}
-/* Visual glow base */
+.sv-pill{position:absolute;background:var(--or);color:#fff;font-size:12px;font-weight:800;padding:6px 14px;border-radius:100px;white-space:nowrap}
 .sv-glow{position:absolute;border-radius:50%;pointer-events:none}
-/* Floating tag pill */
-.sv-pill{position:absolute;background:var(--or);color:#fff;font-family:var(--ss);font-size:12px;font-weight:800;padding:6px 14px;border-radius:100px;letter-spacing:.3px;white-space:nowrap}
 
 /* PRICING */
 .g-price{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;align-items:start}
-.pc2{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:30px;position:relative;transition:transform .3s,border-color .3s}
+.pc2{background:rgba(244,123,59,.03);border:1px solid var(--bd);border-radius:18px;padding:30px;position:relative;transition:transform .3s,border-color .3s}
 .pc2:hover{transform:translateY(-4px)}
-.pc2.ft{border-color:var(--or);background:linear-gradient(160deg,rgba(244,123,59,.07),var(--bg2))}
+.pc2.ft{border-color:var(--or);background:rgba(244,123,59,.06)}
 .ft-pill{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--or);color:#fff;border-radius:100px;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;white-space:nowrap}
 .p-tier{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:12px}
-.p-val{font-family:var(--ss);font-size:46px;font-weight:800;letter-spacing:-2px;color:var(--wh);margin-bottom:4px}
+.p-val{font-size:46px;font-weight:800;letter-spacing:-2px;color:var(--wh);margin-bottom:4px}
 .pc2.ft .p-val{color:var(--or)}
 .p-tag{font-size:13px;color:var(--mu);margin-bottom:22px;line-height:1.6}
 .p-fs{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
 .p-fs li{font-size:13px;color:rgba(245,242,238,.7);display:flex;align-items:center;gap:7px}
 .p-fs li::before{content:'✓';color:var(--or);font-weight:800;flex-shrink:0}
-.pbtn{display:block;text-align:center;padding:12px;border-radius:100px;font-family:var(--ss);font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
+.pbtn{display:block;text-align:center;padding:12px;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
 .pb-o{border:1px solid var(--bd);color:var(--wh)}
-.pb-o:hover{border-color:rgba(244,123,59,.4);color:var(--or)}
+.pb-o:hover{border-color:rgba(244,123,59,.5);color:var(--or)}
 .pb-f{background:var(--or);color:#fff;box-shadow:0 4px 18px rgba(244,123,59,.35)}
 .pb-f:hover{background:var(--or2);box-shadow:0 8px 32px rgba(244,123,59,.5);transform:scale(1.02)}
 
 /* COMPARISON */
 .cmp{margin-top:48px;border:1px solid var(--bd);border-radius:16px;overflow:hidden}
-.cmp-h{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:16px 26px;background:var(--bg2);border-bottom:1px solid var(--bd)}
+.cmp-h{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:16px 26px;background:rgba(244,123,59,.04);border-bottom:1px solid var(--bd)}
 .chl{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu)}
 .chl.ours{color:var(--or)}
 .cmp-r{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:14px 26px;border-bottom:1px solid var(--bd);align-items:center;transition:background .2s}
 .cmp-r:last-child{border-bottom:none}
-.cmp-r:hover{background:rgba(255,255,255,.02)}
+.cmp-r:hover{background:rgba(244,123,59,.03)}
 .cv{text-align:center;font-size:13.5px}
 .cy{color:var(--or);font-size:17px}
 .cn{color:rgba(255,255,255,.18);font-size:17px}
@@ -176,32 +186,35 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 .cov{color:var(--wh);font-weight:600}
 .cmv{color:var(--mu)}
 
-/* TESTIMONIALS */
-.g-testi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
-.g-testi .tc:first-child{grid-column:span 2}
-.tc{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:26px;transition:border-color .3s}
-.tc:hover{border-color:rgba(244,123,59,.22)}
+/* TESTIMONIALS — défilants */
+#testi-wrap{overflow:hidden;position:relative;margin-top:48px}
+#testi-wrap .fade-l{background:linear-gradient(to right,var(--bg),transparent)}
+#testi-wrap .fade-r{background:linear-gradient(to left,var(--bg),transparent)}
+.testi-track{display:flex;gap:16px;width:max-content;animation:scrollL 30s linear infinite;padding:8px 0 16px}
+.testi-track:hover{animation-play-state:paused}
+.tc{background:rgba(244,123,59,.04);border:1px solid var(--bd);border-radius:14px;padding:26px;width:340px;flex-shrink:0;transition:border-color .3s}
+.tc:hover{border-color:rgba(244,123,59,.3)}
 .tc-s{color:var(--or);font-size:15px;letter-spacing:2px;margin-bottom:12px}
-.tc-q{font-size:14.5px;line-height:1.75;margin-bottom:20px;color:rgba(245,242,238,.6)}
+.tc-q{font-size:14px;line-height:1.75;margin-bottom:20px;color:rgba(245,242,238,.6)}
 .tc-q em{font-style:normal;color:var(--wh)}
 .tc-a{display:flex;align-items:center;gap:9px}
-.tc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ss);font-weight:800;font-size:14px;color:#fff}
+.tc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
 .tc-n{font-weight:700;font-size:13.5px}
 .tc-r{font-size:11.5px;color:var(--mu)}
 
 /* GUARANTEE */
-.gb{border:1px solid rgba(244,123,59,.22);border-radius:20px;padding:52px;background:linear-gradient(150deg,rgba(244,123,59,.06),transparent 60%);display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.gb{border:1px solid rgba(244,123,59,.25);border-radius:20px;padding:52px;background:rgba(244,123,59,.04);display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
 .gi{font-size:68px}
-.gt{font-family:var(--ss);font-size:clamp(24px,2.8vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+.gt{font-size:clamp(24px,2.8vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
 .gt .si{font-family:var(--sf);font-style:italic;font-weight:400;color:var(--or)}
 .gd{font-size:14.5px;color:var(--mu);line-height:1.8;max-width:500px}
 .gd strong{color:var(--wh)}
 
 /* FAQ */
 .faq-l{margin-top:48px;display:flex;flex-direction:column;gap:4px}
-.faq-i{border:1px solid var(--bd);border-radius:13px;overflow:hidden;margin-bottom:3px}
+.faq-i{border:1px solid var(--bd);border-radius:13px;overflow:hidden;margin-bottom:3px;background:rgba(244,123,59,.02)}
 .faq-q{width:100%;text-align:left;padding:20px 22px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;font-family:var(--ss);font-size:15px;font-weight:700;color:var(--wh);transition:background .2s;cursor:pointer}
-.faq-q:hover{background:rgba(255,255,255,.025)}
+.faq-q:hover{background:rgba(244,123,59,.04)}
 .faq-ch{width:24px;height:24px;border:1px solid var(--bd);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:transform .3s,background .3s,border-color .3s}
 .faq-i.open .faq-ch{transform:rotate(45deg);background:var(--or);color:#fff;border-color:var(--or)}
 .faq-a{max-height:0;overflow:hidden;padding:0 22px;font-size:13.5px;color:var(--mu);line-height:1.8;transition:max-height .4s ease,padding .3s}
@@ -209,7 +222,7 @@ nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:
 
 /* CTA FINAL */
 #cta{padding:150px 0;text-align:center;position:relative;overflow:hidden}
-.cta-gl{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(244,123,59,.15) 0%,transparent 65%);pointer-events:none}
+.cta-gl{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(244,123,59,.18) 0%,transparent 65%);pointer-events:none}
 .cta-h{font-family:var(--ss);font-size:clamp(40px,5.8vw,76px);font-weight:800;letter-spacing:-3px;line-height:1.04;margin-bottom:18px}
 .cta-h .si{font-family:var(--sf);font-style:italic;font-weight:400;letter-spacing:-1px;color:var(--or)}
 .cta-sub{font-size:15px;color:var(--mu);max-width:420px;margin:0 auto 40px}
@@ -222,7 +235,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 .fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .fl{display:flex;align-items:center;gap:9px;text-decoration:none}
 .fl img{width:24px;height:24px;object-fit:contain;mix-blend-mode:screen}
-.fl-t{font-family:var(--ss);font-size:15px;font-weight:800;color:var(--wh)}
+.fl-t{font-size:15px;font-weight:800;color:var(--wh)}
 .fl-t span{color:var(--or)}
 .fc{font-size:12px;color:var(--mu)}
 .fls{display:flex;gap:18px}
@@ -233,10 +246,9 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   nav{padding:0 18px}
   .n-pill{display:none}
   .wrap{padding:0 20px}
-  .g2,.g-sol,.g-proc,.g-price,.g-testi{grid-template-columns:1fr}  .g-testi .tc:first-child{grid-column:span 1}
+  .g2,.g-sol,.g-proc,.g-price,.g2{grid-template-columns:1fr}
   .gb{grid-template-columns:1fr;padding:28px 20px;text-align:center}
   .cmp-h,.cmp-r{grid-template-columns:1fr 1fr}
-  .g-proc::before{display:none}
   footer .fi{flex-direction:column;text-align:center}
 }
 </style>
@@ -261,7 +273,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 
 <!-- HERO -->
 <section id="hero">
-  <div class="h-glow"></div><div class="h-gl"></div><div class="h-gr"></div>
+  <div class="h-glow"></div>
   <div class="h-inner">
     <div class="h-badge"><span class="h-dot"></span>&nbsp; Plus que <strong style="margin:0 3px">8 places</strong> disponibles ce mois</div>
     <h1 class="h-h1">On crée ta landing page<br>qui <span class="si">convertit</span> tes <span class="th">futurs</span> clients.</h1>
@@ -278,49 +290,53 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   </div>
 </section>
 
-<!-- SCROLL CARDS -->
+<!-- SCROLL CARDS — 3 vrais sites -->
 <div id="cards">
-  <div class="fade-l"></div><div class="fade-r"></div>
-  <div class="c-track">
-    <div class="pc" style="--r:-3deg;background:linear-gradient(140deg,#0d0a06,#241508)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:11px;border-radius:6px;background:rgba(244,123,59,.45)"></div><div style="position:absolute;top:33px;left:14px;width:56%;height:7px;border-radius:6px;background:rgba(255,255,255,.1)"></div><div style="position:absolute;top:65px;left:14px;width:82px;height:22px;border-radius:100px;background:rgba(244,123,59,.5)"></div><div style="position:absolute;bottom:44px;left:14px;right:14px;height:52px;border-radius:9px;background:rgba(244,123,59,.1);border:1px solid rgba(244,123,59,.22)"></div></div><div class="pc-ov"><div class="pc-tag">SaaS B2B</div><div class="pc-name">Nexflow — +240% leads</div></div></div>
-    <div class="pc" style="--r:2.5deg;background:linear-gradient(140deg,#0e0e0e,#1c1c1c)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;background:rgba(244,123,59,.13);border:2px solid rgba(244,123,59,.28)"></div><div style="position:absolute;top:92px;left:18px;right:18px;height:7px;border-radius:6px;background:rgba(255,255,255,.1)"></div><div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:104px;height:26px;border-radius:100px;background:rgba(244,123,59,.38)"></div></div><div class="pc-ov"><div class="pc-tag">E-commerce</div><div class="pc-name">Lumara — ROAS ×4.2</div></div></div>
-    <div class="pc" style="--r:-2deg;background:linear-gradient(140deg,#0a0806,#1a120a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;width:82px;height:9px;border-radius:6px;background:rgba(244,123,59,.4)"></div><div style="position:absolute;top:63px;left:14px;width:72px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:7px"><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.07);border:1px solid rgba(244,123,59,.15)"></div><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.04)"></div><div style="flex:1;height:46px;border-radius:7px;background:rgba(244,123,59,.02)"></div></div></div><div class="pc-ov"><div class="pc-tag">Coaching</div><div class="pc-name">Méthode Élite — 8% CVR</div></div></div>
-    <div class="pc" style="--r:3deg;background:linear-gradient(140deg,#101010,#1a1a1a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:10px;background:rgba(244,123,59,.16);display:flex;align-items:center;justify-content:center;font-size:20px">🚀</div><div style="position:absolute;top:14px;left:14px;width:55%;height:9px;border-radius:6px;background:rgba(244,123,59,.32)"></div></div><div class="pc-ov"><div class="pc-tag">Startup</div><div class="pc-name">Vertix — lancé en 5 jours</div></div></div>
-    <div class="pc" style="--r:-1.5deg;background:linear-gradient(140deg,#0a0a0a,#181818)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:148px;height:21px;border-radius:100px;background:rgba(244,123,59,.22)"></div><div style="position:absolute;bottom:18px;left:14px;right:14px;height:44px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div></div><div class="pc-ov"><div class="pc-tag">Formation</div><div class="pc-name">ProAcademy — ×3 inscrits</div></div></div>
-    <div class="pc" style="--r:2deg;background:linear-gradient(140deg,#0c0a08,#1e1610)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:26px;background:rgba(244,123,59,.12);border-radius:7px"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:5px;align-items:flex-end"><div style="flex:1;background:rgba(244,123,59,.2);border-radius:3px 3px 0 0;height:34px"></div><div style="flex:1;background:rgba(244,123,59,.15);border-radius:3px 3px 0 0;height:52px"></div><div style="flex:1;background:rgba(244,123,59,.1);border-radius:3px 3px 0 0;height:24px"></div><div style="flex:1;background:rgba(244,123,59,.17);border-radius:3px 3px 0 0;height:44px"></div><div style="flex:1;background:rgba(244,123,59,.26);border-radius:3px 3px 0 0;height:60px"></div></div></div><div class="pc-ov"><div class="pc-tag">Consultant</div><div class="pc-name">Marchand & Co — +180%</div></div></div>
-    <div class="pc" style="--r:-2.5deg;background:linear-gradient(140deg,#080c0a,#101c14)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;left:18px;width:36px;height:36px;border-radius:9px;background:rgba(244,123,59,.15)"></div><div style="position:absolute;top:18px;left:62px;right:18px;height:9px;border-radius:6px;background:rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:14px;left:18px;width:70px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div></div><div class="pc-ov"><div class="pc-tag">Immobilier</div><div class="pc-name">Nexhabitat — top 3 Google</div></div></div>
-    <div class="pc" style="--r:1.5deg;background:linear-gradient(140deg,#0c0a0e,#18141e)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:26px">💎</div><div style="position:absolute;top:54px;left:18px;right:18px;height:9px;border-radius:6px;background:rgba(244,123,59,.26)"></div><div style="position:absolute;bottom:18px;left:18px;right:18px;height:38px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div></div><div class="pc-ov"><div class="pc-tag">Luxe</div><div class="pc-name">Orivon — brand premium</div></div></div>
-    <!-- Duplicate for loop -->
-    <div class="pc" style="--r:-3deg;background:linear-gradient(140deg,#0d0a06,#241508)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:11px;border-radius:6px;background:rgba(244,123,59,.45)"></div><div style="position:absolute;top:65px;left:14px;width:82px;height:22px;border-radius:100px;background:rgba(244,123,59,.5)"></div><div style="position:absolute;bottom:44px;left:14px;right:14px;height:52px;border-radius:9px;background:rgba(244,123,59,.1);border:1px solid rgba(244,123,59,.22)"></div></div><div class="pc-ov"><div class="pc-tag">SaaS B2B</div><div class="pc-name">Nexflow — +240% leads</div></div></div>
-    <div class="pc" style="--r:2.5deg;background:linear-gradient(140deg,#0e0e0e,#1c1c1c)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;background:rgba(244,123,59,.13);border:2px solid rgba(244,123,59,.28)"></div><div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:104px;height:26px;border-radius:100px;background:rgba(244,123,59,.38)"></div></div><div class="pc-ov"><div class="pc-tag">E-commerce</div><div class="pc-name">Lumara — ROAS ×4.2</div></div></div>
-    <div class="pc" style="--r:-2deg;background:linear-gradient(140deg,#0a0806,#1a120a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;width:82px;height:9px;border-radius:6px;background:rgba(244,123,59,.4)"></div><div style="position:absolute;top:63px;left:14px;width:72px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div></div><div class="pc-ov"><div class="pc-tag">Coaching</div><div class="pc-name">Méthode Élite — 8% CVR</div></div></div>
-    <div class="pc" style="--r:3deg;background:linear-gradient(140deg,#101010,#1a1a1a)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:10px;background:rgba(244,123,59,.16);font-size:20px;display:flex;align-items:center;justify-content:center">🚀</div></div><div class="pc-ov"><div class="pc-tag">Startup</div><div class="pc-name">Vertix — lancé en 5 jours</div></div></div>
-    <div class="pc" style="--r:-1.5deg;background:linear-gradient(140deg,#0a0a0a,#181818)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:148px;height:21px;border-radius:100px;background:rgba(244,123,59,.22)"></div></div><div class="pc-ov"><div class="pc-tag">Formation</div><div class="pc-name">ProAcademy — ×3 inscrits</div></div></div>
-    <div class="pc" style="--r:2deg;background:linear-gradient(140deg,#0c0a08,#1e1610)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:14px;right:14px;height:26px;background:rgba(244,123,59,.12);border-radius:7px"></div></div><div class="pc-ov"><div class="pc-tag">Consultant</div><div class="pc-name">Marchand & Co — +180%</div></div></div>
-    <div class="pc" style="--r:-2.5deg;background:linear-gradient(140deg,#080c0a,#101c14)"><div style="position:absolute;inset:0"><div style="position:absolute;top:18px;left:18px;width:36px;height:36px;border-radius:9px;background:rgba(244,123,59,.15)"></div><div style="position:absolute;bottom:14px;left:18px;width:70px;height:22px;border-radius:100px;background:rgba(244,123,59,.28)"></div></div><div class="pc-ov"><div class="pc-tag">Immobilier</div><div class="pc-name">Nexhabitat — top 3 Google</div></div></div>
-    <div class="pc" style="--r:1.5deg;background:linear-gradient(140deg,#0c0a0e,#18141e)"><div style="position:absolute;inset:0"><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:26px">💎</div><div style="position:absolute;bottom:18px;left:18px;right:18px;height:38px;border-radius:9px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.16)"></div></div><div class="pc-ov"><div class="pc-tag">Luxe</div><div class="pc-name">Orivon — brand premium</div></div></div>
+  <div class="cards-outer">
+    <div class="fade-l"></div>
+    <div class="fade-r"></div>
+    <div class="c-track">
+      <div class="sc" style="--r:-2deg"><img src="site1.png" alt="Alcove des Sens"><div class="sc-ov"><div class="sc-tag">Hôtel & expérience</div><div class="sc-name">Alcove des Sens — Réservation privatisée</div></div></div>
+      <div class="sc" style="--r:2deg"><img src="site2.png" alt="Shortmotion"><div class="sc-ov"><div class="sc-tag">SaaS / Vidéo</div><div class="sc-name">Shortmotion — Montage vidéo sur mesure</div></div></div>
+      <div class="sc" style="--r:-1.5deg"><img src="site3.png" alt="Openshore"><div class="sc-ov"><div class="sc-tag">Agence web</div><div class="sc-name">Openshore — Landing page en 1 semaine</div></div></div>
+      <!-- Duplicate for loop -->
+      <div class="sc" style="--r:-2deg"><img src="site1.png" alt="Alcove des Sens"><div class="sc-ov"><div class="sc-tag">Hôtel & expérience</div><div class="sc-name">Alcove des Sens — Réservation privatisée</div></div></div>
+      <div class="sc" style="--r:2deg"><img src="site2.png" alt="Shortmotion"><div class="sc-ov"><div class="sc-tag">SaaS / Vidéo</div><div class="sc-name">Shortmotion — Montage vidéo sur mesure</div></div></div>
+      <div class="sc" style="--r:-1.5deg"><img src="site3.png" alt="Openshore"><div class="sc-ov"><div class="sc-tag">Agence web</div><div class="sc-name">Openshore — Landing page en 1 semaine</div></div></div>
+    </div>
   </div>
 </div>
 
 <!-- TICKER -->
-<div id="ticker"><div class="t-track" id="tt"></div></div>
+<div id="ticker">
+  <div class="t-track">
+    <div class="t-it"><span class="t-sep">✦</span><strong>+60 clients</strong>&nbsp;font confiance à Openshore</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>Livraison 7 jours</strong>&nbsp;ou remboursé</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>SEO + CRO</strong>&nbsp;inclus dans chaque projet</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>Support 7j/7</strong>&nbsp;pour tous nos clients</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>0 template</strong>&nbsp;— 100% sur mesure</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>Garantie remboursement</strong>&nbsp;14 jours</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>+60 clients</strong>&nbsp;font confiance à Openshore</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>Livraison 7 jours</strong>&nbsp;ou remboursé</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>SEO + CRO</strong>&nbsp;inclus dans chaque projet</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>Support 7j/7</strong>&nbsp;pour tous nos clients</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>0 template</strong>&nbsp;— 100% sur mesure</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>Garantie remboursement</strong>&nbsp;14 jours</div>
+  </div>
+</div>
 
 <!-- VSL -->
-<section id="vsl">
+<section id="vsl" class="sec-alt">
   <div class="vsl-inner rv">
     <div class="vsl-badge">▶ &nbsp;Découvre comment ça marche</div>
     <h2 class="vsl-title">Vois ce qu'on peut faire<br>pour ton business</h2>
     <p class="vsl-sub">Regarde comment Openshore transforme une idée en landing page qui convertit — en 7 jours chrono.</p>
     <div class="vsl-frame">
-      <!-- Remplace src="TON_LIEN_YOUTUBE_OU_VIMEO" par ton vrai lien vidéo -->
-      <!-- Exemple YouTube : https://www.youtube.com/embed/IDENTIFIANT_VIDEO -->
-      <!-- Exemple Vimeo   : https://player.vimeo.com/video/IDENTIFIANT_VIDEO -->
       <div class="vsl-ph" id="vsl-ph">
         <button class="vsl-play" onclick="loadVSL()" aria-label="Lire la vidéo">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
         </button>
         <div class="vsl-hint">Clique pour lancer la vidéo</div>
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(244,123,59,.06),transparent);pointer-events:none;border-radius:18px"></div>
       </div>
     </div>
   </div>
@@ -342,7 +358,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 </section>
 
 <!-- SOLUTION -->
-<section class="sec" style="background:var(--bg2)">
+<section class="sec sec-alt">
   <div class="wrap">
     <div class="g-sol">
       <div class="rv">
@@ -388,34 +404,21 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
     <span class="stag">De zéro à en ligne</span>
     <h2 class="sh2">Notre méthode <span class="sm">en <span class="si">3 étapes.</span></span></h2>
     <p class="body-txt">Chaque étape est pensée pour faire de ta landing page ta meilleure arme de conversion.</p>
-
     <div class="g-proc">
-
-      <!-- ÉTAPE 1 : Onboarding / Formulaire -->
       <div class="step-card">
         <div class="step-visual">
-          <!-- orange radial glow -->
           <div class="sv-glow" style="width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(244,123,59,.18) 0%,transparent 65%)"></div>
-          <!-- Formulaire simulé -->
-          <div style="position:absolute;top:28px;left:28px;right:28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px;backdrop-filter:blur(8px)">
+          <div style="position:absolute;top:28px;left:28px;right:28px;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.2);border-radius:14px;padding:18px;backdrop-filter:blur(8px)">
             <div style="height:8px;width:55%;border-radius:6px;background:rgba(244,123,59,.35);margin-bottom:10px"></div>
             <div style="height:7px;width:75%;border-radius:6px;background:rgba(255,255,255,.1);margin-bottom:8px"></div>
             <div style="height:7px;width:60%;border-radius:6px;background:rgba(255,255,255,.07);margin-bottom:16px"></div>
-            <div style="display:flex;gap:8px">
-              <div style="flex:1;height:32px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)"></div>
-              <div style="flex:1;height:32px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)"></div>
-            </div>
+            <div style="display:flex;gap:8px"><div style="flex:1;height:32px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(244,123,59,.15)"></div><div style="flex:1;height:32px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(244,123,59,.15)"></div></div>
           </div>
-          <!-- Carte "toi" qui arrive -->
-          <div style="position:absolute;bottom:18px;right:22px;background:rgba(20,14,10,.9);border:1px solid rgba(244,123,59,.35);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px)">
-            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--or2));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff">T</div>
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--wh)">Ton brief</div>
-              <div style="font-size:10px;color:var(--mu)">reçu · 15 min</div>
-            </div>
+          <div style="position:absolute;bottom:18px;right:22px;background:rgba(15,11,9,.92);border:1px solid rgba(244,123,59,.35);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff">T</div>
+            <div><div style="font-size:12px;font-weight:700;color:var(--wh)">Ton brief</div><div style="font-size:10px;color:var(--mu)">reçu · 15 min</div></div>
             <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8);margin-left:4px"></div>
           </div>
-          <!-- Pill tag -->
           <div class="sv-pill" style="top:20px;right:22px">📋 Formulaire</div>
         </div>
         <div class="step-body">
@@ -424,14 +427,11 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
           <p class="step-d">Tu remplis notre formulaire en 15 minutes. On analyse ton offre, ta cible et ton positionnement pour démarrer la production immédiatement.</p>
         </div>
       </div>
-
-      <!-- ÉTAPE 2 : Création & Design -->
       <div class="step-card">
         <div class="step-visual">
           <div class="sv-glow" style="width:380px;height:380px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(244,123,59,.15) 0%,transparent 60%)"></div>
-          <!-- Mockup browser -->
-          <div style="position:absolute;top:22px;left:22px;right:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden">
-            <div style="background:rgba(255,255,255,.05);padding:8px 12px;display:flex;gap:5px;align-items:center;border-bottom:1px solid rgba(255,255,255,.07)">
+          <div style="position:absolute;top:22px;left:22px;right:22px;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.18);border-radius:12px;overflow:hidden">
+            <div style="background:rgba(255,255,255,.05);padding:8px 12px;display:flex;gap:5px;align-items:center;border-bottom:1px solid rgba(244,123,59,.1)">
               <div style="width:8px;height:8px;border-radius:50%;background:#ff5f57"></div>
               <div style="width:8px;height:8px;border-radius:50%;background:#ffbd2e"></div>
               <div style="width:8px;height:8px;border-radius:50%;background:#28c840"></div>
@@ -444,15 +444,10 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
               <div style="height:26px;width:90px;border-radius:100px;background:rgba(244,123,59,.4)"></div>
             </div>
           </div>
-          <!-- Score badge -->
           <div style="position:absolute;bottom:22px;left:22px;background:var(--or);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:8px">
             <span style="font-size:18px;font-weight:800;color:#fff">98</span>
-            <div>
-              <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.85)">Score Perf.</div>
-              <div style="font-size:9px;color:rgba(255,255,255,.65)">PageSpeed</div>
-            </div>
+            <div><div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.85)">Score Perf.</div><div style="font-size:9px;color:rgba(255,255,255,.65)">PageSpeed</div></div>
           </div>
-          <!-- CRO tag -->
           <div class="sv-pill" style="bottom:28px;right:22px">🎯 CRO + SEO</div>
         </div>
         <div class="step-body">
@@ -461,52 +456,46 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
           <p class="step-d">Notre équipe crée le design, le copy et l'intégration de A à Z. Chaque élément est optimisé pour convertir : UX, vitesse, SEO on-page et structure persuasive.</p>
         </div>
       </div>
-
-      <!-- ÉTAPE 3 : Livraison & suivi -->
       <div class="step-card">
         <div class="step-visual">
           <div class="sv-glow" style="width:360px;height:360px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(244,123,59,.16) 0%,transparent 60%)"></div>
-          <!-- Livraison card principale -->
-          <div style="position:absolute;top:24px;left:22px;right:22px;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.3);border-radius:14px;padding:16px">
+          <div style="position:absolute;top:24px;left:22px;right:22px;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.28);border-radius:14px;padding:16px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
               <div style="font-size:12px;font-weight:700;color:var(--or)">Ta landing page</div>
               <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8)"></div>
             </div>
             <div style="height:7px;width:90%;border-radius:6px;background:rgba(244,123,59,.2);margin-bottom:6px"></div>
             <div style="height:7px;width:70%;border-radius:6px;background:rgba(255,255,255,.08);margin-bottom:6px"></div>
-            <div style="height:7px;width:80%;border-radius:6px;background:rgba(255,255,255,.06);"></div>
+            <div style="height:7px;width:80%;border-radius:6px;background:rgba(255,255,255,.06)"></div>
           </div>
-          <!-- Stats mini -->
           <div style="position:absolute;bottom:18px;left:22px;right:22px;display:flex;gap:8px">
-            <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px;text-align:center">
-              <div style="font-family:var(--ss);font-size:20px;font-weight:800;color:var(--or)">+3x</div>
+            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:800;color:var(--or)">+3x</div>
               <div style="font-size:10px;color:var(--mu);margin-top:2px">conversions</div>
             </div>
-            <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px;text-align:center">
-              <div style="font-family:var(--ss);font-size:20px;font-weight:800;color:var(--wh)">7j</div>
+            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:800;color:var(--wh)">7j</div>
               <div style="font-size:10px;color:var(--mu);margin-top:2px">livraison</div>
             </div>
-            <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px;text-align:center">
-              <div style="font-family:var(--ss);font-size:20px;font-weight:800;color:#22c55e">✓</div>
+            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:12px;text-align:center">
+              <div style="font-size:20px;font-weight:800;color:#22c55e">✓</div>
               <div style="font-size:10px;color:var(--mu);margin-top:2px">en ligne</div>
             </div>
           </div>
-          <!-- Pill tag -->
           <div class="sv-pill" style="top:20px;right:22px">🚀 En ligne</div>
         </div>
         <div class="step-body">
           <div class="step-label">Étape 3 — Livraison</div>
           <div class="step-t">On met en ligne</div>
-          <p class="step-d">En 7 jours, ta page est livrée, testée et publiée. Tu valides, on ajuste. Après la mise en ligne, on reste disponibles 7j/7 pour t'accompagner et optimiser les performances.</p>
+          <p class="step-d">En 7 jours, ta page est livrée, testée et publiée. Tu valides, on ajuste. Après la mise en ligne, on reste disponibles 7j/7 pour t'accompagner.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="sec" id="pricing" style="background:var(--bg2)">
+<section class="sec sec-alt" id="pricing">
   <div class="wrap rv">
     <span class="stag">Tarifs</span>
     <h2 class="sh2">Investis dans<br><span class="sm">ta <span class="si">croissance.</span></span></h2>
@@ -552,16 +541,29 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="sec" id="testi" style="background:var(--bg2)">
+<!-- TESTIMONIALS — défilants -->
+<section class="sec sec-alt" id="testi">
   <div class="wrap rv">
     <span class="stag">Avis clients</span>
     <h2 class="sh2">Ce que disent<br><span class="sm">nos <span class="si">clients.</span></span></h2>
-    <div class="g-testi">
-      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« J'avais besoin d'une landing page pour lancer ma formation. Openshore a livré en <em>6 jours exactement</em>. Le design était irréprochable, et <em>un taux de conversion à 8%</em> dès le lancement. Meilleur investissement de l'année. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">M</div><div><div class="tc-n">Marie L.</div><div class="tc-r">Formatrice en ligne — Paris</div></div></div></div>
-      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Process ultra-fluide. La page a <em>triplé nos leads</em> en un mois. »</p><div class="tc-a"><div class="tc-av" style="background:#555">A</div><div><div class="tc-n">Antoine R.</div><div class="tc-r">CEO — SaaS B2B</div></div></div></div>
-      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Après 3 freelances décevants, Openshore a livré en <em>7 jours pile</em>. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or2)">S</div><div><div class="tc-n">Sophie K.</div><div class="tc-r">Coach executive</div></div></div></div>
+  </div>
+  <div id="testi-wrap" style="margin-top:48px;position:relative">
+    <div class="fade-l" style="position:absolute;left:0;top:0;bottom:0;width:160px;z-index:10;background:linear-gradient(to right,var(--bg),transparent);pointer-events:none"></div>
+    <div class="fade-r" style="position:absolute;right:0;top:0;bottom:0;width:160px;z-index:10;background:linear-gradient(to left,var(--bg),transparent);pointer-events:none"></div>
+    <div class="testi-track">
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Openshore a livré en <em>6 jours exactement</em>. Le design était irréprochable, et <em>un taux de conversion à 8%</em> dès le lancement. Meilleur investissement de l'année. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">M</div><div><div class="tc-n">Marie L.</div><div class="tc-r">Formatrice en ligne — Paris</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Process ultra-fluide. La page a <em>triplé nos leads</em> en un mois. Je recommande sans hésiter. »</p><div class="tc-a"><div class="tc-av" style="background:#555">A</div><div><div class="tc-n">Antoine R.</div><div class="tc-r">CEO — SaaS B2B</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Après 3 freelances décevants, Openshore a livré en <em>7 jours pile</em>. Résultat professionnel et impactant. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or2)">S</div><div><div class="tc-n">Sophie K.</div><div class="tc-r">Coach executive</div></div></div></div>
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Le SEO intégré nous a permis de <em>ranker top 3</em> sur notre mot-clé principal en 3 semaines. »</p><div class="tc-a"><div class="tc-av" style="background:#444">T</div><div><div class="tc-n">Thomas B.</div><div class="tc-r">Fondateur — E-commerce</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Notre ROAS a <em>augmenté de 240%</em> depuis le lancement de la nouvelle landing page. Travail exceptionnel. »</p><div class="tc-a"><div class="tc-av" style="background:#333">L</div><div><div class="tc-n">Lucas M.</div><div class="tc-r">Growth Manager — Startup</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Openshore comprend les enjeux business. La page n'est pas que belle — elle <em>vend vraiment</em>. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">C</div><div><div class="tc-n">Camille D.</div><div class="tc-r">Directrice marketing — PME</div></div></div></div>
+      <!-- Duplicate -->
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Openshore a livré en <em>6 jours exactement</em>. Le design était irréprochable, et <em>un taux de conversion à 8%</em> dès le lancement. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">M</div><div><div class="tc-n">Marie L.</div><div class="tc-r">Formatrice en ligne — Paris</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Process ultra-fluide. La page a <em>triplé nos leads</em> en un mois. Je recommande sans hésiter. »</p><div class="tc-a"><div class="tc-av" style="background:#555">A</div><div><div class="tc-n">Antoine R.</div><div class="tc-r">CEO — SaaS B2B</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Après 3 freelances décevants, Openshore a livré en <em>7 jours pile</em>. Résultat professionnel et impactant. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or2)">S</div><div><div class="tc-n">Sophie K.</div><div class="tc-r">Coach executive</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Le SEO intégré nous a permis de <em>ranker top 3</em> sur notre mot-clé principal en 3 semaines. »</p><div class="tc-a"><div class="tc-av" style="background:#444">T</div><div><div class="tc-n">Thomas B.</div><div class="tc-r">Fondateur — E-commerce</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« Notre ROAS a <em>augmenté de 240%</em> depuis le lancement. Travail exceptionnel. »</p><div class="tc-a"><div class="tc-av" style="background:#333">L</div><div><div class="tc-n">Lucas M.</div><div class="tc-r">Growth Manager — Startup</div></div></div></div>
+      <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">« La page n'est pas que belle — elle <em>vend vraiment</em>. »</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">C</div><div><div class="tc-n">Camille D.</div><div class="tc-r">Directrice marketing — PME</div></div></div></div>
     </div>
   </div>
 </section>
@@ -580,7 +582,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 </section>
 
 <!-- FAQ -->
-<section class="sec" id="faq" style="background:var(--bg2)">
+<section class="sec sec-alt" id="faq">
   <div class="wrap rv">
     <span class="stag">FAQ</span>
     <h2 class="sh2">Questions <span class="sm"><span class="si">fréquentes.</span></span></h2>
@@ -602,7 +604,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
     <span class="stag">Prêt à convertir ?</span>
     <h2 class="cta-h">Ta page qui vend,<br><span class="si">en 7 jours.</span></h2>
     <p class="cta-sub">Rejoins +60 entrepreneurs qui ont confié leur croissance à Openshore. Dès aujourd'hui.</p>
-    <a href="/cdn-cgi/l/email-protection#1b737e7777745b746b7e75687374697e357d69" class="btn-m" style="display:inline-flex;font-size:16px;padding:17px 42px">Lancer mon projet &nbsp;›</a>
+    <a href="mailto:hello@openshore.fr" class="btn-m" style="display:inline-flex;font-size:16px;padding:17px 42px">Lancer mon projet &nbsp;›</a>
     <div class="cta-tr">
       <div class="cta-ti"><span class="cta-ck">✓</span> Réponse en moins de 2h</div>
       <div class="cta-ti"><span class="cta-ck">✓</span> Devis gratuit & sans engagement</div>
@@ -620,28 +622,15 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
       <span class="fl-t">Open<span>shore</span></span>
     </a>
     <div class="fc">© 2025 Openshore — Tous droits réservés</div>
-    <div class="fls"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="/cdn-cgi/l/email-protection#254d4049494a654a55404b564d4a57400b4357">Contact</a></div>
+    <div class="fls"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="mailto:hello@openshore.fr">Contact</a></div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// TICKER
-const TICKS=[
-  ['+60 clients','font confiance à Openshore'],
-  ['Livraison 7 jours','ou remboursé'],
-  ['SEO + CRO','inclus dans chaque projet'],
-  ['Support 7j/7','pour tous nos clients'],
-  ['0 template','— 100% sur mesure'],
-  ['Garantie remboursement','14 jours']
-];
-const tt=document.getElementById('tt');
-tt.innerHTML=[...TICKS,...TICKS].map(([a,b])=>`<div class="t-it"><span class="t-sep">✦</span><strong>${a}</strong>&nbsp;${b}</div>`).join('');
-
-// VSL — remplace l'URL ci-dessous par ton lien YouTube ou Vimeo
+<script>
+// VSL
 function loadVSL(){
   var ph=document.getElementById('vsl-ph');
   var frame=document.createElement('iframe');
-  // 👇 REMPLACE CETTE URL par ton lien embed (YouTube ou Vimeo)
   frame.src='https://www.youtube.com/embed/TON_ID_VIDEO?autoplay=1&rel=0';
   frame.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none';
   frame.allow='autoplay; fullscreen';
@@ -649,10 +638,10 @@ function loadVSL(){
   ph.style.display='none';
 }
 
-// js-ready pour animations scroll
-document.documentElement.classList.add('js-ready');
+// JS ready
+document.documentElement.classList.add('js-r');
 
-// SCROLL REVEAL
+// Scroll reveal
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
