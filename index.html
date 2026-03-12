@@ -25,7 +25,7 @@ section,nav,footer,#cards,#ticker,#vsl{position:relative;z-index:1}
 /* NAV */
 nav{position:fixed;top:22px;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;padding:0 44px}
 .n-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.n-logo img{width:36px;height:36px;object-fit:contain;mix-blend-mode:screen}
+.n-logo img{width:36px;height:36px;object-fit:contain;mix-blend-mode:screen;background:transparent;border-radius:8px}
 .n-logo-t{font-family:var(--ss);font-weight:800;font-size:19px;color:var(--wh)}
 .n-logo-t span{color:var(--or)}
 .n-pill{background:rgba(15,11,9,0.88);backdrop-filter:blur(20px);border:1px solid var(--bd);border-radius:100px;display:flex;gap:2px;align-items:center;padding:5px 7px}
@@ -365,7 +365,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
     <h1 class="h-h1">On crée ta landing page<br>qui fait un <span class="si">×2</span> sur tes ventes.</h1>
     <p class="h-sub"><strong>Livraison en 7 jours.</strong> On conçoit ta page de A à Z — design, UX, SEO, CRO — pour transformer ton trafic en revenus. Sans délais, sans template, sans compromis.</p>
     <div class="h-btns">
-      <a href="#pricing" class="btn-m">Je veux ma page en 7 jours &nbsp;›</a>
+      <a href="#pricing" class="btn-m">Ma landing page en 7 jours &nbsp;›</a>
       <a href="#cards" class="btn-g">Voir nos réalisations</a>
     </div>
     <div class="h-proofs">
@@ -594,7 +594,10 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
     <span class="stag">Comparaison</span>
     <h2 class="sh2">Pourquoi pas un freelance<br><span class="sm">ou une <span class="si">agence classique ?</span></span></h2>
     <div class="cmp">
-      <div class="cmp-h"><div class="chl">Critère</div><div class="chl ours" style="text-align:center">Openshore</div><div class="chl" style="text-align:center">Freelance</div><div class="chl" style="text-align:center">Agence trad.</div></div>
+      <div class="cmp-h"><div class="chl">Critère</div><div class="chl ours" style="text-align:center;display:flex;align-items:center;justify-content:center;gap:7px">
+  <img id="cmp-logo" style="width:20px;height:20px;mix-blend-mode:screen;flex-shrink:0;background:transparent" alt="">
+  Openshore
+</div><div class="chl" style="text-align:center">Freelance</div><div class="chl" style="text-align:center">Agence trad.</div></div>
       <div class="cmp-r"><div>Délai de livraison</div><div class="cv cov" style="text-align:center">7 jours</div><div class="cv cmv" style="text-align:center">3–8 sem.</div><div class="cv cmv" style="text-align:center">2–4 mois</div></div>
       <div class="cmp-r"><div>CRO inclus</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cp" style="text-align:center">~</div></div>
       <div class="cmp-r"><div>SEO on-page intégré</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cp" style="text-align:center">~</div><div class="cv cy" style="text-align:center">✓</div></div>
@@ -716,6 +719,45 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
       <div>
         <h2 class="gt">La garantie Openshore.<br><span class="si">Zéro risque.</span></h2>
         <p class="gd">Tu as <strong>à la livraison du site web</strong> pour évaluer ta landing page. Si le résultat ne te convainc pas — <strong>on te rembourse intégralement</strong>. Sans questions, sans procédures.</p>
+      </div>
+    </div>
+    <!-- MODES DE PAIEMENT -->
+    <div style="margin-top:48px;padding-top:36px;border-top:1px solid var(--bd);text-align:center">
+      <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:20px">Modes de paiement acceptés</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+        <!-- Visa -->
+        <div style="background:#fff;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <svg height="16" viewBox="0 0 50 16" xmlns="http://www.w3.org/2000/svg"><text x="0" y="13" font-family="Arial" font-weight="900" font-size="14" fill="#1A1F71">VISA</text></svg>
+        </div>
+        <!-- Mastercard -->
+        <div style="background:#fff;border-radius:6px;padding:4px 8px;display:flex;align-items:center;gap:3px;height:32px">
+          <svg width="20" height="14" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="13" cy="7" r="7" fill="#F79E1B" opacity="0.85"/></svg>
+          <span style="font-size:9px;font-weight:800;color:#231F20">MC</span>
+        </div>
+        <!-- Amex -->
+        <div style="background:#016FD0;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <span style="font-size:10px;font-weight:900;color:#fff;letter-spacing:0.5px">AMEX</span>
+        </div>
+        <!-- Stripe -->
+        <div style="background:#635BFF;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <span style="font-size:10px;font-weight:900;color:#fff;letter-spacing:0.5px">stripe</span>
+        </div>
+        <!-- PayPal -->
+        <div style="background:#fff;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <span style="font-size:10px;font-weight:900;color:#003087;letter-spacing:0px">Pay<span style="color:#009CDE">Pal</span></span>
+        </div>
+        <!-- Google Pay -->
+        <div style="background:#fff;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <span style="font-size:10px;font-weight:700;color:#3c4043;letter-spacing:0px">G<span style="color:#4285F4">P</span>ay</span>
+        </div>
+        <!-- Apple Pay -->
+        <div style="background:#000;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <span style="font-size:10px;font-weight:600;color:#fff;letter-spacing:0px"> Pay</span>
+        </div>
+        <!-- Klarna -->
+        <div style="background:#FFB3C7;border-radius:6px;padding:5px 10px;display:flex;align-items:center;height:32px">
+          <span style="font-size:10px;font-weight:900;color:#17120E;letter-spacing:0px">Klarna</span>
+        </div>
       </div>
     </div>
   </div>
@@ -969,6 +1011,11 @@ function loadVSL(){
   ph.parentElement.appendChild(f);
   ph.style.display='none';
 }
+// Copier le logo nav dans la colonne tableau comparatif
+var navImg = document.querySelector('.n-logo img');
+var cmpImg = document.getElementById('cmp-logo');
+if (navImg && cmpImg) cmpImg.src = navImg.src;
+
 document.documentElement.classList.add('js-r');
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
