@@ -576,7 +576,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
         <div class="p-tier">Premium</div><div class="p-val">770€</div>
         <div class="p-tag">Pour dominer ton marché avec une présence irréprochable.</div>
         <ul class="p-fs"><li>Tout ce qui est dans Basic</li><li>Structure multipage</li><li>SEO avancé + maillage interne</li><li>UX premium & animations</li><li>CRO avancé + A/B testing</li><li>Révisions illimitées</li><li>Support prioritaire 7j/7</li></ul>
-        <a href="/cdn-cgi/l/email-protection#254d4049494a654a55404b564d4a57400b4357" class="pbtn pb-f">Nous contacter →</a>
+        <a href="mailto:contact@openshore.fr" class="pbtn pb-f">Nous contacter →</a>
       </div>
       <div class="pc2">
         <div class="p-tier">Sur mesure</div><div class="p-val">1970€</div>
@@ -855,7 +855,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
       <!-- RIGHT — SUMMARY -->
       <div class="summary-box">
         <div class="summary-title">Récapitulatif</div>
-        <div class="sum-line"><span class="sum-label">Landing Page Basic</span><span class="sum-val">470€</span></div>
+        <div class="sum-line"><span class="sum-label" id="sum-plan-label">Landing Page Basic</span><span class="sum-val" id="sum-plan-price">470€</span></div>
         <div id="sum-items"></div>
         <div class="sum-saving hidden" id="sum-saving">🎉 <span id="saving-text"></span></div>
         <div class="sum-total-row">
@@ -877,6 +877,22 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ===== NAVIGATION COMMANDE =====
 function showCommande() {
+  BASE = 470;
+  selected = {};
+  document.getElementById('sum-plan-label').textContent = 'Landing Page Basic';
+  document.getElementById('sum-plan-price').textContent = '470€';
+  updateSummary();
+  var p = document.getElementById('page-commande');
+  p.classList.add('active');
+  p.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+function showCommandePremium() {
+  BASE = 770;
+  selected = {};
+  document.getElementById('sum-plan-label').textContent = 'Landing Page Premium';
+  document.getElementById('sum-plan-price').textContent = '770€';
+  updateSummary();
   var p = document.getElementById('page-commande');
   p.classList.add('active');
   p.scrollTop = 0;
@@ -957,3 +973,13 @@ document.documentElement.classList.add('js-r');
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-i');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-i.open').forEach(function(el){ el.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
