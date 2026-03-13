@@ -78,10 +78,11 @@ nav .n-cta{justify-self:end}
 .cards-outer{position:relative}
 .fade-l{position:absolute;left:0;top:0;bottom:0;width:160px;z-index:10;background:linear-gradient(to right,var(--bg),transparent);pointer-events:none}
 .fade-r{position:absolute;right:0;top:0;bottom:0;width:160px;z-index:10;background:linear-gradient(to left,var(--bg),transparent);pointer-events:none}
-.c-track{display:flex;gap:24px;width:max-content;animation:scrollL 22s linear infinite;padding:20px 0 40px;will-change:transform}
-.c-track:hover{animation-play-state:paused}
+.c-track{display:flex;gap:24px;width:max-content;animation:none;padding:20px 0 40px;will-change:transform}
+.c-track.anim-on{animation:scrollL 22s linear infinite}
+.c-track.anim-on:hover{animation-play-state:paused}
 @keyframes scrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.sc{width:480px;height:300px;border-radius:18px;overflow:hidden;flex-shrink:0;border:1px solid var(--bd);transform:rotate(var(--r,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;position:relative;contain:layout style}
+.sc{width:480px;height:300px;border-radius:18px;overflow:hidden;flex-shrink:0;border:1px solid var(--bd);transform:rotate(var(--r,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;position:relative;contain:layout style;background:rgba(244,123,59,.04)}
 .sc:hover{transform:rotate(0deg) scale(1.04) translateY(-8px);box-shadow:0 20px 56px rgba(0,0,0,.7),0 0 36px rgba(244,123,59,.2);z-index:20}
 .sc img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .sc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px}
@@ -1758,6 +1759,24 @@ if (navImg && cmpImg) cmpImg.src = navImg.src;
 document.documentElement.classList.add('js-r');
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+
+/* Démarrage du carousel après décodage complet des images */
+(function(){
+  var track = document.querySelector('.c-track');
+  if(!track) return;
+  var imgs = track.querySelectorAll('img');
+  var total = imgs.length, loaded = 0;
+  function onReady(){
+    loaded++;
+    if(loaded >= total) track.classList.add('anim-on');
+  }
+  imgs.forEach(function(img){
+    if(img.complete && img.naturalWidth > 0){ onReady(); }
+    else { img.addEventListener('load', onReady); img.addEventListener('error', onReady); }
+  });
+  // Sécurité : démarrer dans tous les cas après 3s
+  setTimeout(function(){ track.classList.add('anim-on'); }, 3000);
+})();
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
     var item = btn.closest('.faq-i');
