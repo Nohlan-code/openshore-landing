@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Openshore — Landing pages livrées en 7 jours.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -573,7 +577,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
       <!-- Carré gris en haut à droite (extrémité de la ligne) -->
       <rect x="63" y="8" width="24" height="24" rx="3" fill="#C8C8C8"/>
     </svg>
-    <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png" alt="Openshore">
+    <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png" alt="Openshore" fetchpriority="high" decoding="async">
   </a>
   <div class="n-pill">
     <a href="#cards">Réalisations</a>
