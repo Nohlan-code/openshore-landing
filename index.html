@@ -658,13 +658,13 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 </nav>
 <!-- Mobile menu drawer -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#cards" onclick="closeMobileMenu()">Réalisations</a>
-  <a href="#process" onclick="closeMobileMenu()">Processus</a>
-  <a href="#testi" onclick="closeMobileMenu()">Avis</a>
-  <a href="#pricing" onclick="closeMobileMenu()">Offres</a>
-  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#cards" onclick="navTo('cards');return false;">Réalisations</a>
+  <a href="#process" onclick="navTo('process');return false;">Processus</a>
+  <a href="#testi" onclick="navTo('testi');return false;">Avis</a>
+  <a href="#pricing" onclick="navTo('pricing');return false;">Offres</a>
+  <a href="#faq" onclick="navTo('faq');return false;">FAQ</a>
   <a href="#" onclick="closeMobileMenu();showRecrutement();return false;" style="color:rgba(245,242,238,.5);font-size:13px;padding:10px 16px">Recrutement</a>
-  <a href="#pricing" class="mob-cta" onclick="closeMobileMenu()">Voir nos offres →</a>
+  <a href="#pricing" class="mob-cta" onclick="navTo('pricing');return false;">Voir nos offres →</a>
 </div>
 <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
 
@@ -1780,6 +1780,13 @@ function closeMobileMenu(){
   document.getElementById('mobile-menu').classList.remove('open');
   document.getElementById('mobile-overlay').classList.remove('open');
   document.body.style.overflow = '';
+}
+function navTo(id){
+  closeMobileMenu();
+  setTimeout(function(){
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 320);
 }
 
 function openLegal(which){
