@@ -1691,12 +1691,35 @@ function updateSummary() {
   var pct = Math.min(25 + keys.length * 12, 92);
   document.getElementById('pbar').style.width = pct+'%';
 }
-function handleCTA() {
-  var keys = Object.keys(selected);
-  var extra = keys.reduce(function(a,k){return a+selected[k];},0);
-  var total = BASE + extra;
-  // 👇 REMPLACE PAR TON LIEN STRIPE
-  alert('Redirection paiement — Total : '+total+'€\n\nRemplace cette alerte par ton lien Stripe !');
+async function handleCTA() {
+  var btn = document.querySelector('.cmd-cta');
+  btn.textContent = 'Chargement...';
+  btn.disabled = true;
+
+  // Construire la liste des upsells avec label + prix
+  var items = Object.keys(selected).map(function(k) {
+    return { label: LABELS[k], price: selected[k] };
+  });
+
+  try {
+    var response = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ total: BASE + items.reduce(function(a,i){return a+i.price;},0), items: items })
+    });
+    var data = await response.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert('Erreur : ' + (data.error || 'Impossible de créer la session.'));
+      btn.textContent = 'Procéder au paiement · ' + (BASE + items.reduce(function(a,i){return a+i.price;},0)) + '€';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Erreur de connexion. Réessaie dans un instant.');
+    btn.textContent = 'Procéder au paiement';
+    btn.disabled = false;
+  }
 }
 
 // ===== MAIN SITE =====
