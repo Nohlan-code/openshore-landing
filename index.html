@@ -323,19 +323,187 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 .sum-reassurance{display:flex;flex-direction:column;gap:6px;margin-top:18px}
 .sum-r{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mu)}
 
+/* =============================================
+   MOBILE MENU
+   ============================================= */
+.n-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:rgba(15,11,9,0.88);border:1px solid var(--bd);border-radius:10px;width:40px;height:40px;cursor:pointer;padding:0;flex-shrink:0}
+.n-burger span{display:block;width:18px;height:2px;background:var(--wh);border-radius:2px;transition:all .25s}
+.n-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.n-burger.open span:nth-child(2){opacity:0}
+.n-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:260px;background:rgba(15,11,9,0.97);backdrop-filter:blur(24px);border-left:1px solid var(--bd);z-index:800;flex-direction:column;gap:4px;padding:90px 20px 32px;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{display:block;padding:14px 16px;color:rgba(245,242,238,.7);text-decoration:none;font-size:15px;font-weight:600;border-radius:10px;transition:color .2s,background .2s}
+.mobile-menu a:hover{color:var(--wh);background:rgba(255,255,255,.06)}
+.mobile-menu .mob-cta{background:var(--or);color:#fff;text-align:center;margin-top:16px;font-weight:700}
+.mobile-menu .mob-cta:hover{background:var(--or2);color:#fff}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:750;backdrop-filter:blur(2px)}
+.mobile-overlay.open,.mobile-menu.open{display:flex}
+@media(max-width:768px){
+  .n-burger{display:flex}
+  .n-cta{display:none}
+}
+
+/* =============================================
+   RESPONSIVE — Tablet (≤ 1024px)
+   ============================================= */
+@media(max-width:1024px){
+  .wrap{padding:0 32px}
+  .g-sol{gap:40px}
+  .cmp-h,.cmp-r{padding:14px 16px;font-size:13px}
+  .g-price{grid-template-columns:repeat(3,1fr);gap:12px}
+  .p-card{padding:28px 20px}
+  .gb{padding:40px 36px;gap:28px}
+  .cmd-wrap{padding:32px 32px 80px}
+  .cmd-nav{padding:0 32px}
+}
+
+/* =============================================
+   RESPONSIVE — Large tablet / small laptop (≤ 860px)
+   ============================================= */
 @media(max-width:860px){
   .cmd-cols{grid-template-columns:1fr}
-  .summary-box{position:static}
+  .summary-box{position:static;margin-top:24px}
   .cmd-nav{padding:0 18px}
   .cmd-wrap{padding:24px 18px 60px}
+  .g-price{grid-template-columns:1fr 1fr}
+  .g-sol{grid-template-columns:1fr;gap:32px}
+  .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cmp-table{min-width:560px}
 }
+
+/* =============================================
+   RESPONSIVE — Tablet portrait (≤ 768px)
+   ============================================= */
 @media(max-width:768px){
-  nav{padding:0 18px}
+  /* NAV */
+  nav{padding:0 18px;top:12px}
   .n-pill{display:none}
-  .wrap{padding:0 20px}
-  .g2,.g-sol,.g-proc,.g-price{grid-template-columns:1fr}
-  .gb{grid-template-columns:1fr;padding:28px 20px;text-align:center}
-  footer .fi{flex-direction:column;text-align:center}
+  .n-cta a{font-size:12px;padding:8px 16px}
+
+  /* LAYOUT */
+  .wrap{padding:0 18px}
+  .sec{padding:72px 0}
+
+  /* HERO */
+  #hero{padding-top:120px;text-align:center}
+  .h-glow{width:100%;height:400px}
+  .h-inner{max-width:100%}
+  .h-sub{margin-left:auto;margin-right:auto}
+  .h-btns{flex-direction:column;align-items:center;gap:10px}
+  .h-btns .btn-m,.h-btns .btn-g{width:100%;max-width:320px;justify-content:center}
+  .h-proofs{gap:16px}
+
+  /* GRIDS → single column */
+  .g2,.g-sol,.g-proc,.g-price,.vtesti-grid{grid-template-columns:1fr}
+
+  /* FEATURES (g2) */
+  .g2{gap:10px}
+
+  /* PROCESS STEPS */
+  .step-visual{height:220px}
+  .step-body{padding:22px 20px 26px}
+
+  /* PRICING */
+  .g-price{gap:14px}
+  .p-card{padding:28px 20px}
+
+  /* COMPARISON TABLE */
+  .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:32px}
+  .cmp-table{min-width:520px}
+  .cmp-h,.cmp-r{padding:12px 14px;font-size:12.5px}
+
+  /* GUARANTEE */
+  .gb{grid-template-columns:1fr;padding:28px 20px;text-align:center;gap:16px}
+  .gi{font-size:40px}
+
+  /* TESTIMONIALS */
+  .tc{width:280px;padding:20px}
+
+  /* FOOTER */
+  footer .fi{flex-direction:column;align-items:center;text-align:center;gap:16px}
+  footer .fi>div:last-child{flex-direction:column;gap:10px}
+}
+
+/* =============================================
+   RESPONSIVE — Mobile (≤ 480px)
+   ============================================= */
+@media(max-width:480px){
+  /* NAV */
+  nav{padding:0 14px;top:10px}
+  .n-logo-t{font-size:16px}
+
+  /* LAYOUT */
+  .wrap{padding:0 14px}
+  .sec{padding:56px 0}
+  .sh2{letter-spacing:-1px}
+
+  /* HERO */
+  #hero{padding-top:100px}
+  .h-badge{font-size:11px}
+  .h-h1{font-size:clamp(32px,9vw,52px);letter-spacing:-1.5px}
+  .h-sub{font-size:14px}
+  .h-btns .btn-m,.h-btns .btn-g{font-size:14px;padding:13px 24px}
+
+  /* PROOF BADGES */
+  .h-proofs{flex-direction:column;gap:12px}
+  .h-proof{font-size:12px}
+
+  /* TICKER */
+  .t-it{font-size:12px}
+
+  /* PROCESS STEPS */
+  .step-visual{height:190px}
+  .step-t{font-size:18px}
+
+  /* PRICING */
+  .p-card{padding:24px 16px}
+  .p-card h3{font-size:18px}
+  .p-price{font-size:36px}
+  .pbtn{font-size:13px;padding:11px}
+
+  /* VIDEO TESTIMONIALS */
+  .vtesti-card{border-radius:14px}
+  .vtesti-info{padding:16px}
+
+  /* COMPARISON TABLE */
+  .cmp-h,.cmp-r{grid-template-columns:2fr 1fr 1fr 1fr;padding:10px 10px;font-size:11.5px}
+
+  /* TESTIMONIALS CAROUSEL */
+  .tc{width:240px;padding:16px}
+  .tc-q{font-size:13px}
+
+  /* GUARANTEE */
+  .gb{padding:22px 16px}
+  .gt{font-size:clamp(22px,5vw,32px)}
+
+  /* PAYMENT LOGOS */
+  [style*="display:flex"][style*="gap:10px"]{gap:6px;flex-wrap:wrap;justify-content:center}
+
+  /* CTA SECTION */
+  .cta-tr{flex-direction:column;align-items:center}
+  .cta-tr .btn-m,.cta-tr .btn-g{width:100%;max-width:300px;justify-content:center}
+
+  /* FOOTER */
+  footer{padding:28px 0}
+
+  /* CONFIGURATOR MODAL */
+  .cmd-nav{padding:0 14px;height:54px}
+  .cmd-wrap{padding:18px 14px 60px}
+  .opts{grid-template-columns:1fr;gap:8px}
+  .sum-box{padding:18px 16px}
+  .sum-total-val{font-size:30px}
+  .cmd-cta{font-size:14px;padding:14px}
+}
+
+/* =============================================
+   RESPONSIVE — Very small phones (≤ 360px)
+   ============================================= */
+@media(max-width:360px){
+  .wrap{padding:0 12px}
+  .h-h1{font-size:28px}
+  .tc{width:210px}
+  .cmp-h,.cmp-r{font-size:10.5px;padding:8px}
 }
 </style>
 </head>
@@ -354,8 +522,22 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
     <a href="#pricing">Offres</a>
     <a href="#faq">FAQ</a>
   </div>
-  <div class="n-cta"><a href="#cta">Voir nos offres</a></div>
+  <div class="n-cta"><a href="#pricing">Voir nos offres</a></div>
+  <!-- Hamburger (mobile only) -->
+  <button class="n-burger" id="n-burger" aria-label="Menu" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<!-- Mobile menu drawer -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#cards" onclick="closeMobileMenu()">Réalisations</a>
+  <a href="#process" onclick="closeMobileMenu()">Comment ça marche ?</a>
+  <a href="#testi" onclick="closeMobileMenu()">Avis</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Offres</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#pricing" class="mob-cta" onclick="closeMobileMenu()">Voir nos offres →</a>
+</div>
+<div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
 
 <!-- HERO -->
 <section id="hero">
@@ -713,6 +895,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">«&nbsp;Le SEO intégré nous a permis de <em>ranker top 3</em> sur notre mot-clé principal en 3 semaines.&nbsp;»</p><div class="tc-a"><div class="tc-av" style="background:#444">T</div><div><div class="tc-n">Thomas B.</div><div class="tc-r">Fondateur — E-commerce</div></div></div></div>
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">«&nbsp;Notre ROAS a <em>augmenté de 240%</em> depuis le lancement de la nouvelle landing page. Travail exceptionnel.&nbsp;»</p><div class="tc-a"><div class="tc-av" style="background:#333">L</div><div><div class="tc-n">Lucas M.</div><div class="tc-r">Growth Manager — Startup</div></div></div></div>
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">«&nbsp;Openshore comprend les enjeux business. La page n'est pas que belle — elle <em>vend vraiment</em>.&nbsp;»</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">C</div><div><div class="tc-n">Camille D.</div><div class="tc-r">Directrice marketing — PME</div></div></div></div>
+      <!-- Duplication pour boucle infinie -->
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">«&nbsp;Openshore a livré en <em>6 jours exactement</em>. Le design était irréprochable, et <em>un taux de conversion à 8%</em> dès le lancement.&nbsp;»</p><div class="tc-a"><div class="tc-av" style="background:var(--or)">M</div><div><div class="tc-n">Marie L.</div><div class="tc-r">Formatrice en ligne — Paris</div></div></div></div>
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">«&nbsp;Process ultra-fluide. La page a <em>triplé nos leads</em> en un mois. Je recommande sans hésiter.&nbsp;»</p><div class="tc-a"><div class="tc-av" style="background:#555">A</div><div><div class="tc-n">Antoine R.</div><div class="tc-r">CEO — SaaS B2B</div></div></div></div>
       <div class="tc"><div class="tc-s">★★★★★</div><p class="tc-q">«&nbsp;Après 3 freelances décevants, Openshore a livré en <em>7 jours pile</em>. Résultat professionnel et impactant.&nbsp;»</p><div class="tc-a"><div class="tc-av" style="background:var(--or2)">S</div><div><div class="tc-n">Sophie K.</div><div class="tc-r">Coach executive</div></div></div></div>
@@ -1091,6 +1274,24 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     if (!isOpen) item.classList.add('open');
   });
 });
+
+/* ---- Mobile menu ---- */
+function toggleMobileMenu(){
+  var burger = document.getElementById('n-burger');
+  var menu   = document.getElementById('mobile-menu');
+  var overlay= document.getElementById('mobile-overlay');
+  var open   = menu.classList.contains('open');
+  burger.classList.toggle('open', !open);
+  menu.classList.toggle('open', !open);
+  overlay.classList.toggle('open', !open);
+  document.body.style.overflow = open ? '' : 'hidden';
+}
+function closeMobileMenu(){
+  document.getElementById('n-burger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('mobile-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
 </script>
 </body>
 </html>
