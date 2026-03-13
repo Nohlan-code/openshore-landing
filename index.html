@@ -1009,21 +1009,28 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
         </div>
       </div>
 
-      <!-- Placeholder card 2 -->
-      <div class="vtesti-card vtesti-placeholder">
+      <!-- Card 2 — Noé (@noe.035) -->
+      <div class="vtesti-card">
         <div class="vtesti-video">
-          <div class="vtesti-ph vtesti-ph-empty">
-            <div class="vtesti-glow" style="background:radial-gradient(circle,rgba(244,123,59,.08) 0%,transparent 70%)"></div>
-            <div style="font-size:32px;margin-bottom:8px;opacity:.3">🎬</div>
-            <div style="font-size:13px;color:var(--mu);text-align:center;max-width:180px">Ton témoignage<br>vidéo ici bientôt</div>
+          <div class="vtesti-ph" id="vt2-ph" onclick="loadVT(2,'oinogLbPQpY')">
+            <div class="vtesti-glow"></div>
+            <div class="vtesti-avatar">N</div>
+            <button class="vtesti-play" aria-label="Lire le témoignage">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="vtesti-duration">0:28</div>
           </div>
+          <iframe id="vt2-frame" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px" allow="autoplay; fullscreen"></iframe>
         </div>
         <div class="vtesti-info">
-          <div class="vtesti-stars" style="opacity:.3">★★★★★</div>
-          <p class="vtesti-quote" style="opacity:.3">Bientôt disponible…</p>
+          <div class="vtesti-stars">★★★★★</div>
+          <p class="vtesti-quote">«&nbsp;Je cherchais quelqu'un qui comprenne vraiment mon business. Openshore a livré une page <em>impeccable en une semaine</em>, mes prises de contact ont explosé dès le lancement.&nbsp;»</p>
           <div class="vtesti-author">
-            <div class="vtesti-av" style="background:rgba(255,255,255,.06);color:var(--mu)">?</div>
-            <div><div class="vtesti-name" style="opacity:.3">Prochain client</div><div class="vtesti-handle" style="opacity:.3">@bientot</div></div>
+            <div class="vtesti-av" style="background:linear-gradient(135deg,var(--or),#c04a15)">N</div>
+            <div>
+              <div class="vtesti-name">Noé</div>
+              <a href="https://www.instagram.com/noe.035" target="_blank" class="vtesti-handle">@noe.035 &nbsp;↗</a>
+            </div>
           </div>
         </div>
       </div>
