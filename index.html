@@ -111,6 +111,7 @@ nav .n-cta{justify-self:end}
 /* SECTIONS */
 .sec{padding:110px 0;content-visibility:auto;contain-intrinsic-size:0 600px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 48px}
+br.mob-br{display:none}
 .stag{display:block;text-align:center;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--or);margin-bottom:14px}
 .sh2{font-family:var(--ss);font-size:clamp(30px,3.8vw,52px);font-weight:800;letter-spacing:-1.8px;line-height:1.07}
 .sh2 .si{font-family:var(--sf);font-style:italic;font-weight:400;color:var(--or)}
@@ -390,7 +391,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 /* =============================================
    CTA MINI CAROUSEL
    ============================================= */
-#cta-carousel{width:100%;overflow:hidden;margin-top:44px;mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%)}
+#cta-carousel{width:100%;overflow:hidden;margin-top:28px;mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%)}
 #cta-carousel .c-track{gap:12px}
 #cta-carousel .c-track .sc{width:200px;height:126px;transform:none!important;transition:none!important}
 #cta-carousel .c-track .sc img{width:100%;height:100%;object-fit:cover}
@@ -399,7 +400,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 #cta-carousel .c-track .sc-name{font-size:10px}
 @media(max-width:768px){
   #cta-carousel .c-track .sc{width:160px;height:100px}
-  #cta-carousel{margin-top:28px}
+  #cta-carousel{margin-top:20px}
 }
 
 /* =============================================
@@ -526,6 +527,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
    RESPONSIVE — Mobile (≤ 480px)
    ============================================= */
 @media(max-width:480px){
+  br.mob-br{display:block}
   /* NAV */
   nav{padding:10px 14px}
   .n-logo-t{font-size:16px}
@@ -613,7 +615,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
    ============================================= */
 @media(max-width:360px){
   .wrap{padding:0 12px}
-  .h-h1{font-size:28px}
+  .h-h1{font-size:clamp(26px,7.8vw,36px);letter-spacing:-1px}
   .tc{width:210px}
   .cmp-h,.cmp-r{font-size:10.5px;padding:8px}
   .sec{padding:36px 0}
@@ -774,7 +776,7 @@ html{-webkit-overflow-scrolling:touch}
   <div class="h-glow"></div>
   <div class="h-inner">
     <div class="h-badge"><span class="h-dot"></span>&nbsp; Plus que <strong style="margin:0 3px">8 places</strong> disponibles ce mois</div>
-    <h1 class="h-h1">On crée ta landing page<br>qui fait un <span class="si">×2</span> sur <span class="si">tes ventes.</span></h1>
+    <h1 class="h-h1">On crée ta landing page<br>qui fait un <span class="si">×2</span><br class="mob-br">sur <span class="si">tes ventes.</span></h1>
     <p class="h-sub"><strong>Livraison en 7 jours.</strong> On conçoit ta page de A à Z — design, UX, SEO, CRO — pour transformer ton trafic en revenus. Sans délais, sans template, sans compromis.</p>
     <div class="h-btns">
       <a href="#pricing" class="btn-m">Ma landing page en 7 jours &nbsp;›</a>
@@ -1365,14 +1367,14 @@ html{-webkit-overflow-scrolling:touch}
     <span class="stag">Prêt à convertir ?</span>
     <h2 class="cta-h">Ta page qui vend,<br><span class="si">en 7 jours.</span></h2>
     <p class="cta-sub">Rejoins +60 entrepreneurs qui ont confié leur croissance à Openshore. Dès aujourd'hui.</p>
-    <a href="#pricing" class="btn-m" style="display:inline-flex;font-size:16px;padding:17px 42px">Lancer mon projet &nbsp;›</a>
+    <!-- Mini carousel cloned from hero via JS -->
+    <div id="cta-carousel"></div>
+    <a href="#pricing" class="btn-m" style="display:inline-flex;font-size:16px;padding:17px 42px;margin-top:36px">Lancer mon projet &nbsp;›</a>
     <div class="cta-tr">
       <div class="cta-ti"><span class="cta-ck">✓</span> Réponse en moins de 2h</div>
       <div class="cta-ti"><span class="cta-ck">✓</span> Garantie remboursement à la livraison</div>
       <div class="cta-ti"><span class="cta-ck">✓</span> SAV 7j/7</div>
     </div>
-    <!-- Mini carousel cloned from hero via JS -->
-    <div id="cta-carousel"></div>
   </div>
 </section>
 
