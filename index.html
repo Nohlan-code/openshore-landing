@@ -1009,23 +1009,38 @@ html{-webkit-overflow-scrolling:touch}
         </div>
       </div>
       <div class="step-card">
-        <div class="step-visual">
-          <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(244,123,59,.16) 0%,transparent 60%)"></div>
-          <div style="position:absolute;top:24px;left:22px;right:22px;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.28);border-radius:14px;padding:16px">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div class="step-visual" style="display:flex;flex-direction:column;justify-content:space-between;padding:22px;gap:12px;height:auto;min-height:200px">
+          <!-- glow bg -->
+          <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(244,123,59,.16) 0%,transparent 60%);pointer-events:none"></div>
+          <!-- Top card : landing page preview -->
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.28);border-radius:14px;padding:14px;position:relative;z-index:1">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
               <div style="font-size:12px;font-weight:700;color:var(--or)">Ta landing page</div>
-              <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8)"></div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8)"></div>
+                <span style="font-size:9px;font-weight:600;color:#22c55e">En ligne</span>
+              </div>
             </div>
-            <div style="height:7px;width:90%;border-radius:6px;background:rgba(244,123,59,.2);margin-bottom:6px"></div>
-            <div style="height:7px;width:70%;border-radius:6px;background:rgba(255,255,255,.08);margin-bottom:6px"></div>
-            <div style="height:7px;width:80%;border-radius:6px;background:rgba(255,255,255,.06)"></div>
+            <div style="height:7px;width:85%;border-radius:6px;background:rgba(244,123,59,.25);margin-bottom:5px"></div>
+            <div style="height:6px;width:60%;border-radius:5px;background:rgba(255,255,255,.1)"></div>
           </div>
-          <div style="position:absolute;bottom:18px;left:22px;right:22px;display:flex;gap:8px">
-            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--or)">+3x</div><div style="font-size:10px;color:var(--mu);margin-top:2px">conversions</div></div>
-            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;font-weight:800;color:var(--wh)">7j</div><div style="font-size:10px;color:var(--mu);margin-top:2px">livraison</div></div>
-            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;font-weight:800;color:#22c55e">✓</div><div style="font-size:10px;color:var(--mu);margin-top:2px">en ligne</div></div>
+          <!-- Bottom stats row -->
+          <div style="display:flex;gap:8px;position:relative;z-index:1">
+            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:10px;text-align:center">
+              <div style="font-size:18px;font-weight:800;color:var(--or)">+3x</div>
+              <div style="font-size:9px;color:var(--mu);margin-top:2px">conversions</div>
+            </div>
+            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:10px;text-align:center">
+              <div style="font-size:18px;font-weight:800;color:var(--wh)">7j</div>
+              <div style="font-size:9px;color:var(--mu);margin-top:2px">livraison</div>
+            </div>
+            <div style="flex:1;background:rgba(244,123,59,.06);border:1px solid rgba(244,123,59,.2);border-radius:10px;padding:10px;text-align:center">
+              <div style="font-size:18px;font-weight:800;color:#22c55e">✓</div>
+              <div style="font-size:9px;color:var(--mu);margin-top:2px">en ligne</div>
+            </div>
           </div>
-          <div class="sv-pill" style="top:20px;right:22px">🚀 En ligne</div>
+          <!-- Pill -->
+          <div class="sv-pill" style="top:16px;right:16px">🚀 En ligne</div>
         </div>
         <div class="step-body"><div class="step-label">Étape 3 — Livraison</div><div class="step-t">On met en ligne</div><p class="step-d">En 7 jours, ta page est livrée, testée et publiée. Tu valides, on ajuste. Après la mise en ligne, on reste disponibles 7j/7.</p></div>
       </div>
