@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Bloquer les pages légales et de commande pour ne pas diluer le jus SEO
+Disallow: /api/
+Disallow: /#page-commande
+Disallow: /#page-recrutement
+
+# Sitemap
+Sitemap: https://openshore.eu/sitemap.xml
+
+# Crawl-delay (optionnel, pour éviter la surcharge)
+Crawl-delay: 1
