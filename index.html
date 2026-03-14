@@ -447,25 +447,25 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 
   /* LAYOUT */
   .wrap{padding:0 18px}
-  .sec{padding:72px 0}
+  .sec{padding:64px 0}
 
   /* HERO */
   #hero{padding-top:120px;text-align:center}
   .h-glow{width:100%;height:400px}
   .h-inner{max-width:100%}
-  .h-sub{margin-left:auto;margin-right:auto}
+  .h-sub{margin-left:auto;margin-right:auto;font-size:15px}
   .h-btns{flex-direction:column;align-items:center;gap:10px}
   .h-btns .btn-m,.h-btns .btn-g{width:100%;max-width:320px;justify-content:center}
   .h-proofs{gap:16px}
 
   /* GRIDS → single column */
-  .g2,.g-sol,.g-proc,.g-price,.vtesti-grid{grid-template-columns:1fr}
+  .g-sol,.g-proc,.g-price,.vtesti-grid{grid-template-columns:1fr}
 
-  /* FEATURES (g2) */
-  .g2{gap:10px}
+  /* PROBLEM CARDS — 2 cols sur tablette */
+  .g2{grid-template-columns:1fr 1fr;gap:10px}
 
   /* PROCESS STEPS */
-  .step-visual{height:220px}
+  .step-visual{height:200px}
   .step-body{padding:22px 20px 26px}
 
   /* PRICING */
@@ -476,6 +476,13 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:32px}
   .cmp-table{min-width:520px}
   .cmp-h,.cmp-r{padding:12px 14px;font-size:12.5px}
+
+  /* FEATURED TESTIMONIAL */
+  .testi-feat-outer{padding:32px 18px 8px!important}
+  .testi-feat-wrap{padding:22px 20px!important}
+
+  /* VIDEO TESTIMONIALS — limiter hauteur sur tablette */
+  .vtesti-video{padding-bottom:120%}
 
   /* GUARANTEE */
   .gb{grid-template-columns:1fr;padding:28px 20px;text-align:center;gap:16px}
@@ -490,6 +497,17 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 }
 
 /* =============================================
+   RESPONSIVE — Mobile (≤ 600px)
+   ============================================= */
+@media(max-width:600px){
+  /* PROBLEM CARDS — 1 colonne dès 600px */
+  .g2{grid-template-columns:1fr;gap:10px}
+
+  /* VSL inner */
+  .vsl-inner{padding:0 18px}
+}
+
+/* =============================================
    RESPONSIVE — Mobile (≤ 480px)
    ============================================= */
 @media(max-width:480px){
@@ -499,15 +517,16 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 
   /* LAYOUT */
   .wrap{padding:0 14px}
-  .sec{padding:56px 0}
+  .sec{padding:44px 0}
   .sh2{letter-spacing:-1px}
 
   /* HERO */
-  #hero{padding-top:100px}
+  #hero{padding-top:90px}
   .h-badge{font-size:11px}
   .h-h1{font-size:clamp(32px,9vw,52px);letter-spacing:-1.5px}
-  .h-sub{font-size:14px}
-  .h-btns .btn-m,.h-btns .btn-g{font-size:14px;padding:13px 24px}
+  .h-sub{font-size:15px}
+  .h-btns .btn-m{font-size:13.5px;padding:13px 20px}
+  .h-btns .btn-g{font-size:13.5px;padding:13px 20px}
 
   /* PROOF BADGES */
   .h-proofs{flex-direction:column;gap:12px}
@@ -517,18 +536,21 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   .t-it{font-size:12px}
 
   /* PROCESS STEPS */
-  .step-visual{height:190px}
-  .step-t{font-size:18px}
+  .step-visual{height:160px}
+  .step-t{font-size:17px}
+  .step-body{padding:18px 16px 22px}
 
   /* PRICING */
   .p-card{padding:24px 16px}
   .p-card h3{font-size:18px}
   .p-price{font-size:36px}
-  .pbtn{font-size:13px;padding:11px}
+  .pbtn{font-size:13px;padding:13px;min-height:44px}
 
   /* VIDEO TESTIMONIALS */
   .vtesti-card{border-radius:14px}
+  .vtesti-video{padding-bottom:100%}
   .vtesti-info{padding:16px}
+  .vtesti-quote{font-size:13px}
 
   /* COMPARISON TABLE */
   .cmp-h,.cmp-r{grid-template-columns:2fr 1fr 1fr 1fr;padding:10px 10px;font-size:11.5px}
@@ -536,6 +558,9 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   /* TESTIMONIALS CAROUSEL */
   .tc{width:240px;padding:16px}
   .tc-q{font-size:13px}
+
+  /* LINKS TOUCH TARGETS */
+  .vtesti-handle,.fl a,footer a{padding:6px 0;display:inline-block;min-height:44px;line-height:44px}
 
   /* GUARANTEE */
   .gb{padding:22px 16px}
@@ -551,13 +576,17 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   /* FOOTER */
   footer{padding:28px 0}
 
+  /* FEATURED TESTIMONIAL */
+  .testi-feat-outer{padding:20px 14px 8px!important}
+  .testi-feat-wrap{padding:18px 16px!important}
+
   /* CONFIGURATOR MODAL */
   .cmd-nav{padding:0 14px;height:54px}
   .cmd-wrap{padding:18px 14px 60px}
   .opts{grid-template-columns:1fr;gap:8px}
   .sum-box{padding:18px 16px}
   .sum-total-val{font-size:30px}
-  .cmd-cta{font-size:14px;padding:14px}
+  .cmd-cta{font-size:14px;padding:14px;min-height:52px}
 }
 
 /* =============================================
@@ -568,6 +597,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   .h-h1{font-size:28px}
   .tc{width:210px}
   .cmp-h,.cmp-r{font-size:10.5px;padding:8px}
+  .sec{padding:36px 0}
 }
 
 /* ===== PAGE RECRUTEMENT ===== */
@@ -754,7 +784,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   </div>
 
   <!-- TESTIMONIAL CARD sous la VSL -->
-  <div style="max-width:1080px;margin:0 auto;padding:48px 48px 8px">
+  <div class="testi-feat-outer" style="max-width:1080px;margin:0 auto;padding:48px 48px 8px">
     <div class="testi-feat-wrap" style="background:rgba(244,123,59,.04);border:1px solid rgba(244,123,59,0.35);border-radius:14px;padding:26px;text-align:center;position:relative;overflow:hidden">
       <!-- Lueur orange déco -->
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(244,123,59,0.10) 0%,transparent 65%);pointer-events:none"></div>
