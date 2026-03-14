@@ -388,6 +388,21 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 .sum-r{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mu)}
 
 /* =============================================
+   CTA MINI CAROUSEL
+   ============================================= */
+#cta-carousel{width:100%;overflow:hidden;margin-top:44px;mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%)}
+#cta-carousel .c-track{gap:12px}
+#cta-carousel .c-track .sc{width:200px;height:126px;transform:none!important;transition:none!important}
+#cta-carousel .c-track .sc img{width:100%;height:100%;object-fit:cover}
+#cta-carousel .c-track .sc-ov{padding:8px 10px}
+#cta-carousel .c-track .sc-tag{font-size:9px}
+#cta-carousel .c-track .sc-name{font-size:10px}
+@media(max-width:768px){
+  #cta-carousel .c-track .sc{width:160px;height:100px}
+  #cta-carousel{margin-top:28px}
+}
+
+/* =============================================
    MOBILE MENU
    ============================================= */
 .n-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:rgba(15,11,9,0.88);border:1px solid var(--bd);border-radius:10px;width:40px;height:40px;cursor:pointer;padding:0;flex-shrink:0}
@@ -807,13 +822,13 @@ html{-webkit-overflow-scrolling:touch}
     <div class="t-it"><span class="t-sep">✦</span><strong>+60 clients</strong>&nbsp;font confiance à Openshore</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>Livraison 7 jours</strong>&nbsp;ou remboursé</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>SEO + CRO</strong>&nbsp;inclus dans chaque projet</div>
-    <div class="t-it"><span class="t-sep">✦</span><strong>Support 7j/7</strong>&nbsp;pour tous nos clients</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>SAV 7j/7</strong>&nbsp;pour tous nos clients</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>0 template</strong>&nbsp;— 100% sur mesure</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>Garantie remboursement</strong>&nbsp;à la livraison</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>+60 clients</strong>&nbsp;font confiance à Openshore</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>Livraison 7 jours</strong>&nbsp;ou remboursé</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>SEO + CRO</strong>&nbsp;inclus dans chaque projet</div>
-    <div class="t-it"><span class="t-sep">✦</span><strong>Support 7j/7</strong>&nbsp;pour tous nos clients</div>
+    <div class="t-it"><span class="t-sep">✦</span><strong>SAV 7j/7</strong>&nbsp;pour tous nos clients</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>0 template</strong>&nbsp;— 100% sur mesure</div>
     <div class="t-it"><span class="t-sep">✦</span><strong>Garantie remboursement</strong>&nbsp;à la livraison</div>
   </div>
@@ -889,7 +904,7 @@ html{-webkit-overflow-scrolling:touch}
           <div class="sol-f"><div class="sol-fi">🎯</div><div><div class="sol-fn">Optimisation conversion (CRO)</div><p class="sol-fd">Architecture UX testée sur +60 projets pour maximiser les conversions dès le jour 1.</p></div></div>
           <div class="sol-f"><div class="sol-fi">🔍</div><div><div class="sol-fn">SEO technique & on-page</div><p class="sol-fd">Balises, vitesse, structure sémantique — ta page est visible et bien indexée par Google.</p></div></div>
           <div class="sol-f"><div class="sol-fi">⚡</div><div><div class="sol-fn">Livraison en 7 jours</div><p class="sol-fd">Processus optimisé. Zéro délai inutile. Ton offre en ligne en moins d'une semaine.</p></div></div>
-          <div class="sol-f"><div class="sol-fi">🛡️</div><div><div class="sol-fn">Support 7j/7 + Garantie remboursement</div><p class="sol-fd">On est là à chaque étape. Si tu n'es pas satisfait — on rembourse, sans questions.</p></div></div>
+          <div class="sol-f"><div class="sol-fi">🛡️</div><div><div class="sol-fn">SAV 7j/7 + Garantie remboursement</div><p class="sol-fd">On est là à chaque étape. Si tu n'es pas satisfait — on rembourse, sans questions.</p></div></div>
         </div>
       </div>
       <div class="rv" style="transition-delay:.15s">
@@ -1016,10 +1031,7 @@ html{-webkit-overflow-scrolling:touch}
           <div style="background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.28);border-radius:14px;padding:14px;position:relative;z-index:1">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
               <div style="font-size:12px;font-weight:700;color:var(--or)">Ta landing page</div>
-              <div style="display:flex;align-items:center;gap:6px">
-                <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8)"></div>
-                <span style="font-size:9px;font-weight:600;color:#22c55e">En ligne</span>
-              </div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.8)"></div>
             </div>
             <div style="height:7px;width:85%;border-radius:6px;background:rgba(244,123,59,.25);margin-bottom:5px"></div>
             <div style="height:6px;width:60%;border-radius:5px;background:rgba(255,255,255,.1)"></div>
@@ -1094,7 +1106,7 @@ html{-webkit-overflow-scrolling:touch}
       <div class="cmp-r"><div>Délai de livraison</div><div class="cv cov" style="text-align:center">7 jours</div><div class="cv cmv" style="text-align:center">3–8 sem.</div><div class="cv cmv" style="text-align:center">2–4 mois</div></div>
       <div class="cmp-r"><div>CRO inclus</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cp" style="text-align:center">~</div></div>
       <div class="cmp-r"><div>SEO on-page intégré</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cp" style="text-align:center">~</div><div class="cv cy" style="text-align:center">✓</div></div>
-      <div class="cmp-r"><div>Support 7j/7</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cn" style="text-align:center">✗</div></div>
+      <div class="cmp-r"><div>SAV 7j/7</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cn" style="text-align:center">✗</div></div>
       <div class="cmp-r"><div>Garantie remboursement</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cn" style="text-align:center">✗</div></div>
       <div class="cmp-r"><div>Prix d'entrée</div><div class="cv cov" style="text-align:center">470€</div><div class="cv cmv" style="text-align:center">500–2000€</div><div class="cv cmv" style="text-align:center">3000€+</div></div>
     </div></div>
@@ -1357,8 +1369,10 @@ html{-webkit-overflow-scrolling:touch}
     <div class="cta-tr">
       <div class="cta-ti"><span class="cta-ck">✓</span> Réponse en moins de 2h</div>
       <div class="cta-ti"><span class="cta-ck">✓</span> Garantie remboursement à la livraison</div>
-      <div class="cta-ti"><span class="cta-ck">✓</span> Support 7j/7</div>
+      <div class="cta-ti"><span class="cta-ck">✓</span> SAV 7j/7</div>
     </div>
+    <!-- Mini carousel cloned from hero via JS -->
+    <div id="cta-carousel"></div>
   </div>
 </section>
 
@@ -1765,7 +1779,7 @@ html{-webkit-overflow-scrolling:touch}
           <div class="sum-r"><span style="font-size:14px">🔒</span> Paiement 100% sécurisé</div>
           <div class="sum-r"><span style="font-size:14px">🛡️</span> Garantie remboursement à la livraison</div>
           <div class="sum-r"><span style="font-size:14px">🧾</span> Facture automatique</div>
-          <div class="sum-r"><span style="font-size:14px">💬</span> Support 7j/7 après livraison</div>
+          <div class="sum-r"><span style="font-size:14px">💬</span> SAV 7j/7 après livraison</div>
         </div>
       </div>
     </div>
@@ -1913,6 +1927,20 @@ document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
   var track = document.querySelector('.c-track');
   if(!track) return;
   setTimeout(function(){ track.classList.add('anim-on'); }, 400);
+})();
+
+/* ---- CTA mini carousel (clone from hero) ---- */
+(function(){
+  document.addEventListener('DOMContentLoaded', function(){
+    var src   = document.querySelector('.c-track');
+    var wrap  = document.getElementById('cta-carousel');
+    if(!src || !wrap) return;
+    var clone = src.cloneNode(true);
+    clone.id  = 'cta-track';
+    clone.classList.remove('anim-on');
+    wrap.appendChild(clone);
+    setTimeout(function(){ clone.classList.add('anim-on'); }, 600);
+  });
 })();
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
