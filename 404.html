@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page introuvable · Openshore</title>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png">
+<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap" rel="stylesheet"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0f0b09;--or:#F47B3B;--or2:#e06828;--wh:#f5f2ee;--mu:rgba(245,242,238,0.45);--bd:rgba(244,123,59,0.14);--ss:'Satoshi',sans-serif}
+html,body{height:100%}
+body{background:var(--bg);color:var(--wh);font-family:var(--ss);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px}
+
+/* Background glow */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(244,123,59,0.13) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 60%,rgba(244,123,59,0.06) 0%,transparent 50%),
+    radial-gradient(ellipse 50% 40% at 0% 80%,rgba(244,123,59,0.05) 0%,transparent 50%)}
+
+.wrap{position:relative;z-index:1;max-width:560px;width:100%}
+
+/* Logo */
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:52px}
+.logo img{width:34px;height:34px;object-fit:contain}
+.logo-t{font-weight:800;font-size:18px;color:var(--wh)}
+.logo-t span{color:var(--or)}
+
+/* 404 number */
+.num{font-size:clamp(100px,22vw,180px);font-weight:800;line-height:1;letter-spacing:-6px;
+  background:linear-gradient(135deg,var(--or) 0%,rgba(244,123,59,0.3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;user-select:none}
+
+/* Tag */
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--or);margin-bottom:20px}
+
+/* Title */
+.title{font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:14px}
+
+/* Sub */
+.sub{font-size:14.5px;color:var(--mu);line-height:1.7;max-width:380px;margin:0 auto 36px}
+
+/* Button */
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--or);color:#fff;font-family:var(--ss);font-size:14px;font-weight:700;padding:14px 32px;border-radius:100px;text-decoration:none;transition:background .2s,box-shadow .2s,transform .2s}
+.btn:hover{background:var(--or2);box-shadow:0 4px 22px rgba(244,123,59,.45);transform:scale(1.03)}
+.btn svg{transition:transform .2s}
+.btn:hover svg{transform:translateX(3px)}
+
+/* Divider */
+.divider{width:1px;height:40px;background:var(--bd);margin:36px auto}
+
+/* Footer link */
+.back-link{font-size:13px;color:var(--mu);text-decoration:none;transition:color .2s}
+.back-link:hover{color:var(--wh)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Logo -->
+  <a href="/" class="logo">
+    <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png" alt="Openshore">
+    <span class="logo-t">Open<span>shore</span></span>
+  </a>
+
+  <!-- 404 -->
+  <div class="num">404</div>
+  <div class="tag">Page introuvable</div>
+
+  <h1 class="title">Cette page n'existe pas.</h1>
+  <p class="sub">Elle a peut-être été déplacée ou supprimée.<br>Retourne à l'accueil pour découvrir nos offres.</p>
+
+  <a href="/" class="btn">
+    Retour à l'accueil
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+
+  <div class="divider"></div>
+  <a href="mailto:support@openshore.eu" class="back-link">Besoin d'aide ? → support@openshore.eu</a>
+
+</div>
+</body>
+</html>
