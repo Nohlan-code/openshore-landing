@@ -47,7 +47,7 @@ nav .n-cta{justify-self:end}
 
 /* HERO */
 #hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px 48px;overflow:hidden}
-.h-glow{position:absolute;top:-8%;left:50%;transform:translateX(-50%);width:820px;height:640px;background:radial-gradient(ellipse at 50% 30%,rgba(244,123,59,0.22) 0%,transparent 65%);pointer-events:none}
+.h-glow{position:fixed;top:0;left:50%;transform:translateX(-50%);width:820px;height:500px;background:radial-gradient(ellipse at 50% 10%,rgba(244,123,59,0.20) 0%,transparent 65%);pointer-events:none;z-index:0}
 .h-inner{position:relative;z-index:2;max-width:860px}
 .h-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--wh);margin-bottom:18px}
 .h-dot{width:7px;height:7px;border-radius:50%;background:var(--or);box-shadow:0 0 9px rgba(244,123,59,0.9);display:inline-block;animation:blink 1.8s infinite}
@@ -1861,22 +1861,11 @@ document.documentElement.classList.add('js-r');
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 
-/* Démarrage du carousel après décodage complet des images */
+/* Démarrage immédiat du carousel */
 (function(){
   var track = document.querySelector('.c-track');
   if(!track) return;
-  var imgs = track.querySelectorAll('img');
-  var total = imgs.length, loaded = 0;
-  function onReady(){
-    loaded++;
-    if(loaded >= total) track.classList.add('anim-on');
-  }
-  imgs.forEach(function(img){
-    if(img.complete && img.naturalWidth > 0){ onReady(); }
-    else { img.addEventListener('load', onReady); img.addEventListener('error', onReady); }
-  });
-  // Sécurité : démarrer dans tous les cas après 3s
-  setTimeout(function(){ track.classList.add('anim-on'); }, 3000);
+  setTimeout(function(){ track.classList.add('anim-on'); }, 400);
 })();
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
