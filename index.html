@@ -1012,15 +1012,14 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
       <!-- Card 2 — Noé (@noe.035) -->
       <div class="vtesti-card">
         <div class="vtesti-video">
-          <div class="vtesti-ph" id="vt2-ph" onclick="loadVT(2,'oinogLbPQpY')">
-            <div class="vtesti-glow"></div>
-            <div class="vtesti-avatar">N</div>
-            <button class="vtesti-play" aria-label="Lire le témoignage">
+          <div class="vtesti-ph" id="vt2-ph" onclick="loadVT(2,'oinogLbPQpY')" style="background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/noe-thumbnail.png');background-size:cover;background-position:center top">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,.32);border-radius:16px 16px 0 0;pointer-events:none"></div>
+            <button class="vtesti-play" aria-label="Lire le témoignage" style="position:relative;z-index:2">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
             </button>
-            <div class="vtesti-duration">0:28</div>
+            <div class="vtesti-duration" style="z-index:2;position:absolute;bottom:12px;left:12px">0:28</div>
           </div>
-          <iframe id="vt2-frame" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px" allow="autoplay; fullscreen"></iframe>
+          <iframe id="vt2-frame" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px" allow="autoplay; fullscreen; accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </div>
         <div class="vtesti-info">
           <div class="vtesti-stars">★★★★★</div>
@@ -1744,7 +1743,7 @@ function loadVT(id, ytId) {
     alert('Remplace TON_ID_YOUTUBE_KRIS par l\'ID de la vidéo YouTube de Kris !');
     return;
   }
-  frame.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0';
+  frame.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0&vq=hd1080&quality=hd1080&hd=1';
   frame.style.display = 'block';
   ph.style.display = 'none';
 }
