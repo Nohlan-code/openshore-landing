@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Openshore — Landing pages livrées en 7 jours.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -650,6 +650,54 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
   .recru-header{padding:14px 20px}
   .recru-perks{grid-template-columns:1fr}
 }
+
+/* ===== VIDEO TESTIMONIALS CAROUSEL ===== */
+.vtesti-outer{position:relative;overflow:hidden}
+.vtesti-arr{display:none;position:absolute;top:40%;transform:translateY(-50%);z-index:20;width:44px;height:44px;border-radius:50%;background:var(--or);border:none;cursor:pointer;align-items:center;justify-content:center;transition:background .2s,transform .2s;box-shadow:0 4px 16px rgba(244,123,59,.5)}
+.vtesti-arr:hover{background:var(--or2);transform:translateY(-50%) scale(1.08)}
+.vtesti-prev{left:-18px}
+.vtesti-next{right:-18px}
+.vtesti-dots{display:none;justify-content:center;gap:8px;margin-top:20px}
+.vtesti-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:background .2s,transform .2s}
+.vtesti-dot.active{background:var(--or);transform:scale(1.3)}
+
+/* ===== MOBILE CAROUSEL ===== */
+@media(max-width:768px){
+  .vtesti-outer{overflow:hidden}
+  .vtesti-grid{display:flex!important;gap:0!important;transition:transform .38s cubic-bezier(.4,0,.2,1);will-change:transform;grid-template-columns:unset!important}
+  .vtesti-card{flex:0 0 100%;min-width:100%;border-radius:16px}
+  .vtesti-arr{display:flex}
+  .vtesti-dots{display:flex}
+  .vtesti-prev{left:8px}
+  .vtesti-next{right:8px}
+}
+
+/* ===== CENTRAGE TEXTE SECTIONS MOBILE ===== */
+@media(max-width:768px){
+  .sec .wrap:not([style*="text-align:left"]) .stag,
+  .sec .wrap:not([style*="text-align:left"]) .sh2,
+  .sec .wrap:not([style*="text-align:left"]) .body-txt{text-align:center;margin-left:auto;margin-right:auto}
+  .sec .wrap .body-txt{max-width:100%}
+}
+
+/* ===== FAQ MAX-HEIGHT FIX ===== */
+.faq-i.open .faq-a{max-height:600px}
+
+/* ===== TOUCH ACTION ===== */
+button,.btn-m,.btn-g,.pbtn,.vtesti-arr,.faq-q,.vtesti-play{touch-action:manipulation}
+
+/* ===== PRICING CARD PREMIUM HIGHLIGHT MOBILE ===== */
+@media(max-width:768px){
+  .pc2.ft{order:-1;border-width:2px;box-shadow:0 0 32px rgba(244,123,59,.18)}
+}
+
+/* ===== RATING BADGE MOBILE ===== */
+@media(max-width:480px){
+  .rating-badge{flex-wrap:wrap;justify-content:center;gap:4px 8px}
+}
+
+/* ===== IOS SMOOTH SCROLL ===== */
+html{-webkit-overflow-scrolling:touch}
 </style>
 <!-- Calendly popup widget -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -1010,8 +1058,12 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
     <h2 class="sh2">Voici les avis<br><span class="sm">de nos <span class="si">clients.</span></span></h2>
     <p class="body-txt" style="margin:12px auto 0;text-align:center">Des résultats concrets, des vrais entrepreneurs qui partagent leur expérience avec Openshore.</p>
   </div>
-  <div class="wrap">
-    <div class="vtesti-grid">
+  <div class="wrap vtesti-wrap">
+    <div class="vtesti-outer">
+      <button class="vtesti-arr vtesti-prev" onclick="vtSlide(-1)" aria-label="Précédent">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="vtesti-grid" id="vtesti-grid">
 
       <!-- Card 1 — Kris Gardner -->
       <div class="vtesti-card">
@@ -1083,6 +1135,15 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
         </div>
       </div>
 
+    </div>
+      <button class="vtesti-arr vtesti-next" onclick="vtSlide(1)" aria-label="Suivant">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="vtesti-dots" id="vtesti-dots">
+      <span class="vtesti-dot active" onclick="vtGoTo(0)"></span>
+      <span class="vtesti-dot" onclick="vtGoTo(1)"></span>
+      <span class="vtesti-dot" onclick="vtGoTo(2)"></span>
     </div>
   </div>
 </section>
@@ -1846,6 +1907,42 @@ function navTo(id){
     if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
   }, 320);
 }
+
+/* ===== VIDEO TESTIMONIALS CAROUSEL ===== */
+(function(){
+  var idx = 0;
+  var grid, dots, cards;
+
+  function init(){
+    grid  = document.getElementById('vtesti-grid');
+    dots  = document.querySelectorAll('#vtesti-dots .vtesti-dot');
+    cards = grid ? grid.querySelectorAll('.vtesti-card') : [];
+    if(!grid || cards.length === 0) return;
+
+    // Touch / swipe support
+    var startX = 0;
+    grid.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+    grid.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 40) vtSlide(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  }
+
+  window.vtSlide = function(dir){
+    if(!grid) init();
+    idx = Math.max(0, Math.min(cards.length - 1, idx + dir));
+    vtGoTo(idx);
+  };
+
+  window.vtGoTo = function(i){
+    if(!grid) init();
+    idx = i;
+    grid.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+  };
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
 
 function openLegal(which){
   var id = which === 'mentions' ? 'modal-mentions' : 'modal-cgv';
