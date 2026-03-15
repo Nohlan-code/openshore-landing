@@ -1018,11 +1018,12 @@ html{-webkit-overflow-scrolling:touch}
     <h2 class="vsl-title">Comment on crée votre site web<br>qui double vos ventes</h2>
     <p class="vsl-sub">Regarde comment Openshore transforme une idée en landing page qui convertit — en 7 jours chrono.</p>
     <div class="vsl-frame">
-      <div class="vsl-ph" id="vsl-ph">
-        <button class="vsl-play" onclick="loadVSL()" aria-label="Lire la vidéo">
+      <div class="vsl-ph" id="vsl-ph" onclick="loadVSL()" style="cursor:pointer;background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/vsl-thumbnail.png');background-size:cover;background-position:center top">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.38);border-radius:18px;pointer-events:none"></div>
+        <button class="vsl-play" aria-label="Lire la vidéo" style="position:relative;z-index:2;pointer-events:none">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
         </button>
-        <div class="vsl-hint">Clique pour lancer la vidéo</div>
+        <div class="vsl-hint" style="position:relative;z-index:2">Clique pour lancer la vidéo</div>
       </div>
     </div>
   </div>
