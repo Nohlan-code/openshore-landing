@@ -2109,18 +2109,20 @@ document.documentElement.classList.add('js-r');
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis')});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 
-/* Démarrage immédiat du carousel */
+/* Démarrage immédiat du carousel hero — duplication pour boucle seamless */
 (function(){
   var track = document.querySelector('.c-track');
   if(!track) return;
+  var cards = track.querySelectorAll('.sc');
+  cards.forEach(function(c){ track.appendChild(c.cloneNode(true)); });
   setTimeout(function(){ track.classList.add('anim-on'); }, 400);
 })();
 
-/* ---- CTA mini carousel (clone from hero) ---- */
+/* ---- CTA mini carousel (clone from hero après duplication) ---- */
 (function(){
   document.addEventListener('DOMContentLoaded', function(){
-    var src   = document.querySelector('.c-track');
-    var wrap  = document.getElementById('cta-carousel');
+    var src  = document.querySelector('.c-track');
+    var wrap = document.getElementById('cta-carousel');
     if(!src || !wrap) return;
     var clone = src.cloneNode(true);
     clone.id  = 'cta-track';
