@@ -2133,6 +2133,17 @@ function loadVT(id, ytId) {
   ph.style.display = 'none';
 }
 
+function loadRecruVSL(){
+  var ph=document.getElementById('recru-vsl-ph');
+  var frame=document.getElementById('recru-vsl-frame');
+  var v=document.createElement('video');
+  v.src='https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/VSL%20RECRUTEMENT.mp4';
+  v.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:20px;object-fit:contain;background:#000';
+  v.controls=true;v.autoplay=true;v.setAttribute('playsinline','');
+  frame.appendChild(v);
+  ph.style.display='none';
+}
+
 function loadVTR2(id){
   var ph=document.getElementById('vt'+id+'-ph');
   var vid=document.getElementById('vt'+id+'-frame');
@@ -2311,8 +2322,11 @@ document.addEventListener('keydown', function(e){
 
   <!-- VSL -->
   <div class="recru-vsl">
-    <div class="recru-vsl-frame">
-      <iframe src="https://www.youtube.com/embed/SMY0xe5_w1Y?rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:20px" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <div class="recru-vsl-frame" onclick="loadRecruVSL()" id="recru-vsl-frame">
+      <div class="recru-vsl-ph" id="recru-vsl-ph">
+        <div class="recru-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="recru-vsl-hint">Clique pour lancer la vidéo</div>
+      </div>
     </div>
   </div>
 
