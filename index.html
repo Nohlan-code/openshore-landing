@@ -2323,9 +2323,10 @@ document.addEventListener('keydown', function(e){
   <!-- VSL -->
   <div class="recru-vsl">
     <div class="recru-vsl-frame" onclick="loadRecruVSL()" id="recru-vsl-frame">
-      <div class="recru-vsl-ph" id="recru-vsl-ph">
-        <div class="recru-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="recru-vsl-hint">Clique pour lancer la vidéo</div>
+      <div class="recru-vsl-ph" id="recru-vsl-ph" style="background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/VSL%20RECRUTEMENT-thumbnail.png');background-size:cover;background-position:center">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.4);border-radius:20px;pointer-events:none"></div>
+        <div class="recru-play" style="position:relative;z-index:2"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="recru-vsl-hint" style="position:relative;z-index:2">Clique pour lancer la vidéo</div>
       </div>
     </div>
   </div>
