@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png">
+<title>Blog — Création Site Web & Landing Page | Openshore</title>
+<meta name="description" content="Conseils, guides et stratégies pour créer un site web ou une landing page qui convertit. Par Openshore, agence création site web en 7 jours.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://openshore.eu/blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog Openshore — Création Site Web & Landing Page">
+<meta property="og:description" content="Conseils et guides pour créer un site web ou landing page qui convertit.">
+<meta property="og:url" content="https://openshore.eu/blog">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0f0b09;--or:#F47B3B;--or2:#e06828;--wh:#f5f2ee;--mu:rgba(245,242,238,0.45);--bd:rgba(244,123,59,0.14);--ss:'Satoshi',sans-serif;--sf:'Instrument Serif',serif}
+body{background:var(--bg);color:var(--wh);font-family:var(--ss);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(244,123,59,0.10) 0%,transparent 60%)}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;border-bottom:1px solid var(--bd)}
+.n-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+.n-logo img{width:32px;height:32px;object-fit:contain}
+.n-logo span{color:var(--or)}
+.n-cta{background:var(--or);color:#fff;font-weight:700;font-size:13px;padding:9px 22px;border-radius:100px;transition:background .2s}
+.n-cta:hover{background:var(--or2)}
+.n-back{color:var(--mu);font-size:14px;font-weight:500;transition:color .2s}
+.n-back:hover{color:var(--wh)}
+
+/* HERO */
+.blog-hero{position:relative;z-index:1;text-align:center;padding:80px 24px 60px}
+.blog-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--or);margin-bottom:16px}
+.blog-h1{font-family:var(--ss);font-size:clamp(32px,5vw,58px);font-weight:800;letter-spacing:-2px;line-height:1.06;margin-bottom:16px}
+.blog-h1 em{font-family:var(--sf);font-style:italic;font-weight:400;color:var(--or)}
+.blog-sub{font-size:15px;color:var(--mu);max-width:480px;margin:0 auto}
+
+/* GRID */
+.blog-wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px 100px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.article-card{background:rgba(244,123,59,.03);border:1px solid var(--bd);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+.article-card:hover{transform:translateY(-4px);border-color:rgba(244,123,59,.3)}
+.ac-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1c0e06,#0c0c0c);display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;overflow:hidden}
+.ac-img::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(244,123,59,.2) 0%,transparent 60%)}
+.ac-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.ac-cat{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:10px}
+.ac-title{font-size:17px;font-weight:700;line-height:1.35;margin-bottom:10px;color:var(--wh)}
+.ac-desc{font-size:13.5px;color:var(--mu);line-height:1.6;flex:1;margin-bottom:20px}
+.ac-foot{display:flex;align-items:center;justify-content:space-between}
+.ac-date{font-size:12px;color:var(--mu)}
+.ac-btn{font-size:13px;font-weight:700;color:var(--or);display:flex;align-items:center;gap:5px;transition:gap .2s}
+.article-card:hover .ac-btn{gap:8px}
+
+/* COMING SOON */
+.ac-soon{opacity:.4;cursor:default;pointer-events:none}
+.ac-soon .ac-img{filter:grayscale(.5)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--bd);padding:40px 48px;display:flex;align-items:center;justify-content:space-between}
+.ft{font-size:13px;color:var(--mu)}
+.ft a{color:var(--or);font-weight:600}
+
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  nav{padding:16px 20px}
+  .blog-grid{grid-template-columns:1fr}
+  .blog-hero{padding:50px 20px 40px}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="n-logo">
+    <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png" alt="Openshore">
+    Open<span>shore</span>
+  </a>
+  <a href="/" class="n-back">← Retour au site</a>
+  <a href="/#pricing" class="n-cta">Voir nos offres</a>
+</nav>
+
+<div class="blog-hero">
+  <div class="blog-tag">Ressources & Guides</div>
+  <h1 class="blog-h1">Tout ce que tu dois savoir pour<br><em>créer un site web qui vend.</em></h1>
+  <p class="blog-sub">Guides pratiques, stratégies CRO et conseils d'experts par l'équipe Openshore.</p>
+</div>
+
+<div class="blog-wrap">
+  <div class="blog-grid">
+
+    <!-- Article 1 — publié -->
+    <a href="/blog/landing-page-qui-convertit.html" class="article-card">
+      <div class="ac-img">🚀</div>
+      <div class="ac-body">
+        <div class="ac-cat">Landing Page</div>
+        <div class="ac-title">Comment créer une landing page qui convertit en 2026 — Guide complet</div>
+        <div class="ac-desc">Structure, copywriting, CRO, design mobile-first… Tout ce qu'il faut pour transformer tes visiteurs en clients dès le premier jour.</div>
+        <div class="ac-foot">
+          <span class="ac-date">15 mars 2026</span>
+          <span class="ac-btn">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 2 — bientôt -->
+    <div class="article-card ac-soon">
+      <div class="ac-img">📉</div>
+      <div class="ac-body">
+        <div class="ac-cat">Conversion</div>
+        <div class="ac-title">Pourquoi ton site web ne génère pas de ventes (et comment corriger ça)</div>
+        <div class="ac-desc">Les 7 erreurs les plus fréquentes qui empêchent un site web de convertir — et les solutions concrètes pour chacune.</div>
+        <div class="ac-foot">
+          <span class="ac-date">Bientôt</span>
+          <span class="ac-btn">Bientôt disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article 3 — bientôt -->
+    <div class="article-card ac-soon">
+      <div class="ac-img">💰</div>
+      <div class="ac-body">
+        <div class="ac-cat">Prix & Budget</div>
+        <div class="ac-title">Combien coûte une landing page professionnelle en France en 2026 ?</div>
+        <div class="ac-desc">Freelance, agence, no-code… On compare les prix, délais et qualité de chaque option pour t'aider à faire le bon choix.</div>
+        <div class="ac-foot">
+          <span class="ac-date">Bientôt</span>
+          <span class="ac-btn">Bientôt disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article 4 — bientôt -->
+    <div class="article-card ac-soon">
+      <div class="ac-img">⚖️</div>
+      <div class="ac-body">
+        <div class="ac-cat">Stratégie</div>
+        <div class="ac-title">Landing page vs site web : lequel choisir pour vendre en ligne ?</div>
+        <div class="ac-desc">Tu hésite entre une landing page et un site complet ? On t'explique dans quel cas chaque format est le plus efficace.</div>
+        <div class="ac-foot">
+          <span class="ac-date">Bientôt</span>
+          <span class="ac-btn">Bientôt disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article 5 — bientôt -->
+    <div class="article-card ac-soon">
+      <div class="ac-img">📈</div>
+      <div class="ac-body">
+        <div class="ac-cat">CRO</div>
+        <div class="ac-title">Les 5 éléments qui font doubler le taux de conversion d'un site web</div>
+        <div class="ac-desc">CTA, preuve sociale, vitesse, proposition de valeur, mobile-first — les leviers que les meilleures landing pages ont en commun.</div>
+        <div class="ac-foot">
+          <span class="ac-date">Bientôt</span>
+          <span class="ac-btn">Bientôt disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article 6 — bientôt -->
+    <div class="article-card ac-soon">
+      <div class="ac-img">🔍</div>
+      <div class="ac-body">
+        <div class="ac-cat">SEO</div>
+        <div class="ac-title">Comment optimiser son site web pour Google en 2026 — Guide SEO</div>
+        <div class="ac-desc">Titre, métas, schema.org, Core Web Vitals, backlinks… Le guide SEO complet pour faire remonter ton site sur Google.</div>
+        <div class="ac-foot">
+          <span class="ac-date">Bientôt</span>
+          <span class="ac-btn">Bientôt disponible</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="ft">© 2026 <strong>Openshore</strong> — Agence création site web & landing page</div>
+  <div class="ft"><a href="/">openshore.eu</a></div>
+</footer>
+
+</body>
+</html>
