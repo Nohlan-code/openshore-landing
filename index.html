@@ -1331,14 +1331,14 @@ html{-webkit-overflow-scrolling:touch}
       <!-- Card 2 — Noé (@noe.035) -->
       <div class="vtesti-card">
         <div class="vtesti-video">
-          <div class="vtesti-ph" id="vt2-ph" onclick="loadVT(2,'oinogLbPQpY')" style="background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/noe-thumbnail.png');background-size:cover;background-position:center top">
+          <div class="vtesti-ph" id="vt2-ph" onclick="loadVTR2(2)" style="background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/noe-thumbnail.png');background-size:cover;background-position:center top">
             <div style="position:absolute;inset:0;background:rgba(0,0,0,.32);border-radius:16px 16px 0 0;pointer-events:none"></div>
             <button class="vtesti-play" aria-label="Lire le témoignage" style="position:relative;z-index:2">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
             </button>
             <div class="vtesti-duration" style="z-index:2;position:absolute;bottom:12px;left:12px">0:28</div>
           </div>
-          <iframe id="vt2-frame" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px" allow="autoplay; fullscreen; accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          <video id="vt2-frame" src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_1173.mp4" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
         </div>
         <div class="vtesti-info">
           <div class="vtesti-stars">★★★★★</div>
@@ -2080,13 +2080,23 @@ function loadVT(id, ytId) {
   ph.style.display = 'none';
 }
 
+function loadVTR2(id){
+  var ph=document.getElementById('vt'+id+'-ph');
+  var vid=document.getElementById('vt'+id+'-frame');
+  vid.style.display='block';
+  vid.play();
+  ph.style.display='none';
+}
+
 function loadVSL(){
   var ph=document.getElementById('vsl-ph');
-  var f=document.createElement('iframe');
-  f.src='https://www.youtube.com/embed/TON_ID_VIDEO?autoplay=1&rel=0';
-  f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none';
-  f.allow='autoplay; fullscreen';
-  ph.parentElement.appendChild(f);
+  var v=document.createElement('video');
+  v.src='https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/VSL%20NV%20SITE%20.mp4';
+  v.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:18px;object-fit:contain;background:#000';
+  v.controls=true;
+  v.autoplay=true;
+  v.setAttribute('playsinline','');
+  ph.parentElement.appendChild(v);
   ph.style.display='none';
 }
 // Copier le logo nav dans la colonne tableau comparatif
