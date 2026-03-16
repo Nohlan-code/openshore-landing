@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png">
 <!-- ═══ SEO ═══════════════════════════════════════════ -->
@@ -57,7 +57,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;wil
 section,nav,footer,#cards,#ticker,#vsl{position:relative;z-index:1}
 
 /* NAV */
-nav{position:relative;z-index:700;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 44px}
+nav{position:relative;z-index:700;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 44px;padding-top:calc(22px + env(safe-area-inset-top))}
 nav .n-logo{justify-self:start}
 nav .n-pill{justify-self:center}
 nav .n-cta{justify-self:end}
