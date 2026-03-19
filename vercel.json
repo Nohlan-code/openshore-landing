@@ -4,7 +4,7 @@
       "source": "/sitemap.xml",
       "headers": [
         { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "X-Robots-Tag", "value": "noindex" }
       ]
     },
     {
@@ -12,6 +12,16 @@
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/recrutement",
+      "destination": "/openshore.html"
+    },
+    {
+      "source": "/((?!sitemap\\.xml$|robots\\.txt$|404\\.html$).*\\.[a-zA-Z]+$)",
+      "destination": "/$1"
     }
   ]
 }
