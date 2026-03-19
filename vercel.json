@@ -17,7 +17,7 @@
   "rewrites": [
     {
       "source": "/recrutement",
-      "destination": "/openshore.html"
+      "destination": "/"
     },
     {
       "source": "/((?!sitemap\\.xml$|robots\\.txt$|404\\.html$).*\\.[a-zA-Z]+$)",
