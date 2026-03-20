@@ -44,6 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -1363,7 +1364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video id="vt1-frame" src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_7640.mp4" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
+          <video id="vt1-frame" data-src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_7640.mp4" preload="none" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
         </div>
         <div class="vtesti-info">
           <div class="vtesti-stars">★★★★★</div>
@@ -1388,7 +1389,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </button>
             <div class="vtesti-duration" style="z-index:2;position:absolute;bottom:12px;left:12px">0:28</div>
           </div>
-          <video id="vt2-frame" src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_1173.mp4" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
+          <video id="vt2-frame" data-src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_1173.mp4" preload="none" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
         </div>
         <div class="vtesti-info">
           <div class="vtesti-stars">★★★★★</div>
@@ -1412,7 +1413,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
             </button>
           </div>
-          <video id="vt3-frame" src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_5619.mp4" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
+          <video id="vt3-frame" data-src="https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/IMG_5619.mp4" preload="none" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:16px;object-fit:cover;background:#000" controls playsinline></video>
         </div>
         <div class="vtesti-info">
           <div class="vtesti-stars">★★★★★</div>
@@ -2180,6 +2181,7 @@ function loadRecruVSL(){
 function loadVTR2(id){
   var ph=document.getElementById('vt'+id+'-ph');
   var vid=document.getElementById('vt'+id+'-frame');
+  if(!vid.src||vid.src===window.location.href)vid.src=vid.dataset.src;
   vid.style.display='block';
   vid.play();
   ph.style.display='none';
