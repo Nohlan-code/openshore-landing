@@ -2029,10 +2029,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 // ===== RECRUTEMENT =====
 function showRecrutement() {
+  var scrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + scrollY + 'px';
+  document.body.style.width = '100%';
+  document.body.dataset.scrollY = scrollY;
   var p = document.getElementById('page-recrutement');
   p.classList.add('active');
   p.scrollTop = 0;
-  document.body.style.overflow = 'hidden';
   var tc = document.querySelector('meta[name="theme-color"]');
   if(tc) tc.setAttribute('content','#f47b3b');
   if(window.location.pathname !== '/recrutement') {
@@ -2040,8 +2044,12 @@ function showRecrutement() {
   }
 }
 function hideRecrutement() {
+  var scrollY = parseInt(document.body.dataset.scrollY || 0);
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, scrollY);
   document.getElementById('page-recrutement').classList.remove('active');
-  document.body.style.overflow = '';
   var tc = document.querySelector('meta[name="theme-color"]');
   if(tc) tc.setAttribute('content','#0f0b09');
   if(window.location.pathname !== '/') {
