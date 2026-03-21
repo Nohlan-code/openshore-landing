@@ -660,7 +660,7 @@ footer{padding:36px 0;border-top:1px solid var(--bd)}
 }
 
 /* ===== PAGE RECRUTEMENT ===== */
-.recru-overlay{position:fixed;inset:0;z-index:900;background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.recru-overlay{position:fixed;inset:0;z-index:900;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
 .recru-overlay *{opacity:1!important;transform:none!important;transition:background .2s,border-color .2s,color .2s,box-shadow .2s,transform .2s,opacity .2s}
 .recru-overlay.active{transform:translateX(0)}
 .recru-banner{background:var(--or);color:#fff;text-align:center;padding:11px 20px;padding-top:calc(11px + env(safe-area-inset-top));font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:sticky;top:0;z-index:10}
@@ -2170,6 +2170,7 @@ function loadVT(id, ytId) {
 function loadRecruVSL(){
   var ph=document.getElementById('recru-vsl-ph');
   var frame=document.getElementById('recru-vsl-frame');
+  if(frame.querySelector('video')){return;}
   var v=document.createElement('video');
   v.src='https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/VSL%20RECRUTEMENT.mp4';
   v.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:20px;object-fit:contain;background:#000';
@@ -2363,8 +2364,8 @@ document.addEventListener('keydown', function(e){
 
   <!-- VSL -->
   <div class="recru-vsl">
-    <div class="recru-vsl-frame" onclick="loadRecruVSL()" id="recru-vsl-frame">
-      <div class="recru-vsl-ph" id="recru-vsl-ph" style="background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/VSL%20RECRUTEMENT-thumbnail.png');background-size:cover;background-position:center">
+    <div class="recru-vsl-frame" id="recru-vsl-frame">
+      <div class="recru-vsl-ph" id="recru-vsl-ph" onclick="loadRecruVSL()" style="cursor:pointer" style="background-image:url('https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/VSL%20RECRUTEMENT-thumbnail.png');background-size:cover;background-position:center">
         <div style="position:absolute;inset:0;background:rgba(0,0,0,.4);border-radius:20px;pointer-events:none"></div>
         <div class="recru-play" style="position:relative;z-index:2"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="recru-vsl-hint" style="position:relative;z-index:2">Clique pour lancer la vidéo</div>
