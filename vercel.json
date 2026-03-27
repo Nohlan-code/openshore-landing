@@ -22,7 +22,6 @@
     }
   ],
   "rewrites": [
-    {"source": "/recrutement", "destination": "/"},
-    {"source": "/((?!sitemap\.xml$|robots\.txt$|404\.html$).*\.[a-zA-Z]+$)", "destination": "/$1"}
+    {"source": "/recrutement", "destination": "/"}
   ]
 }
