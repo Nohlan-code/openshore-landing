@@ -786,8 +786,15 @@ html{-webkit-overflow-scrolling:touch}
         "@type": "QuantitativeValue",
         "value": "5"
       },
-      "areaServed": "FR",
-      "sameAs": []
+      "areaServed": {"@type": "Country", "name": "France"},
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "support@openshore.eu",
+        "availableLanguage": "French",
+        "areaServed": "FR"
+      },
+      "sameAs": ["https://www.linkedin.com/company/openshore"]
     },
     {
       "@type": "WebSite",
@@ -797,7 +804,14 @@ html{-webkit-overflow-scrolling:touch}
       "publisher": {
         "@id": "https://openshore.eu/#organization"
       },
-      "inLanguage": "fr-FR"
+      "inLanguage": "fr-FR",
+      "potentialAction": [
+        {
+          "@type": "ContactAction",
+          "name": "Demander un devis gratuit",
+          "target": "https://openshore.eu/#contact"
+        }
+      ]
     },
     {
       "@type": "WebPage",
