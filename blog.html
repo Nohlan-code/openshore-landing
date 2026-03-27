@@ -73,6 +73,47 @@ footer{position:relative;z-index:1;border-top:1px solid var(--bd);padding:40px 4
   footer{flex-direction:column;gap:12px;text-align:center;padding:32px 20px}
 }
 </style>
+
+<!-- SEO: Blog schema + BreadcrumbList + hreflang -->
+<link rel="alternate" hreflang="fr" href="https://openshore.eu/blog.html"/>
+<link rel="alternate" hreflang="x-default" href="https://openshore.eu/blog.html"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://openshore.eu/blog.html#blog",
+    "name": "Ressources & Guides Openshore",
+    "description": "Conseils, guides et stratégies pour créer un site web ou une landing page qui convertit. Par Openshore, agence création site web en 7 jours.",
+    "url": "https://openshore.eu/blog.html",
+    "inLanguage": "fr-FR",
+    "publisher": {"@type": "Organization", "@id": "https://openshore.eu/#organization", "name": "Openshore"},
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://openshore.eu/landing-page-qui-convertit.html#article",
+        "headline": "Comment créer une landing page qui convertit en 2026 — Guide complet",
+        "description": "Structure, copywriting, CRO, design mobile-first… Tout ce qu'il faut pour transformer tes visiteurs en clients dès le premier jour.",
+        "datePublished": "2026-03-15",
+        "dateModified": "2026-03-27",
+        "author": {"@type": "Organization", "@id": "https://openshore.eu/#organization", "name": "Openshore"},
+        "url": "https://openshore.eu/landing-page-qui-convertit.html",
+        "image": {"@type": "ImageObject", "url": "https://openshore.eu/minia%20site%20web.png"},
+        "publisher": {"@type": "Organization", "@id": "https://openshore.eu/#organization"}
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://openshore.eu/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://openshore.eu/blog.html"}
+    ]
+  }
+]
+</script>
+<!-- FIN SEO Blog -->
 </head>
 <body>
 
