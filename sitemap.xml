@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Page principale -->
   <url>
     <loc>https://openshore.eu/</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://openshore.eu/"/>
+    <image:image>
+      <image:loc>https://openshore.eu/minia%20site%20web.png</image:loc>
+      <image:title>Openshore - Agence création site web professionnel France</image:title>
+      <image:caption>Openshore crée des sites web professionnels qui convertissent pour les entrepreneurs et PME françaises</image:caption>
+    </image:image>
   </url>
+
+  <!-- Page Recrutement -->
   <url>
     <loc>https://openshore.eu/recrutement</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/recrutement"/>
   </url>
+
+  <!-- Blog -->
   <url>
     <loc>https://openshore.eu/blog.html</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/blog.html"/>
   </url>
+
+  <!-- Landing page création site web -->
   <url>
     <loc>https://openshore.eu/landing-page-qui-convertit.html</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/landing-page-qui-convertit.html"/>
   </url>
+
 </urlset>
