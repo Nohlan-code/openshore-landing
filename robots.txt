@@ -1,13 +1,73 @@
-User-agent: *
+# robots.txt - openshore.eu
+# Agence création site web professionnel - France
+# Mis à jour le 2026-03-27
+
+# =============================================
+# ROBOTS AUTORISÉS (Crawlers principaux)
+# =============================================
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
 Allow: /
 
-# Bloquer les pages légales et de commande pour ne pas diluer le jus SEO
-Disallow: /api/
-Disallow: /#page-commande
-Disallow: /#page-recrutement
+User-agent: Googlebot-Video
+Allow: /
 
-# Sitemap
-Sitemap: https://openshore.eu/sitemap.xml
-
-# Crawl-delay (optionnel, pour éviter la surcharge)
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# IA & LLMs (Answer Engine Optimization - AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# =============================================
+# RÈGLES GÉNÉRALES
+# =============================================
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+# =============================================
+# SITEMAPS
+# =============================================
+
+Sitemap: https://openshore.eu/sitemap.xml
