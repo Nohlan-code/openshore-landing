@@ -782,7 +782,10 @@ html{-webkit-overflow-scrolling:touch}
       "description": "Agence spécialisée dans la création de landing pages haute conversion livrées en 7 jours, avec optimisation CRO et SEO on-page incluse.",
       "email": "support@openshore.eu",
       "foundingDate": "2023",
-      "numberOfEmployees": {"@type": "QuantitativeValue", "value": "5"},
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": "5"
+      },
       "areaServed": "FR",
       "sameAs": []
     },
@@ -791,7 +794,9 @@ html{-webkit-overflow-scrolling:touch}
       "@id": "https://openshore.eu/#website",
       "url": "https://openshore.eu",
       "name": "Openshore",
-      "publisher": {"@id": "https://openshore.eu/#organization"},
+      "publisher": {
+        "@id": "https://openshore.eu/#organization"
+      },
       "inLanguage": "fr-FR"
     },
     {
@@ -800,20 +805,39 @@ html{-webkit-overflow-scrolling:touch}
       "url": "https://openshore.eu",
       "name": "Agence Landing Page sur mesure en 7 jours | Openshore",
       "description": "Openshore crée votre landing page qui convertit en 7 jours chrono. Design UX/UI, CRO et SEO on-page inclus. +60 projets livrés. Dès 470€.",
-      "isPartOf": {"@id": "https://openshore.eu/#website"},
-      "about": {"@id": "https://openshore.eu/#organization"},
+      "isPartOf": {
+        "@id": "https://openshore.eu/#website"
+      },
+      "about": {
+        "@id": "https://openshore.eu/#organization"
+      },
       "breadcrumb": {
         "@type": "BreadcrumbList",
-        "itemListElement": [{"@type": "ListItem","position": 1,"name": "Accueil","item": "https://openshore.eu/"}]
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://openshore.eu/"
+          }
+        ]
       }
     },
     {
-      "@type": "Service",
+      "@type": [
+        "Service",
+        "Product"
+      ],
       "@id": "https://openshore.eu/#service",
       "name": "Création de Landing Page sur mesure",
       "serviceType": "Création de site web / Landing page",
-      "provider": {"@id": "https://openshore.eu/#organization"},
-      "areaServed": {"@type": "Country", "name": "France"},
+      "provider": {
+        "@id": "https://openshore.eu/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      },
       "description": "Création de landing pages sur mesure en 7 jours. Design UX/UI personnalisé, optimisation CRO, SEO on-page, livraison rapide et garantie remboursement.",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -858,20 +882,47 @@ html{-webkit-overflow-scrolling:touch}
       "review": [
         {
           "@type": "Review",
-          "author": {"@type": "Person", "name": "Noé"},
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {
+            "@type": "Person",
+            "name": "Noé"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "worstRating": "1",
           "reviewBody": "Je cherchais quelqu'un qui comprenne vraiment mon business. Openshore a livré une page impeccable en une semaine, mes prises de contact ont explosé dès le lancement."
         },
         {
           "@type": "Review",
-          "author": {"@type": "Person", "name": "Kris Gardner"},
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {
+            "@type": "Person",
+            "name": "Kris Gardner"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "worstRating": "1",
           "reviewBody": "Openshore a complètement transformé ma présence en ligne. Mon chiffre d'affaires a doublé en moins de 2 mois après le lancement."
         },
         {
           "@type": "Review",
-          "author": {"@type": "Person", "name": "Mathias"},
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+          "author": {
+            "@type": "Person",
+            "name": "Mathias"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "worstRating": "1",
           "reviewBody": "J'avais un projet flou et un délai serré. Openshore a su structurer mon offre et livrer une page qui convertit dès le premier jour. Résultat concret en une semaine."
         }
       ]
@@ -885,14 +936,23 @@ html{-webkit-overflow-scrolling:touch}
       "priceRange": "€€",
       "currenciesAccepted": "EUR",
       "paymentAccepted": "Carte bancaire, Virement",
-      "areaServed": ["France", "Belgique", "Suisse", "Canada"],
-      "serviceArea": {"@type": "Country", "name": "France"},
+      "areaServed": [
+        "France",
+        "Belgique",
+        "Suisse",
+        "Canada"
+      ],
+      "serviceArea": {
+        "@type": "Country",
+        "name": "France"
+      },
       "description": "Openshore est une agence spécialisée dans la création de sites web et landing pages haute conversion en 7 jours. Création site web sur mesure, landing page entrepreneur, agence web CRO.",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "reviewCount": "63",
-        "bestRating": "5"
+        "bestRating": "5",
+        "worstRating": "1"
       }
     },
     {
@@ -901,47 +961,74 @@ html{-webkit-overflow-scrolling:touch}
         {
           "@type": "Question",
           "name": "Combien coûte une landing page professionnelle ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Openshore propose des landing pages à partir de 470€ pour l'offre Basic (landing page professionnelle, UX/UI sur mesure, CRO, livraison 7 jours), 770€ pour l'offre Premium (multipage, SEO avancé, animations) et 1970€ pour l'offre Sur mesure avec copywriting expert et design system complet."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Openshore propose des landing pages à partir de 470€ pour l'offre Basic (landing page professionnelle, UX/UI sur mesure, CRO, livraison 7 jours), 770€ pour l'offre Premium (multipage, SEO avancé, animations) et 1970€ pour l'offre Sur mesure avec copywriting expert et design system complet."
+          }
         },
         {
           "@type": "Question",
           "name": "Est-ce qu'une landing page peut être livrée en 7 jours ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le processus d'Openshore est optimisé pour une livraison rapide sans compromis. Plus de 60 projets ont été livrés dans ce délai. La condition : fournir les éléments dans les 24h suivant la commande et rester disponible via WhatsApp pour valider les étapes."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Le processus d'Openshore est optimisé pour une livraison rapide sans compromis. Plus de 60 projets ont été livrés dans ce délai. La condition : fournir les éléments dans les 24h suivant la commande et rester disponible via WhatsApp pour valider les étapes."
+          }
         },
         {
           "@type": "Question",
           "name": "Comment créer un site web qui vend vraiment ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Un site web qui vend repose sur 3 piliers : une structure orientée conversion (CRO), un message clair qui parle directement au problème du visiteur, et une vitesse de chargement optimale. Openshore intègre ces 3 éléments dès la conception."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un site web qui vend repose sur 3 piliers : une structure orientée conversion (CRO), un message clair qui parle directement au problème du visiteur, et une vitesse de chargement optimale. Openshore intègre ces 3 éléments dès la conception."
+          }
         },
         {
           "@type": "Question",
           "name": "Quelle est la différence entre une landing page et un site web classique ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Une landing page est une page unique conçue avec un seul objectif : convertir le visiteur en client ou en prospect. Contrairement à un site web classique, la landing page est structurée autour d'un tunnel de conversion précis — chaque section pousse vers une seule action. C'est pourquoi elle convertit jusqu'à 3x mieux qu'une page d'accueil standard."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Une landing page est une page unique conçue avec un seul objectif : convertir le visiteur en client ou en prospect. Contrairement à un site web classique, la landing page est structurée autour d'un tunnel de conversion précis — chaque section pousse vers une seule action. C'est pourquoi elle convertit jusqu'à 3x mieux qu'une page d'accueil standard."
+          }
         },
         {
           "@type": "Question",
           "name": "Combien de temps faut-il pour créer un site web professionnel ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "La création d'un site web professionnel prend généralement entre 3 semaines et 3 mois selon la complexité. Une landing page simple est livrée en 7 jours chez Openshore. Un site vitrine multi-pages prend 2 à 4 semaines. Un site e-commerce complet nécessite 1 à 3 mois."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La création d'un site web professionnel prend généralement entre 3 semaines et 3 mois selon la complexité. Une landing page simple est livrée en 7 jours chez Openshore. Un site vitrine multi-pages prend 2 à 4 semaines. Un site e-commerce complet nécessite 1 à 3 mois."
+          }
         },
         {
           "@type": "Question",
           "name": "Comment améliorer le taux de conversion de mon site web ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Pour améliorer le taux de conversion, il faut travailler sur 5 leviers : une proposition de valeur claire dès la première seconde, une preuve sociale visible (avis, témoignages, chiffres), des CTA placés stratégiquement, une vitesse de chargement rapide, et un design mobile-first. C'est exactement ce qu'Openshore applique sur chaque landing page livrée."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pour améliorer le taux de conversion, il faut travailler sur 5 leviers : une proposition de valeur claire dès la première seconde, une preuve sociale visible (avis, témoignages, chiffres), des CTA placés stratégiquement, une vitesse de chargement rapide, et un design mobile-first. C'est exactement ce qu'Openshore applique sur chaque landing page livrée."
+          }
         },
         {
           "@type": "Question",
           "name": "Faut-il un site web ou une landing page pour son business ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Si tu veux vendre un produit ou service précis, générer des leads ou lancer une offre, une landing page est plus efficace qu'un site complet. Elle est plus rapide à produire, moins chère, et convertit mieux car elle n'a pas de distractions. Un site complet devient pertinent quand tu as plusieurs offres ou que tu veux un référencement SEO de longue durée."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si tu veux vendre un produit ou service précis, générer des leads ou lancer une offre, une landing page est plus efficace qu'un site complet. Elle est plus rapide à produire, moins chère, et convertit mieux car elle n'a pas de distractions. Un site complet devient pertinent quand tu as plusieurs offres ou que tu veux un référencement SEO de longue durée."
+          }
         },
         {
           "@type": "Question",
           "name": "Qu'est-ce que le CRO et pourquoi c'est important pour un site web ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Le CRO (Conversion Rate Optimization) désigne l'ensemble des techniques pour transformer davantage de visiteurs en clients : placement stratégique des boutons d'action, hiérarchie visuelle, copywriting persuasif, preuves sociales et réduction des frictions. Chez Openshore, le CRO est inclus dans toutes les offres de création de site web."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le CRO (Conversion Rate Optimization) désigne l'ensemble des techniques pour transformer davantage de visiteurs en clients : placement stratégique des boutons d'action, hiérarchie visuelle, copywriting persuasif, preuves sociales et réduction des frictions. Chez Openshore, le CRO est inclus dans toutes les offres de création de site web."
+          }
         },
         {
           "@type": "Question",
           "name": "Y a-t-il une garantie de remboursement ?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Oui. Si la landing page livrée ne correspond pas à ce qui a été convenu dans le brief, vous pouvez demander un remboursement complet à la livraison du site web, sans conditions."}
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Si la landing page livrée ne correspond pas à ce qui a été convenu dans le brief, vous pouvez demander un remboursement complet à la livraison du site web, sans conditions."
+          }
         },
         {
           "@type": "Question",
