@@ -1265,6 +1265,88 @@ html{-webkit-overflow-scrolling:touch}
 }
 </script>
 <!-- === FIN SEO LOCAL === -->
+<!-- === SEO : VideoObject VSL + Recrutement JobPosting conditionnel === -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "@id": "https://openshore.eu/#vsl-video",
+  "name": "Comment Openshore crée votre site web qui double vos ventes en 7 jours",
+  "description": "Découvrez comment Openshore transforme une idée en landing page qui convertit en 7 jours chrono. Méthode de création de site web professionnel, optimisé CRO et SEO.",
+  "thumbnailUrl": "https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/vsl-thumbnail.png",
+  "contentUrl": "https://pub-dbdb51276bc948b8b688c98c5ad7770b.r2.dev/VSL%20NV%20SITE%20.mp4",
+  "uploadDate": "2026-01-15",
+  "inLanguage": "fr-FR",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://openshore.eu/#organization",
+    "name": "Openshore"
+  },
+  "potentialAction": {
+    "@type": "WatchAction",
+    "target": "https://openshore.eu/#vsl"
+  }
+}
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/recrutement') return;
+  var d = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://openshore.eu/recrutement#webpage",
+      "url": "https://openshore.eu/recrutement",
+      "name": "Rejoins Openshore — Intégrateur Landing Page Freelance | 500€–1 200€/projet",
+      "description": "Openshore recrute des intégrateurs landing page freelance 100% remote. 500€ à 1 200€ par projet, zéro prospection, projets premium. Réponse sous 24h.",
+      "inLanguage": "fr-FR",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://openshore.eu/"},
+          {"@type": "ListItem", "position": 2, "name": "Recrutement", "item": "https://openshore.eu/recrutement"}
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "@id": "https://openshore.eu/recrutement#jobposting",
+      "title": "Intégrateur Landing Page Freelance",
+      "description": "Travaille sur des projets web premium gérés par Openshore. Zéro prospection — on t’apporte les clients directement. 100% remote, délais clairs, rémunération par projet entre 500€ et 1 200€.",
+      "datePosted": "2026-03-01",
+      "validThrough": "2026-12-31",
+      "employmentType": "CONTRACTOR",
+      "jobLocationType": "TELECOMMUTE",
+      "applicantLocationRequirements": {"@type": "Country", "name": "France"},
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "EUR",
+        "value": {
+          "@type": "QuantitativeValue",
+          "minValue": 500,
+          "maxValue": 1200,
+          "unitText": "PROJECT"
+        }
+      },
+      "hiringOrganization": {
+        "@type": "Organization",
+        "@id": "https://openshore.eu/#organization",
+        "name": "Openshore",
+        "sameAs": "https://openshore.eu"
+      },
+      "skills": "HTML, CSS, JavaScript, Intégration web, Landing page, CRO",
+      "qualifications": "Maîtrise de l’intégration web front-end, expérience en landing pages haute conversion",
+      "responsibilities": "Intégration de landing pages haute conversion selon les maquettes Openshore, livraison en 7 jours"
+    }
+  ];
+  var s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.text = JSON.stringify(d);
+  document.head.appendChild(s);
+})();
+</script>
+<!-- === FIN SEO VideoObject + Recrutement === -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
