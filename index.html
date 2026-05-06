@@ -880,6 +880,146 @@ html{-webkit-overflow-scrolling:touch}
 .osp-lm-disc{font-family:var(--ss);font-size:11px;color:var(--mu);margin-top:14px;text-align:center;line-height:1.5}
 @media (max-width:900px){.osp-lm{grid-template-columns:1fr;gap:28px;padding:24px}.osp-lm-l h3{font-size:28px}}
 
+/* === AVANT/APRÈS — comparatif visuel client (Fixlyy) === */
+.osp-ba-tag{display:inline-block;font-family:var(--ss);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:7px 14px;border-radius:100px;background:rgba(244,123,59,.1);color:var(--or);border:1px solid rgba(244,123,59,.32)}
+.osp-ba-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;margin-top:48px}
+.osp-ba-text .body-txt{margin-bottom:18px;max-width:none}
+.osp-ba-stats{display:grid;gap:12px;margin-top:30px}
+.osp-ba-stat{display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(244,123,59,.05);border:1px solid rgba(244,123,59,.18);border-radius:14px;padding:18px 20px;opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease,background .25s,border-color .25s}
+.osp-ba-stat.in-view{opacity:1;transform:translateY(0)}
+.osp-ba-stat:hover{background:rgba(244,123,59,.08);border-color:rgba(244,123,59,.32)}
+.osp-ba-stat-v{font-family:var(--ss);font-size:26px;font-weight:800;color:var(--wh);line-height:1.1;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.osp-ba-stat-v .osp-ba-old{color:rgba(245,242,238,.32);font-size:18px;text-decoration:line-through;font-weight:600}
+.osp-ba-stat-v .osp-ba-arr{color:var(--or);font-family:var(--sf);font-style:italic;font-size:22px;display:inline-block}
+.osp-ba-stat.in-view .osp-ba-arr{animation:baArrSlide .8s ease both}
+@keyframes baArrSlide{from{transform:translateX(-6px);opacity:0}to{transform:translateX(0);opacity:1}}
+.osp-ba-stat-v .osp-ba-new{color:var(--or)}
+.osp-ba-stat-l{font-family:var(--ss);font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.12em;margin-top:8px;font-weight:600;text-align:center}
+.osp-ba-visual{position:sticky;top:24px}
+.osp-ba-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:14px;flex-wrap:wrap}
+.osp-ba-tabs{display:inline-flex;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.18);border-radius:100px;padding:4px;gap:0;position:relative}
+.osp-ba-tab{font-family:var(--ss);font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--mu);background:transparent;border:none;padding:9px 22px;border-radius:100px;cursor:pointer;transition:color .25s;white-space:nowrap;position:relative;z-index:2}
+.osp-ba-tab:hover{color:var(--wh)}
+.osp-ba-tab.active{color:var(--bg)}
+.osp-ba-tabs::after{content:"";position:absolute;top:4px;left:4px;height:calc(100% - 8px);width:calc(50% - 4px);background:var(--wh);border-radius:100px;box-shadow:0 2px 12px rgba(0,0,0,.35);transition:transform .35s cubic-bezier(.5,.05,.2,1);z-index:1}
+.osp-ba-tabs[data-active="apres"]::after{transform:translateX(100%)}
+.osp-ba-client{display:inline-flex;align-items:center;gap:8px;font-family:var(--ss);font-size:12px;font-weight:700;color:var(--mu);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:7px 14px;border-radius:100px}
+.osp-ba-client::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.18);animation:baDotPulse 2s ease-in-out infinite}
+@keyframes baDotPulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.18)}50%{box-shadow:0 0 0 6px rgba(34,197,94,.05)}}
+.osp-ba-frame{position:relative;background:#0a0807;border:1px solid rgba(244,123,59,.22);border-radius:16px;overflow:hidden;height:560px;transition:height .35s ease}
+.osp-ba-frame[data-device="desktop"]::before{content:"";position:absolute;left:0;right:0;top:0;height:34px;background:#1a1310;border-bottom:1px solid rgba(255,255,255,.04);display:block;z-index:3}
+.osp-ba-frame[data-device="desktop"]::after{content:"";position:absolute;top:11px;left:14px;width:11px;height:11px;border-radius:50%;background:#ff5f57;box-shadow:18px 0 0 #ffbd2e,36px 0 0 #28c840;z-index:4}
+.osp-ba-frame[data-device="desktop"] .osp-ba-frame-label{display:flex}
+.osp-ba-frame[data-device="desktop"] .osp-ba-img-wrap{top:34px;left:0;right:0;bottom:0}
+.osp-ba-frame[data-device="mobile"]{background:radial-gradient(circle at 50% 0%,rgba(244,123,59,.08),transparent 60%),#0a0807;display:flex;align-items:center;justify-content:center;padding:24px 0}
+.osp-ba-frame[data-device="mobile"] .osp-ba-frame-label{display:none}
+.osp-ba-frame[data-device="mobile"] .osp-ba-img-wrap{position:relative;top:auto;left:auto;right:auto;bottom:auto;width:280px;height:calc(100% - 36px);margin:0 auto;border-radius:34px;background:#0a0807;border:6px solid #1a1310;box-shadow:0 0 0 1px rgba(244,123,59,.18),0 24px 60px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.04);overflow:hidden}
+.osp-ba-frame[data-device="mobile"] .osp-ba-caption{bottom:18px;left:50%;transform:translateX(-50%);width:calc(100% - 60px);max-width:300px}
+.osp-ba-frame[data-device="mobile"] .osp-ba-scroll-hint{bottom:auto;top:50%;right:8px;transform:translateY(-50%);writing-mode:vertical-rl;text-orientation:mixed;padding:10px 5px}
+.osp-ba-frame-label{position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:ui-sans-serif;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.04em;background:rgba(255,255,255,.04);padding:3px 14px;border-radius:6px;z-index:5;font-weight:500}
+.osp-ba-img-wrap{position:absolute;top:34px;left:0;right:0;bottom:0;overflow:hidden;transition:all .35s ease}
+.osp-ba-scroll{position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;clip-path:inset(0 0 100% 0);transition:clip-path .65s cubic-bezier(.65,.05,.36,1);pointer-events:none}
+.osp-ba-scroll.active{clip-path:inset(0 0 0 0);pointer-events:auto;cursor:zoom-in}
+.osp-ba-scroll.active img{cursor:zoom-in}
+.osp-ba-scroll img{width:100%;height:auto;display:block}
+.osp-ba-scroll img.desktop-only{display:block}
+.osp-ba-scroll img.mobile-only{display:none}
+.osp-ba-frame[data-device="mobile"] .osp-ba-scroll img.desktop-only{display:none}
+.osp-ba-frame[data-device="mobile"] .osp-ba-scroll img.mobile-only{display:block}
+.osp-ba-scroll::-webkit-scrollbar{width:6px}
+.osp-ba-scroll::-webkit-scrollbar-track{background:transparent}
+.osp-ba-scroll::-webkit-scrollbar-thumb{background:rgba(244,123,59,.32);border-radius:100px}
+.osp-ba-scroll::-webkit-scrollbar-thumb:hover{background:rgba(244,123,59,.55)}
+.osp-ba-scroll{scrollbar-width:thin;scrollbar-color:rgba(244,123,59,.32) transparent}
+.osp-ba-scroll-hint{position:absolute;bottom:62px;right:14px;background:rgba(15,11,9,.92);backdrop-filter:blur(10px);border:1px solid rgba(244,123,59,.22);border-radius:100px;padding:6px 12px;display:flex;align-items:center;gap:6px;font-family:var(--ss);font-size:10.5px;color:var(--mu);font-weight:600;letter-spacing:.04em;z-index:6;pointer-events:none;transition:opacity .25s}
+.osp-ba-scroll-hint svg{width:11px;height:11px;color:var(--or);animation:baScrollBounce 1.6s ease-in-out infinite}
+.osp-ba-scroll-hint.hide{opacity:0}
+@keyframes baScrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.osp-ba-caption{position:absolute;bottom:14px;left:14px;right:14px;background:rgba(15,11,9,.92);backdrop-filter:blur(10px);border:1px solid rgba(244,123,59,.22);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:6;transition:all .35s}
+.osp-ba-caption-i{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(244,123,59,.14);border:1px solid rgba(244,123,59,.32);display:flex;align-items:center;justify-content:center;color:var(--or);font-family:var(--sf);font-style:italic;font-size:18px}
+.osp-ba-caption-t{font-family:var(--ss);font-weight:700;color:var(--wh);font-size:13px;letter-spacing:-.005em}
+.osp-ba-caption-d{font-family:var(--ss);font-size:11.5px;color:var(--mu);margin-top:2px}
+.osp-ba-float{position:absolute;background:rgba(15,11,9,.94);border:1px solid rgba(244,123,59,.36);border-radius:12px;padding:10px 14px;backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:7;opacity:0;transform:translateY(8px) scale(.92);transition:opacity .45s ease .15s,transform .45s ease .15s;pointer-events:none}
+.osp-ba-frame[data-tab="apres"] .osp-ba-float{opacity:1;transform:translateY(0) scale(1)}
+.osp-ba-float-1{top:64px;left:14px}
+.osp-ba-float-2{bottom:78px;right:14px}
+.osp-ba-float-l{font-family:var(--ss);font-size:9px;color:var(--mu);letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.osp-ba-float-v{font-family:var(--ss);font-size:14px;color:var(--or);font-weight:800;line-height:1.1;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.osp-ba-float-v .osp-ba-float-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.18);animation:baDotPulse 2s ease-in-out infinite;flex-shrink:0}
+.osp-ba-float-v .osp-ba-float-icon{display:inline-flex;color:var(--or);font-family:var(--sf);font-style:italic;font-size:16px;line-height:1}
+.osp-ba-frame[data-device="mobile"] .osp-ba-float-1{top:60px;left:6px}
+.osp-ba-frame[data-device="mobile"] .osp-ba-float-2{bottom:60px;right:6px}
+.osp-ba-frame[data-device="mobile"] .osp-ba-float{padding:8px 11px}
+.osp-ba-frame[data-device="mobile"] .osp-ba-float-v{font-size:12px}
+.osp-ba-frame[data-device="mobile"] .osp-ba-float-l{font-size:8px}
+.osp-ba-device{display:inline-flex;align-items:center;gap:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:3px;margin-top:14px}
+.osp-ba-device-btn{font-family:var(--ss);font-size:11.5px;font-weight:600;color:var(--mu);background:transparent;border:none;padding:7px 14px;border-radius:100px;cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:6px;letter-spacing:.02em}
+.osp-ba-device-btn:hover{color:var(--wh)}
+.osp-ba-device-btn.active{background:rgba(244,123,59,.14);color:var(--or);border:1px solid rgba(244,123,59,.32);padding:6px 13px}
+.osp-ba-device-btn svg{width:13px;height:13px}
+.osp-ba-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px;flex-wrap:wrap}
+.osp-ba-cta-live{display:inline-flex;align-items:center;gap:10px;font-family:var(--ss);font-weight:700;font-size:13px;color:var(--wh);background:rgba(244,123,59,.1);border:1px solid rgba(244,123,59,.32);padding:11px 18px;border-radius:100px;text-decoration:none;transition:all .22s}
+.osp-ba-cta-live:hover{background:rgba(244,123,59,.18);border-color:var(--or);transform:translateY(-1px);box-shadow:0 6px 18px rgba(244,123,59,.22)}
+.osp-ba-cta-live svg{width:13px;height:13px;color:var(--or);transition:transform .22s}
+.osp-ba-cta-live:hover svg{transform:translate(2px,-2px)}
+.osp-ba-testi-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--ss);font-size:12px;color:var(--mu);text-decoration:none;font-weight:500;transition:color .22s;margin-top:14px}
+.osp-ba-testi-link:hover{color:var(--wh)}
+.osp-ba-testi-link svg{width:11px;height:11px;color:var(--or)}
+@media (max-width:900px){
+  .osp-ba-grid{grid-template-columns:1fr;gap:32px;margin-top:32px}
+  .osp-ba-visual{position:static;order:-1}
+  .osp-ba-text{order:1}
+  .osp-ba-frame{height:clamp(440px,62vh,620px)}
+  .osp-ba-stats{grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+  .osp-ba-stat{padding:14px 12px}
+  .osp-ba-stat-v{font-size:18px;gap:6px}
+  .osp-ba-stat-v .osp-ba-old{font-size:13px}
+  .osp-ba-stat-v .osp-ba-arr{font-size:16px}
+  .osp-ba-stat-l{font-size:9.5px;letter-spacing:.08em;margin-top:6px}
+}
+@media (max-width:600px){
+  .osp-ba-tag{font-size:10px;padding:6px 12px}
+  .osp-ba-frame{height:clamp(460px,72vh,640px);border-radius:14px}
+  .osp-ba-frame[data-device="desktop"]::before{height:30px}
+  .osp-ba-frame[data-device="desktop"]::after{top:9px;left:11px;width:9px;height:9px;box-shadow:14px 0 0 #ffbd2e,28px 0 0 #28c840}
+  .osp-ba-frame[data-device="desktop"] .osp-ba-img-wrap{top:30px}
+  .osp-ba-frame-label{font-size:9.5px;padding:2px 10px;top:7px}
+  .osp-ba-frame[data-device="mobile"] .osp-ba-img-wrap{width:240px}
+  .osp-ba-head{flex-direction:column;align-items:stretch;gap:10px}
+  .osp-ba-tabs{align-self:center}
+  .osp-ba-tab{padding:10px 26px;flex:1;text-align:center}
+  .osp-ba-client{align-self:center;font-size:11px}
+  .osp-ba-caption{padding:10px 12px;bottom:10px;left:10px;right:10px;border-radius:8px}
+  .osp-ba-caption-i{width:26px;height:26px;font-size:14px}
+  .osp-ba-caption-t{font-size:12px}
+  .osp-ba-caption-d{font-size:10.5px;line-height:1.4}
+  .osp-ba-scroll-hint{bottom:54px;right:10px;padding:5px 10px;font-size:9.5px}
+  .osp-ba-actions{flex-direction:column;align-items:stretch;gap:10px}
+  .osp-ba-cta-live{justify-content:center}
+}
+@media (max-width:380px){.osp-ba-stats{grid-template-columns:1fr}.osp-ba-stat-v{font-size:20px}}
+/* Lightbox */
+.osp-ba-lb{position:fixed;inset:0;background:rgba(8,5,4,.96);backdrop-filter:blur(8px);z-index:9999;display:none;flex-direction:column;padding:24px;animation:baLbFade .25s ease}
+.osp-ba-lb.open{display:flex}
+@keyframes baLbFade{from{opacity:0}to{opacity:1}}
+.osp-ba-lb-head{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:1280px;width:100%;margin:0 auto 18px;flex-shrink:0}
+.osp-ba-lb-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.osp-ba-lb-title{font-family:var(--ss);font-weight:800;color:var(--wh);font-size:16px;letter-spacing:-.01em}
+.osp-ba-lb-tag{font-family:var(--ss);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:100px;background:rgba(244,123,59,.14);color:var(--or);border:1px solid rgba(244,123,59,.32)}
+.osp-ba-lb-close{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--wh);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.osp-ba-lb-close:hover{background:rgba(244,123,59,.18);border-color:var(--or);transform:rotate(90deg)}
+.osp-ba-lb-close svg{width:18px;height:18px}
+.osp-ba-lb-body{flex:1;overflow-y:auto;max-width:1280px;width:100%;margin:0 auto;border-radius:14px;border:1px solid rgba(244,123,59,.18);background:#0a0807;-webkit-overflow-scrolling:touch;transition:max-width .3s ease,border-radius .3s ease}
+.osp-ba-lb-body::-webkit-scrollbar{width:8px}
+.osp-ba-lb-body::-webkit-scrollbar-track{background:transparent}
+.osp-ba-lb-body::-webkit-scrollbar-thumb{background:rgba(244,123,59,.32);border-radius:100px}
+.osp-ba-lb-img{width:100%;height:auto;display:block}
+.osp-ba-lb-body[data-device="mobile"]{max-width:400px;border-radius:34px;border:8px solid #1a1310;box-shadow:0 0 0 1px rgba(244,123,59,.18),0 30px 80px rgba(0,0,0,.7)}
+.osp-ba-lb-body[data-device="mobile"] .osp-ba-lb-img{border-radius:0}
+.osp-ba-lb-foot{font-family:var(--ss);font-size:12px;color:var(--mu);text-align:center;margin-top:14px;letter-spacing:.04em;flex-shrink:0}
+.osp-ba-lb-foot kbd{font-family:var(--ss);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:2px 7px;border-radius:5px;color:var(--wh);font-size:11px;font-weight:600}
+@media (max-width:600px){.osp-ba-lb{padding:14px}.osp-ba-lb-title{font-size:13px}.osp-ba-lb-close{width:34px;height:34px}}
+
 </style>
 <!-- Calendly popup widget -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -1870,94 +2010,106 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- PRICING -->
 <!-- CAS CLIENT (preview) -->
-<section class="sec" id="case-study" aria-label="Étude de cas client">
+<section class="sec" id="case-study" aria-label="Comparatif visuel client Fixlyy">
   <div class="wrap rv">
-    <span class="osp-tag">Étude de cas · Faucheux Wines</span>
-    <h2 class="sh2">×2 sur les ventes <span class="sm">en <span class="si">90 jours.</span></span></h2>
-    <p class="body-txt">Pas un témoignage. Des chiffres. Voici ce qu'a donné une refonte Openshore pour un domaine viticole indépendant en Bourgogne.</p>
-    <div class="osp-case">
-      <div class="osp-case-vis">
-        <div class="osp-stripe">
-          <span class="osp-brandtag"><span style="color:var(--or);font-family:var(--sf);font-style:italic">✦</span>&nbsp;Faucheux Wines</span>
-          <span class="osp-os-tag">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="100" height="100" rx="18" fill="#0a0807"/>
-              <path d="M 50 14 A 36 36 0 1 0 78 64" fill="none" stroke="#F47B3B" stroke-width="14" stroke-linecap="round"/>
-              <line x1="50" y1="50" x2="75" y2="22" stroke="white" stroke-width="7" stroke-linecap="round"/>
-              <rect x="72" y="10" width="18" height="18" rx="3" fill="white"/>
-            </svg>
-            Openshore
-          </span>
-          <span class="osp-period">Sept → Déc 2025</span>
-        </div>
+    <span class="osp-ba-tag">Étude visuelle · Fixlyy.fr</span>
+    <h2 class="sh2">Du template générique<br><span class="sm">au <span class="si">site qui convertit.</span></span></h2>
 
-        <!-- Mockup landing après Openshore -->
-        <div class="osp-case-mock">
-          <div class="osp-mock-head">
-            <span class="osp-mock-dot" style="background:#ff5f57"></span>
-            <span class="osp-mock-dot" style="background:#ffbd2e"></span>
-            <span class="osp-mock-dot" style="background:#28c840"></span>
-            <span class="osp-mock-url">faucheux-wines.fr</span>
+    <div class="osp-ba-grid">
+
+      <div class="osp-ba-text">
+        <p class="body-txt">La majorité des sites d'artisans ressemblent au volet <strong style="color:var(--wh);font-weight:600">"Avant"</strong> : un template Bootstrap, des polices système, zéro hiérarchie, zéro identité. Ils existent. Ils ne convertissent pas.</p>
+        <p class="body-txt">Pour Fixlyy, on a tout reconstruit autour de la promesse de Noé : une charte sur mesure, un mockup iPhone interactif, une structure pensée CRO. Le visiteur sent la différence en 3 secondes — et clique.</p>
+
+        <div class="osp-ba-stats" id="baStats">
+          <div class="osp-ba-stat">
+            <div class="osp-ba-stat-v"><span class="osp-ba-old">Bootstrap</span><span class="osp-ba-arr">→</span><span class="osp-ba-new">Sur mesure</span></div>
+            <div class="osp-ba-stat-l">Charte graphique</div>
           </div>
-          <div class="osp-bar"></div>
-          <div class="osp-bar osp-thin"></div>
-          <div class="osp-bar osp-thin osp-thin2"></div>
-          <div class="osp-cta-mock"></div>
-
-          <!-- Stat card flottante 1 — CA -->
-          <div class="osp-float osp-float-1">
-            <div class="osp-fl-l">CA mensuel</div>
-            <div class="osp-fl-v"><span class="osp-fl-old">8 k€</span> <span class="osp-fl-arr">→</span> <span class="osp-fl-new">16 k€</span></div>
-            <div class="osp-fl-mini">
-              <svg viewBox="0 0 60 18" width="60" height="18" preserveAspectRatio="none">
-                <path d="M0,15 L8,14 L16,13 L24,11 L32,7 L40,5 L48,3 L60,1" fill="none" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
+          <div class="osp-ba-stat">
+            <div class="osp-ba-stat-v"><span class="osp-ba-old">0</span><span class="osp-ba-arr">→</span><span class="osp-ba-new" data-count-to="12" data-count-suffix="+">0+</span></div>
+            <div class="osp-ba-stat-l">Animations &amp; micro-interactions</div>
           </div>
-
-          <!-- Stat card flottante 2 — Conversion -->
-          <div class="osp-float osp-float-2">
-            <div class="osp-fl-l">Conversion</div>
-            <div class="osp-fl-v"><span class="osp-fl-old">1,2%</span> <span class="osp-fl-arr">→</span> <span class="osp-fl-new">3,8%</span> <span class="osp-fl-pct">×3,2</span></div>
+          <div class="osp-ba-stat">
+            <div class="osp-ba-stat-v"><span class="osp-ba-old">Plate</span><span class="osp-ba-arr">→</span><span class="osp-ba-new">Hiérarchisée</span></div>
+            <div class="osp-ba-stat-l">Lecture &amp; parcours visiteur</div>
           </div>
-
-          <!-- Graph CA mensuel -->
-          <div class="osp-graph">
-            <div style="font-family:var(--ss);font-size:9px;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">CA mensuel · 6 mois</div>
-            <svg viewBox="0 0 240 60" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="gFch" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F47B3B" stop-opacity="0.45"/>
-                  <stop offset="100%" stop-color="#F47B3B" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <line x1="0" y1="44" x2="240" y2="44" stroke="rgba(255,255,255,.06)" stroke-dasharray="2,3"/>
-              <line x1="0" y1="22" x2="240" y2="22" stroke="rgba(255,255,255,.06)" stroke-dasharray="2,3"/>
-              <path d="M0,48 L24,46 L48,44 L72,42 L96,38 L120,30 L144,18 L168,12 L192,8 L216,5 L240,3 L240,60 L0,60 Z" fill="url(#gFch)"/>
-              <path d="M0,48 L24,46 L48,44 L72,42 L96,38 L120,30 L144,18 L168,12 L192,8 L216,5 L240,3" fill="none" stroke="#F47B3B" stroke-width="2"/>
-              <line x1="118" y1="0" x2="118" y2="60" stroke="rgba(244,123,59,.45)" stroke-dasharray="3,3"/>
-              <circle cx="118" cy="30" r="3.5" fill="#fff" stroke="#F47B3B" stroke-width="2"/>
-              <text x="124" y="14" fill="rgba(255,255,255,.7)" font-family="ui-sans-serif" font-size="8">Mise en ligne · 12/09</text>
-              <text x="2" y="58" fill="rgba(255,255,255,.5)" font-family="ui-sans-serif" font-size="7">Avr</text>
-              <text x="220" y="58" fill="rgba(255,255,255,.5)" font-family="ui-sans-serif" font-size="7">Déc</text>
-            </svg>
+          <div class="osp-ba-stat">
+            <div class="osp-ba-stat-v"><span class="osp-ba-old">Standard</span><span class="osp-ba-arr">→</span><span class="osp-ba-new">Premium</span></div>
+            <div class="osp-ba-stat-l">Crédibilité perçue</div>
           </div>
         </div>
       </div>
-      <div class="osp-case-body">
-        <div class="osp-case-quote">"On était bloqués à 8 000€/mois depuis deux ans. La nouvelle landing a été live un jeudi. Le mois suivant, on dépassait 16 000€ — sans toucher aux pubs."</div>
-        <div class="osp-case-author">
-          <div class="osp-av">M</div>
-          <div>
-            <div class="osp-name">Marc Faucheux</div>
-            <div class="osp-role">Vigneron · Domaine Faucheux, Bourgogne</div>
+
+      <div class="osp-ba-visual">
+        <div class="osp-ba-head">
+          <div class="osp-ba-tabs" role="tablist" data-active="avant">
+            <button class="osp-ba-tab active" role="tab" aria-selected="true" data-target="avant">Avant</button>
+            <button class="osp-ba-tab" role="tab" aria-selected="false" data-target="apres">Après</button>
+          </div>
+          <span class="osp-ba-client">Noé · Fixlyy</span>
+        </div>
+
+        <div class="osp-ba-frame" id="baFrame" data-device="desktop" data-tab="avant">
+          <span class="osp-ba-frame-label" id="frameLabel">fixlyy-template.example</span>
+
+          <div class="osp-ba-float osp-ba-float-1" aria-hidden="true">
+            <div class="osp-ba-float-l">Production</div>
+            <div class="osp-ba-float-v"><span class="osp-ba-float-icon">✦</span> 7 jours</div>
+          </div>
+          <div class="osp-ba-float osp-ba-float-2" aria-hidden="true">
+            <div class="osp-ba-float-l">Statut</div>
+            <div class="osp-ba-float-v"><span class="osp-ba-float-dot"></span> Live</div>
+          </div>
+
+          <div class="osp-ba-img-wrap">
+            <div class="osp-ba-scroll active" data-id="avant">
+              <img class="desktop-only" src="fixlyy-avant-screenshot.png" alt="Site type template — desktop" loading="lazy">
+              <img class="mobile-only" src="fixlyy-avant-mobile.png" alt="Site type template — mobile" loading="lazy">
+            </div>
+            <div class="osp-ba-scroll" data-id="apres">
+              <img class="desktop-only" src="fixlyy-apres-screenshot.png" alt="Site Fixlyy livré par Openshore — desktop" loading="lazy">
+              <img class="mobile-only" src="fixlyy-apres-mobile.png" alt="Site Fixlyy livré par Openshore — mobile" loading="lazy">
+            </div>
+          </div>
+
+          <div class="osp-ba-scroll-hint" id="scrollHint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            Scroll pour explorer
+          </div>
+
+          <div class="osp-ba-caption" id="caption">
+            <div class="osp-ba-caption-i">i</div>
+            <div>
+              <div class="osp-ba-caption-t" id="capT">Site type template</div>
+              <div class="osp-ba-caption-d" id="capD">Approche standard du marché — Bootstrap, polices système, zéro identité</div>
+            </div>
           </div>
         </div>
-        <div class="osp-case-metrics">
-          <div class="osp-case-metric"><div class="osp-mv">×2</div><div class="osp-ml">CA mensuel</div></div>
-          <div class="osp-case-metric"><div class="osp-mv">×3,2</div><div class="osp-ml">Taux de conv.</div></div>
-          <div class="osp-case-metric"><div class="osp-mv">+35%</div><div class="osp-ml">Panier moyen</div></div>
+
+        <div class="osp-ba-actions">
+          <div class="osp-ba-device" role="tablist" aria-label="Choisir l'aperçu">
+            <button class="osp-ba-device-btn active" data-device="desktop" aria-pressed="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg>
+              Desktop
+            </button>
+            <button class="osp-ba-device-btn" data-device="mobile" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+              Mobile
+            </button>
+          </div>
+
+          <a href="https://fixlyy.fr/" target="_blank" rel="noopener" class="osp-ba-cta-live">
+            Voir fixlyy.fr en direct
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
+
+        <a href="#video-testi" class="osp-ba-testi-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          Voir le témoignage de Noé en vidéo
+        </a>
+
       </div>
     </div>
   </div>
@@ -3184,5 +3336,193 @@ document.addEventListener('keydown', function(e){
   },{capture:false,passive:true});
 })();
 </script>
+
+<!-- LIGHTBOX avant/après -->
+<div class="osp-ba-lb" id="baLb" role="dialog" aria-modal="true" aria-labelledby="baLbTitle">
+  <div class="osp-ba-lb-head">
+    <div class="osp-ba-lb-meta">
+      <span class="osp-ba-lb-tag" id="baLbTag">Avant</span>
+      <span class="osp-ba-lb-title" id="baLbTitle">Site type template — Desktop</span>
+    </div>
+    <button class="osp-ba-lb-close" id="baLbClose" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="osp-ba-lb-body" id="baLbBody">
+    <img class="osp-ba-lb-img" id="baLbImg" src="" alt="">
+  </div>
+  <p class="osp-ba-lb-foot">Scroll pour explorer · <kbd>Échap</kbd> pour fermer</p>
+</div>
+
+<script>
+/* === Avant/Après — interactions module Fixlyy === */
+(function(){
+  const tabs = document.querySelectorAll('.osp-ba-tab');
+  const tabsWrap = document.querySelector('.osp-ba-tabs');
+  if (!tabsWrap) return;
+  const scrolls = document.querySelectorAll('.osp-ba-scroll');
+  const label = document.getElementById('frameLabel');
+  const capT = document.getElementById('capT');
+  const capD = document.getElementById('capD');
+  const hint = document.getElementById('scrollHint');
+  const frame = document.getElementById('baFrame');
+  const deviceBtns = document.querySelectorAll('.osp-ba-device-btn');
+  const stats = document.querySelectorAll('.osp-ba-stat');
+
+  const states = {
+    avant: { url: 'fixlyy-template.example', title: 'Site type template', desc: 'Approche standard du marché — Bootstrap, polices système, zéro identité' },
+    apres: { url: 'fixlyy.fr', title: 'Site Fixlyy livré par Openshore', desc: 'Charte sur mesure, mockup iPhone, structure CRO, animations scroll-triggered' }
+  };
+
+  let userInteracted = false;
+  let autoToggleTimer = null;
+
+  function switchTab(target, isAuto){
+    tabs.forEach(t => {
+      const isActive = t.dataset.target === target;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    tabsWrap.setAttribute('data-active', target);
+    frame.setAttribute('data-tab', target);
+    scrolls.forEach(s => {
+      const isTarget = s.dataset.id === target;
+      s.classList.toggle('active', isTarget);
+      if (isTarget) s.scrollTop = 0;
+    });
+    label.textContent = states[target].url;
+    capT.textContent = states[target].title;
+    capD.textContent = states[target].desc;
+    if (hint) hint.classList.remove('hide');
+    if (!isAuto) {
+      userInteracted = true;
+      if (autoToggleTimer) { clearTimeout(autoToggleTimer); autoToggleTimer = null; }
+    }
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => switchTab(tab.dataset.target, false)));
+
+  scrolls.forEach(s => {
+    s.addEventListener('scroll', () => {
+      if (s.scrollTop > 20 && hint) hint.classList.add('hide');
+      userInteracted = true;
+      if (autoToggleTimer) { clearTimeout(autoToggleTimer); autoToggleTimer = null; }
+    }, { passive: true });
+  });
+
+  deviceBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dev = btn.dataset.device;
+      deviceBtns.forEach(b => {
+        const active = b.dataset.device === dev;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      frame.setAttribute('data-device', dev);
+      scrolls.forEach(s => { s.scrollTop = 0; });
+      userInteracted = true;
+      if (autoToggleTimer) { clearTimeout(autoToggleTimer); autoToggleTimer = null; }
+    });
+  });
+
+  const sec = document.getElementById('case-study');
+  if (sec && 'IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !userInteracted && !autoToggleTimer) {
+          autoToggleTimer = setTimeout(() => {
+            if (!userInteracted) {
+              switchTab('apres', true);
+              setTimeout(() => { if (!userInteracted) switchTab('avant', true); }, 3500);
+            }
+            autoToggleTimer = null;
+          }, 3000);
+        }
+      });
+    }, { threshold: 0.4 });
+    sectionObserver.observe(sec);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          const idx = Array.from(stats).indexOf(el);
+          setTimeout(() => el.classList.add('in-view'), idx * 110);
+          const cnt = el.querySelector('[data-count-to]');
+          if (cnt && !cnt.dataset.animated) {
+            cnt.dataset.animated = '1';
+            const target = parseInt(cnt.dataset.countTo, 10);
+            const suffix = cnt.dataset.countSuffix || '';
+            const dur = 1100;
+            const start = performance.now();
+            (function tick(now){
+              const p = Math.min(1, (now - start) / dur);
+              const ease = 1 - Math.pow(1 - p, 3);
+              cnt.textContent = Math.floor(target * ease) + suffix;
+              if (p < 1) requestAnimationFrame(tick);
+              else cnt.textContent = target + suffix;
+            })(performance.now());
+          }
+          statsObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    stats.forEach(s => statsObserver.observe(s));
+  }
+
+  document.querySelectorAll('.osp-ba-testi-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Lightbox
+  const lb = document.getElementById('baLb');
+  const lbImg = document.getElementById('baLbImg');
+  const lbBody = document.getElementById('baLbBody');
+  const lbTitle = document.getElementById('baLbTitle');
+  const lbTag = document.getElementById('baLbTag');
+  const lbClose = document.getElementById('baLbClose');
+  const imgMap = {
+    'avant-desktop': { src: 'fixlyy-avant-screenshot.png', title: 'Site type template — Desktop', tag: 'Avant' },
+    'avant-mobile':  { src: 'fixlyy-avant-mobile.png',     title: 'Site type template — Mobile',  tag: 'Avant' },
+    'apres-desktop': { src: 'fixlyy-apres-screenshot.png', title: 'Fixlyy.fr — Desktop',           tag: 'Après' },
+    'apres-mobile':  { src: 'fixlyy-apres-mobile.png',     title: 'Fixlyy.fr — Mobile',            tag: 'Après' }
+  };
+  function openLb(){
+    const tab = frame.getAttribute('data-tab') || 'avant';
+    const dev = frame.getAttribute('data-device') || 'desktop';
+    const data = imgMap[tab + '-' + dev]; if (!data) return;
+    lbImg.src = data.src; lbImg.alt = data.title;
+    lbTitle.textContent = data.title; lbTag.textContent = data.tag;
+    lbBody.setAttribute('data-device', dev);
+    lb.classList.add('open'); lbBody.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  scrolls.forEach(s => {
+    let downY = 0;
+    s.addEventListener('mousedown', (e) => { downY = e.clientY; });
+    s.addEventListener('click', (e) => {
+      if (!s.classList.contains('active')) return;
+      if (Math.abs(e.clientY - downY) > 5) return;
+      openLb();
+    });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+})();
+</script>
+
 </body>
 </html>
