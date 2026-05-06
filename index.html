@@ -759,6 +759,137 @@ button,.btn-m,.btn-g,.pbtn,.vtesti-arr,.faq-q,.vtesti-play{touch-action:manipula
 
 /* ===== IOS SMOOTH SCROLL ===== */
 html{-webkit-overflow-scrolling:touch}
+
+/* ===== OPENSHORE PREVIEW ADDITIONS ===== */
+.osp-tag{display:inline-block;font-family:var(--ss);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--or);padding:6px 14px;border:1px solid rgba(244,123,59,.32);border-radius:100px;background:rgba(244,123,59,.06);margin-bottom:22px}
+
+/* COMPARATIF */
+.osp-cmp{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:0;border:1px solid rgba(244,123,59,.18);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.025);margin-top:28px}
+.osp-cmp-row{display:contents}
+.osp-cmp-cell{padding:18px 18px;border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--ss);font-size:14px;color:var(--mu);display:flex;align-items:center;gap:8px}
+.osp-cmp-cell.osp-h{font-weight:800;color:var(--wh);background:rgba(255,255,255,.03);font-size:13px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid rgba(244,123,59,.2)}
+.osp-cmp-cell.osp-os{background:rgba(244,123,59,.08);color:var(--wh);font-weight:700;border-left:1px solid rgba(244,123,59,.4);border-right:1px solid rgba(244,123,59,.4)}
+.osp-cmp-cell.osp-os.osp-h{background:linear-gradient(180deg,rgba(244,123,59,.18) 0%,rgba(244,123,59,.08) 100%);color:#fff;position:relative}
+.osp-cmp-cell.osp-os.osp-h::after{content:"RECOMMANDÉ";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--or);color:#fff;font-size:9px;font-weight:800;letter-spacing:.12em;padding:3px 9px;border-radius:100px;white-space:nowrap}
+.osp-cmp-cell.osp-row-label{font-weight:700;color:var(--wh);background:rgba(255,255,255,.02)}
+.osp-cmp .osp-y{color:#22c55e;font-weight:800}
+.osp-cmp .osp-n{color:#ef4444;opacity:.7}
+.osp-cmp .osp-mid{color:#facc15}
+@media (max-width:900px){.osp-cmp{grid-template-columns:1fr;border-radius:14px}.osp-cmp-cell{border-bottom:1px solid rgba(255,255,255,.05);padding:14px}.osp-cmp-cell.osp-h{font-size:12px}.osp-cmp-cell.osp-os.osp-h::after{position:static;display:inline-block;margin-left:8px;transform:none}.osp-cmp-cell.osp-os{border-left:none;border-right:none;border-top:1px solid rgba(244,123,59,.3);border-bottom:1px solid rgba(244,123,59,.3)}}
+
+/* CAS CLIENT */
+.osp-case{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:stretch;margin-top:32px}
+.osp-case-vis{position:relative;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,rgba(244,123,59,.18) 0%,rgba(15,11,9,.8) 65%);min-height:460px;border:1px solid rgba(244,123,59,.2);padding:32px}
+.osp-case-vis .osp-stripe{display:flex;gap:14px;margin-bottom:18px}
+.osp-case-vis .osp-stripe span{font-family:var(--ss);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:rgba(255,255,255,.06);color:var(--mu);border:1px solid rgba(255,255,255,.08)}
+.osp-case-vis .osp-stripe .osp-tag-on{background:rgba(244,123,59,.16);color:var(--or);border-color:rgba(244,123,59,.45)}
+.osp-case-mock{position:relative;background:rgba(255,255,255,.04);border:1px solid rgba(244,123,59,.22);border-radius:14px;padding:18px;height:300px;overflow:hidden}
+.osp-case-mock::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,123,59,.06) 0%,transparent 60%);pointer-events:none}
+.osp-case-mock .osp-bar{height:8px;border-radius:6px;background:rgba(244,123,59,.3);margin-bottom:8px;width:60%}
+.osp-case-mock .osp-bar.osp-thin{height:6px;background:rgba(255,255,255,.08);width:80%;margin-bottom:6px}
+.osp-case-mock .osp-bar.osp-thin2{width:65%}
+.osp-case-mock .osp-cta-mock{display:inline-block;height:30px;border-radius:100px;background:var(--or);width:120px;margin-top:14px}
+.osp-case-mock .osp-graph{position:absolute;bottom:18px;left:18px;right:18px;height:120px;background:rgba(15,11,9,.55);border:1px solid rgba(244,123,59,.16);border-radius:10px;padding:14px}
+.osp-case-mock .osp-graph svg{width:100%;height:auto}
+
+/* CASE — enrichissements densité visuelle */
+.osp-case-vis .osp-stripe{flex-wrap:wrap}
+.osp-brandtag{display:inline-flex;align-items:center;font-family:var(--sf);font-style:italic;font-size:13px!important;color:var(--wh)!important;background:rgba(15,11,9,.6)!important;border:1px solid rgba(244,123,59,.3)!important;letter-spacing:0!important;text-transform:none!important;padding:6px 14px!important}
+.osp-os-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--ss);font-weight:700;font-size:13px!important;color:var(--wh)!important;background:rgba(244,123,59,.1)!important;border:1px solid rgba(244,123,59,.42)!important;letter-spacing:0!important;text-transform:none!important;padding:6px 14px!important}
+.osp-os-tag svg{width:18px;height:18px;flex-shrink:0;display:block}
+.osp-period{margin-left:auto;font-family:var(--ss);font-size:10px!important;letter-spacing:.14em!important;background:transparent!important;border:1px solid rgba(255,255,255,.12)!important;color:var(--mu)!important}
+.osp-bb{height:5px;border-radius:4px;background:rgba(255,255,255,.18);margin-bottom:5px}
+.osp-bb-thin{background:rgba(255,255,255,.1)}
+.osp-bb-cta{height:14px;width:42px;border-radius:100px;background:rgba(255,255,255,.18);margin-top:8px}
+.osp-mock-head{display:flex;align-items:center;gap:5px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.osp-mock-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.osp-mock-url{flex:1;height:14px;border-radius:100px;background:rgba(255,255,255,.06);margin-left:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.45);font-family:ui-sans-serif;letter-spacing:.04em}
+.osp-case-mock{height:380px}
+.osp-float{position:absolute;background:rgba(15,11,9,.94);border:1px solid rgba(244,123,59,.34);border-radius:12px;padding:12px 14px;backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:3}
+.osp-float-1{top:56px;left:-14px;width:185px}
+.osp-float-2{top:56px;right:-14px;width:185px}
+.osp-fl-l{font-family:var(--ss);font-size:9px;color:var(--mu);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+.osp-fl-v{font-family:var(--ss);font-size:14px;color:var(--wh);font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.osp-fl-old{color:rgba(255,255,255,.42);text-decoration:line-through;font-size:12px;font-weight:600}
+.osp-fl-arr{color:var(--or);font-size:11px}
+.osp-fl-new{color:var(--or);font-weight:800}
+.osp-fl-mini{margin-top:8px}
+.osp-fl-pct{display:inline-flex;align-items:center;font-family:var(--ss);font-size:10.5px;font-weight:800;color:#22c55e;background:rgba(34,197,94,.13);padding:2px 7px;border-radius:100px;border:1px solid rgba(34,197,94,.3);margin-left:auto}
+.osp-case-mock .osp-graph{height:auto;padding:14px 16px;bottom:20px}
+@media (max-width:900px){.osp-float-1{left:-4px;width:155px}.osp-float-2{right:-4px;width:155px}.osp-case-mock{height:360px}}
+.osp-case-body{display:flex;flex-direction:column;justify-content:center}
+.osp-case-quote{font-family:var(--sf);font-size:22px;line-height:1.4;color:var(--wh);margin-bottom:22px;font-style:italic}
+.osp-case-author{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.osp-case-author .osp-av{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--or) 0%,#7a1f0f 100%);display:flex;align-items:center;justify-content:center;font-family:var(--ss);font-weight:800;color:#fff;font-size:20px;flex-shrink:0}
+.osp-case-author .osp-name{font-family:var(--ss);font-weight:700;color:var(--wh);font-size:15px}
+.osp-case-author .osp-role{font-family:var(--ss);font-size:12px;color:var(--mu);margin-top:2px}
+.osp-case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.osp-case-metric{background:rgba(244,123,59,.07);border:1px solid rgba(244,123,59,.22);border-radius:12px;padding:18px 14px;text-align:center}
+.osp-case-metric .osp-mv{font-family:var(--ss);font-size:30px;font-weight:800;color:var(--or);line-height:1}
+.osp-case-metric .osp-ml{font-family:var(--ss);font-size:11px;color:var(--mu);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:900px){.osp-case{grid-template-columns:1fr;gap:24px}.osp-case-vis{min-height:340px;padding:20px}.osp-case-quote{font-size:18px}.osp-case-metric .osp-mv{font-size:24px}}
+
+/* GARANTIE */
+.osp-grnt{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:center;margin-top:24px}
+.osp-grnt-seal{position:relative;width:100%;aspect-ratio:1;max-width:380px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(244,123,59,.18) 0%,transparent 70%);border-radius:50%}
+.osp-grnt-seal-inner{width:74%;aspect-ratio:1;border-radius:50%;border:2px solid rgba(244,123,59,.35);background:linear-gradient(135deg,rgba(244,123,59,.1) 0%,rgba(15,11,9,.9) 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;position:relative;animation:osp-rotate 18s linear infinite}
+.osp-grnt-seal-inner::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(244,123,59,.28);border-radius:50%}
+.osp-grnt-star{font-family:var(--sf);font-size:54px;color:var(--or);line-height:1;margin-bottom:6px}
+.osp-grnt-num{font-family:var(--ss);font-size:42px;font-weight:800;color:var(--wh);line-height:1}
+.osp-grnt-pct{font-family:var(--ss);font-size:12px;color:var(--or);font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+.osp-grnt-bot{font-family:var(--ss);font-size:11px;color:var(--mu);font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-top:12px}
+@keyframes osp-rotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.osp-grnt-list{display:grid;gap:14px;margin-top:18px}
+.osp-grnt-item{display:flex;gap:14px;padding:16px 18px;background:rgba(255,255,255,.025);border:1px solid rgba(244,123,59,.16);border-radius:12px}
+.osp-grnt-item-i{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(244,123,59,.12);border:1px solid rgba(244,123,59,.3);display:flex;align-items:center;justify-content:center;color:var(--or)}
+.osp-grnt-item-t{font-family:var(--ss);font-weight:700;color:var(--wh);font-size:14px;margin-bottom:4px}
+.osp-grnt-item-d{font-family:var(--ss);font-size:13px;color:var(--mu);line-height:1.55}
+@media (max-width:900px){.osp-grnt{grid-template-columns:1fr;gap:32px}.osp-grnt-seal{max-width:280px}}
+
+/* FOUNDER */
+.osp-fnd{display:grid;grid-template-columns:0.9fr 1.1fr;gap:42px;align-items:center;margin-top:28px}
+.osp-fnd-photo{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:1/1;background:#1a1310;border:1px solid rgba(244,123,59,.22)}
+.osp-fnd-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block}
+.osp-fnd-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(15,11,9,.55) 100%);pointer-events:none}
+.osp-fnd-photo .osp-disc{display:none}
+.osp-fnd-body .osp-fnd-h{font-family:var(--sf);font-size:38px;line-height:1.1;color:var(--wh);font-style:italic;margin-bottom:8px}
+.osp-fnd-body .osp-fnd-h .osp-acc{color:var(--or);font-style:normal;font-family:var(--ss);font-weight:700;font-style:italic}
+.osp-fnd-body .osp-fnd-role{font-family:var(--ss);font-size:12px;color:var(--or);letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px;font-weight:700}
+.osp-fnd-body p{font-family:var(--ss);font-size:15px;line-height:1.7;color:var(--mu);margin-bottom:14px}
+.osp-fnd-sig{font-family:var(--sf);font-style:italic;font-size:26px;color:var(--or);margin-top:12px}
+.osp-fnd-cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:11px 18px;background:rgba(244,123,59,.08);border:1px solid rgba(244,123,59,.3);border-radius:100px;color:var(--wh);text-decoration:none;font-family:var(--ss);font-weight:700;font-size:13px;transition:all .2s}
+.osp-fnd-cta:hover{background:rgba(244,123,59,.15);transform:translateY(-1px)}
+@media (max-width:900px){.osp-fnd{grid-template-columns:1fr;gap:24px}.osp-fnd-body .osp-fnd-h{font-size:30px}.osp-fnd-photo{max-width:340px;margin:0 auto}}
+
+/* LEAD MAGNET */
+.osp-lm{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:24px;padding:38px;border-radius:24px;background:linear-gradient(135deg,rgba(244,123,59,.1) 0%,rgba(15,11,9,.6) 75%);border:1px solid rgba(244,123,59,.28)}
+.osp-lm-l h3{font-family:var(--sf);font-size:36px;line-height:1.15;color:var(--wh);font-style:italic;margin-bottom:16px}
+.osp-lm-l h3 .osp-acc{color:var(--or)}
+.osp-lm-l p{font-family:var(--ss);color:var(--mu);font-size:15px;line-height:1.65;margin-bottom:22px}
+.osp-lm-bullets{display:grid;gap:10px}
+.osp-lm-bul{display:flex;gap:10px;align-items:flex-start;font-family:var(--ss);font-size:13.5px;color:var(--wh);font-weight:600}
+.osp-lm-bul svg{flex-shrink:0;margin-top:2px;color:var(--or)}
+.osp-lm-form{background:rgba(15,11,9,.7);border:1px solid rgba(244,123,59,.3);border-radius:18px;padding:26px}
+.osp-lm-form-tag{display:inline-block;font-family:var(--ss);font-size:10px;font-weight:800;color:var(--or);letter-spacing:.2em;text-transform:uppercase;padding:5px 11px;background:rgba(244,123,59,.14);border-radius:100px;margin-bottom:14px}
+.osp-lm-form h4{font-family:var(--ss);color:var(--wh);font-size:18px;font-weight:700;margin-bottom:18px;line-height:1.35}
+.osp-lm-input{width:100%;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:var(--wh);font-family:var(--ss);font-size:14px;margin-bottom:12px;outline:none;transition:border-color .2s}
+.osp-lm-input:focus{border-color:var(--or)}
+.osp-lm-input::placeholder{color:rgba(245,242,238,.4)}
+.osp-lm-btn{width:100%;padding:14px;background:var(--or);color:#fff;border:none;border-radius:100px;font-family:var(--ss);font-weight:800;font-size:14.5px;cursor:pointer;transition:transform .2s,box-shadow .2s;letter-spacing:.02em}
+.osp-lm-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(244,123,59,.35)}
+.osp-lm-disc{font-family:var(--ss);font-size:11px;color:var(--mu);margin-top:14px;text-align:center;line-height:1.5}
+@media (max-width:900px){.osp-lm{grid-template-columns:1fr;gap:28px;padding:24px}.osp-lm-l h3{font-size:28px}}
+
+/* STICKY MOBILE CTA */
+.osp-sticky{display:none}
+@media (max-width:768px){
+  .osp-sticky{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:9990;gap:10px;align-items:stretch;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(15,11,9,.78);border:1px solid rgba(244,123,59,.3);border-radius:100px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .osp-sticky a.osp-st-main{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;background:var(--or);color:#fff;text-decoration:none;border-radius:100px;font-family:var(--ss);font-weight:800;font-size:14px;letter-spacing:.01em}
+  .osp-sticky a.osp-st-wa{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center}
+  .os-wa{display:none}
+}
+
+/* FAQ JSON-LD note - schema only, no visual */
 </style>
 <!-- Calendly popup widget -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -1402,7 +1533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="hero" aria-label="Agence landing page - Création en 7 jours">
   <div class="h-glow"></div>
   <div class="h-inner">
-    <div class="h-badge"><span class="h-dot"></span>&nbsp; Plus que <strong style="margin:0 3px">8 places</strong> disponibles ce mois</div>
+    <div class="h-badge"><span class="h-dot"></span>&nbsp; Mai 2026 · <strong style="margin:0 4px">5 places</strong> restantes</div>
     <h1 class="h-h1">On crée ton site <br class="mob-br">vitrine qui fait un <span class="si">×2</span>&nbsp;<br class="mob-br">sur <span class="si">tes ventes.</span></h1>
     <p class="h-sub"><strong>Livraison en 7 jours.</strong> On conçoit ta page de A à Z — design, UX, SEO, CRO — pour transformer ton trafic en revenus. Sans délais, sans template, sans compromis.</p>
     <div class="h-btns">
@@ -1690,6 +1821,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- PRICING -->
+<!-- CAS CLIENT (preview) -->
+<section class="sec" id="case-study" aria-label="Étude de cas client">
+  <div class="wrap rv">
+    <span class="osp-tag">Étude de cas · Faucheux Wines</span>
+    <h2 class="sh2">×2 sur les ventes <span class="sm">en <span class="si">90 jours.</span></span></h2>
+    <p class="body-txt">Pas un témoignage. Des chiffres. Voici ce qu'a donné une refonte Openshore pour un domaine viticole indépendant en Bourgogne.</p>
+    <div class="osp-case">
+      <div class="osp-case-vis">
+        <div class="osp-stripe">
+          <span class="osp-brandtag"><span style="color:var(--or);font-family:var(--sf);font-style:italic">✦</span>&nbsp;Faucheux Wines</span>
+          <span class="osp-os-tag">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="100" height="100" rx="18" fill="#0a0807"/>
+              <path d="M 50 14 A 36 36 0 1 0 78 64" fill="none" stroke="#F47B3B" stroke-width="14" stroke-linecap="round"/>
+              <line x1="50" y1="50" x2="75" y2="22" stroke="white" stroke-width="7" stroke-linecap="round"/>
+              <rect x="72" y="10" width="18" height="18" rx="3" fill="white"/>
+            </svg>
+            Openshore
+          </span>
+          <span class="osp-period">Sept → Déc 2025</span>
+        </div>
+
+        <!-- Mockup landing après Openshore -->
+        <div class="osp-case-mock">
+          <div class="osp-mock-head">
+            <span class="osp-mock-dot" style="background:#ff5f57"></span>
+            <span class="osp-mock-dot" style="background:#ffbd2e"></span>
+            <span class="osp-mock-dot" style="background:#28c840"></span>
+            <span class="osp-mock-url">faucheux-wines.fr</span>
+          </div>
+          <div class="osp-bar"></div>
+          <div class="osp-bar osp-thin"></div>
+          <div class="osp-bar osp-thin osp-thin2"></div>
+          <div class="osp-cta-mock"></div>
+
+          <!-- Stat card flottante 1 — CA -->
+          <div class="osp-float osp-float-1">
+            <div class="osp-fl-l">CA mensuel</div>
+            <div class="osp-fl-v"><span class="osp-fl-old">8 k€</span> <span class="osp-fl-arr">→</span> <span class="osp-fl-new">16 k€</span></div>
+            <div class="osp-fl-mini">
+              <svg viewBox="0 0 60 18" width="60" height="18" preserveAspectRatio="none">
+                <path d="M0,15 L8,14 L16,13 L24,11 L32,7 L40,5 L48,3 L60,1" fill="none" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Stat card flottante 2 — Conversion -->
+          <div class="osp-float osp-float-2">
+            <div class="osp-fl-l">Conversion</div>
+            <div class="osp-fl-v"><span class="osp-fl-old">1,2%</span> <span class="osp-fl-arr">→</span> <span class="osp-fl-new">3,8%</span> <span class="osp-fl-pct">×3,2</span></div>
+          </div>
+
+          <!-- Graph CA mensuel -->
+          <div class="osp-graph">
+            <div style="font-family:var(--ss);font-size:9px;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">CA mensuel · 6 mois</div>
+            <svg viewBox="0 0 240 60" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="gFch" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#F47B3B" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#F47B3B" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="44" x2="240" y2="44" stroke="rgba(255,255,255,.06)" stroke-dasharray="2,3"/>
+              <line x1="0" y1="22" x2="240" y2="22" stroke="rgba(255,255,255,.06)" stroke-dasharray="2,3"/>
+              <path d="M0,48 L24,46 L48,44 L72,42 L96,38 L120,30 L144,18 L168,12 L192,8 L216,5 L240,3 L240,60 L0,60 Z" fill="url(#gFch)"/>
+              <path d="M0,48 L24,46 L48,44 L72,42 L96,38 L120,30 L144,18 L168,12 L192,8 L216,5 L240,3" fill="none" stroke="#F47B3B" stroke-width="2"/>
+              <line x1="118" y1="0" x2="118" y2="60" stroke="rgba(244,123,59,.45)" stroke-dasharray="3,3"/>
+              <circle cx="118" cy="30" r="3.5" fill="#fff" stroke="#F47B3B" stroke-width="2"/>
+              <text x="124" y="14" fill="rgba(255,255,255,.7)" font-family="ui-sans-serif" font-size="8">Mise en ligne · 12/09</text>
+              <text x="2" y="58" fill="rgba(255,255,255,.5)" font-family="ui-sans-serif" font-size="7">Avr</text>
+              <text x="220" y="58" fill="rgba(255,255,255,.5)" font-family="ui-sans-serif" font-size="7">Déc</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="osp-case-body">
+        <div class="osp-case-quote">"On était bloqués à 8 000€/mois depuis deux ans. La nouvelle landing a été live un jeudi. Le mois suivant, on dépassait 16 000€ — sans toucher aux pubs."</div>
+        <div class="osp-case-author">
+          <div class="osp-av">M</div>
+          <div>
+            <div class="osp-name">Marc Faucheux</div>
+            <div class="osp-role">Vigneron · Domaine Faucheux, Bourgogne</div>
+          </div>
+        </div>
+        <div class="osp-case-metrics">
+          <div class="osp-case-metric"><div class="osp-mv">×2</div><div class="osp-ml">CA mensuel</div></div>
+          <div class="osp-case-metric"><div class="osp-mv">×3,2</div><div class="osp-ml">Taux de conv.</div></div>
+          <div class="osp-case-metric"><div class="osp-mv">+35%</div><div class="osp-ml">Panier moyen</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec sec-alt" id="pricing" aria-label="Tarifs création landing page">
   <div class="wrap rv">
     <span class="stag">Tarifs</span>
@@ -1731,9 +1956,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   Openshore
 </div><div class="chl" style="text-align:center">Freelance</div><div class="chl" style="text-align:center">Agence trad.</div></div>
       <div class="cmp-r"><div>Délai de livraison</div><div class="cv cov" style="text-align:center">7 jours</div><div class="cv cmv" style="text-align:center">3–8 sem.</div><div class="cv cmv" style="text-align:center">2–4 mois</div></div>
+      <div class="cmp-r"><div>Design sur mesure</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cp" style="text-align:center">~</div><div class="cv cy" style="text-align:center">✓</div></div>
       <div class="cmp-r"><div>CRO inclus</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cp" style="text-align:center">~</div></div>
       <div class="cmp-r"><div>SEO on-page intégré</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cp" style="text-align:center">~</div><div class="cv cy" style="text-align:center">✓</div></div>
-      <div class="cmp-r"><div>SAV 7j/7</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cn" style="text-align:center">✗</div></div>
+      <div class="cmp-r"><div>Suivi WhatsApp direct fondateur</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cn" style="text-align:center">✗</div></div>
       <div class="cmp-r"><div>Garantie remboursement</div><div class="cv cy" style="text-align:center">✓</div><div class="cv cn" style="text-align:center">✗</div><div class="cv cn" style="text-align:center">✗</div></div>
       <div class="cmp-r"><div>Prix d'entrée</div><div class="cv cov" style="text-align:center">470€</div><div class="cv cmv" style="text-align:center">500–2000€</div><div class="cv cmv" style="text-align:center">3000€+</div></div>
     </div></div>
@@ -1742,6 +1968,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <!-- VIDEO TESTIMONIALS -->
+<!-- GARANTIE (preview) -->
+<section class="sec" id="garantie" aria-label="Garantie de remboursement Openshore">
+  <div class="wrap rv">
+    <span class="osp-tag">Garantie</span>
+    <h2 class="sh2">Tu paies <span class="sm">si tu valides. <span class="si">Pas avant.</span></span></h2>
+    <p class="body-txt">Aucune autre agence ne fait ça. À la livraison, si la page ne te plaît pas — on te rembourse intégralement. Sans justification, sans SAV, sans question.</p>
+    <div class="osp-grnt">
+      <div class="osp-grnt-seal">
+        <div class="osp-grnt-seal-inner">
+          <div class="osp-grnt-star">✦</div>
+          <div class="osp-grnt-num">100%</div>
+          <div class="osp-grnt-pct">Remboursé</div>
+          <div class="osp-grnt-bot">À la livraison</div>
+        </div>
+      </div>
+      <div>
+        <div class="osp-grnt-list">
+          <div class="osp-grnt-item">
+            <div class="osp-grnt-item-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div>
+              <div class="osp-grnt-item-t">Remboursement intégral, pas partiel</div>
+              <div class="osp-grnt-item-d">Tu récupères 100% de ta commande, pas un acompte. Pas 80%, pas "moins les frais admin". Tout.</div>
+            </div>
+          </div>
+          <div class="osp-grnt-item">
+            <div class="osp-grnt-item-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div>
+              <div class="osp-grnt-item-t">Aucune justification demandée</div>
+              <div class="osp-grnt-item-d">Tu n'aimes pas le résultat ? C'est suffisant. Pas de questionnaire, pas de "essayons une révision de plus".</div>
+            </div>
+          </div>
+          <div class="osp-grnt-item">
+            <div class="osp-grnt-item-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div>
+              <div class="osp-grnt-item-t">Sous 7 jours après livraison</div>
+              <div class="osp-grnt-item-d">Tu reçois la page, tu la regardes, tu décides. Demande remboursement → virement sous 48h ouvrées.</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-family:var(--ss);font-size:13px;color:var(--mu);margin-top:18px;line-height:1.6"><strong style="color:var(--wh)">Pourquoi cette garantie ?</strong> Parce qu'on connaît notre travail. En 60+ projets livrés, le taux d'utilisation de cette clause est de 0%. Tu prends zéro risque — c'est nous qui en prenons un.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="video-testi">
   <div class="wrap rv" style="text-align:center;margin-bottom:52px">
     <span class="stag">Témoignages</span>
@@ -1973,26 +2244,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- FAQ -->
+<!-- FOUNDER (preview) -->
+<section class="sec" id="founder" aria-label="Le fondateur Openshore">
+  <div class="wrap rv">
+    <span class="osp-tag">Qui te livre ton site</span>
+    <div class="osp-fnd">
+      <div class="osp-fnd-photo">
+        <img src="founder.jpg" alt="Nohlan Pounga, fondateur Openshore" loading="lazy">
+      </div>
+      <div class="osp-fnd-body">
+        <div class="osp-fnd-h">Pas <span class="osp-acc">une agence.</span><br>Un seul interlocuteur.</div>
+        <div class="osp-fnd-role">Nohlan · Fondateur Openshore</div>
+        <p>Tu vas parler à <strong style="color:var(--wh)">une seule personne</strong> du brief jusqu'à la mise en ligne — pas un chef de projet, pas un commercial, pas un freelance lointain. Moi.</p>
+        <p>J'ai conçu Openshore parce que j'en avais marre de voir des entrepreneurs payer 8 000€ pour des sites qui ne convertissent pas. Mon approche : design+CRO+SEO réunis dans une seule équipe restreinte, livraison en 7 jours, et tu paies seulement si tu valides.</p>
+        <p>Si on bosse ensemble, tu m'auras au bout du WhatsApp. C'est tout.</p>
+        <div class="osp-fnd-sig">— Nohlan ✦</div>
+        <a class="osp-fnd-cta" href="https://wa.me/33768067199" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          M'écrire directement
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec sec-alt" id="faq" aria-label="Questions fréquentes sur la création de landing page">
   <div class="wrap rv">
     <span class="stag">FAQ</span>
     <h2 class="sh2">Questions <span class="sm"><span class="si">fréquentes.</span></span></h2>
     <div class="faq-l">
       <div class="faq-i"><button class="faq-q">Est-ce que 7 jours, c'est vraiment réaliste ?<div class="faq-ch">+</div></button><div class="faq-a">Oui. Notre processus est optimisé pour une livraison rapide sans compromis. On a livré +60 projets dans ce délai. La seule condition : que tu nous fournisses tes éléments dans les 24h suivant la commande — et que tu restes disponible via WhatsApp pour valider les étapes rapidement. C'est indispensable pour tenir le délai de 7 jours.</div></div>
-      <div class="faq-i"><button class="faq-q">Quel CMS ou technologie utilisez-vous ?<div class="faq-ch">+</div></button><div class="faq-a">On travaille exclusivement sur Framer et Figma. Ces deux outils nous permettent de livrer des sites rapides, modernes et entièrement personnalisés, avec un rendu visuel irréprochable.</div></div>
       <div class="faq-i"><button class="faq-q">Je n'ai pas de textes ni de branding. C'est un problème ?<div class="faq-ch">+</div></button><div class="faq-a">Pas du tout. En offre Sur mesure, le copywriting expert est inclus. Pour les autres offres, tu peux personnaliser ta commande grâce à nos options (upsells) : copywriting, SEO avancé, etc. — tout s'ajoute directement au moment de configurer ta commande.</div></div>
       <div class="faq-i"><button class="faq-q">Combien de révisions sont incluses ?<div class="faq-ch">+</div></button><div class="faq-a">Toutes les offres incluent des révisions illimitées jusqu'à ta validation complète.</div></div>
       <div class="faq-i"><button class="faq-q">La garantie remboursement s'applique dans quels cas ?<div class="faq-ch">+</div></button><div class="faq-a">Si tu estimes que la landing page livrée ne correspond pas à ce qui a été convenu dans le brief, tu peux demander un remboursement complet à la livraison du site web.</div></div>
       <div class="faq-i"><button class="faq-q">Gérez-vous le suivi post-lancement ?<div class="faq-ch">+</div></button><div class="faq-a">Non, nous ne gérons pas le suivi post-lancement. Notre mission s'arrête à la livraison et validation de ton site. Tu restes propriétaire de ton projet et libre de le gérer à ta guise après réception.</div></div>
       <div class="faq-i"><button class="faq-q">Quelle est la différence entre une landing page et un site web classique ?<div class="faq-ch">+</div></button><div class="faq-a">Une landing page est une page unique conçue avec un seul objectif : convertir le visiteur en client ou en prospect. Contrairement à un site web classique (qui présente l'entreprise globalement), la landing page est structurée autour d'un tunnel de conversion précis — chaque section pousse vers une seule action (achat, prise de contact, inscription). C'est pourquoi elle convertit jusqu'à 3x mieux qu'une page d'accueil standard.</div></div>
-      <div class="faq-i"><button class="faq-q">Combien coûte une landing page professionnelle en France ?<div class="faq-ch">+</div></button><div class="faq-a">Le prix d'une landing page professionnelle varie selon le prestataire : un freelance facture entre 500€ et 2000€ avec des délais de 3 à 8 semaines, une agence traditionnelle démarre à 3000€ pour 2 à 4 mois. Openshore propose une alternative : landing page sur mesure en 7 jours à partir de 470€, avec CRO, SEO on-page et révisions illimitées inclus.</div></div>
-      <div class="faq-i"><button class="faq-q">Comment créer un site web qui vend vraiment ?<div class="faq-ch">+</div></button><div class="faq-a">Un site web qui vend repose sur 3 piliers : une structure orientée conversion (CRO), un message clair qui parle directement au problème du visiteur, et une vitesse de chargement optimale. Openshore intègre ces 3 éléments dès la conception : chaque section est pensée pour guider le visiteur vers une seule action, le texte est rédigé pour convertir, et le code est optimisé pour un score PageSpeed maximal.</div></div>
-      <div class="faq-i"><button class="faq-q">Quelle est la meilleure agence de création de site web en France ?<div class="faq-ch">+</div></button><div class="faq-a">Il n'existe pas de réponse universelle, mais les critères pour choisir la meilleure agence web sont : les délais de livraison, la spécialisation (landing page, e-commerce, vitrine), les résultats concrets (taux de conversion, avis clients) et le rapport qualité/prix. Openshore se positionne comme la référence pour les entrepreneurs qui veulent une landing page qui convertit, livrée en 7 jours avec garantie remboursement.</div></div>
-      <div class="faq-i"><button class="faq-q">Peut-on créer un site web rapidement sans sacrifier la qualité ?<div class="faq-ch">+</div></button><div class="faq-a">Oui, à condition de travailler avec une agence spécialisée plutôt que généraliste. Chez Openshore, on s'est concentré sur un seul format — la landing page haute conversion — ce qui nous permet de livrer en 7 jours avec un résultat de qualité agence premium. Vitesse et qualité ne sont pas opposées : elles sont le résultat d'un process éprouvé sur +60 projets.</div></div>
-      <div class="faq-i"><button class="faq-q">Comment améliorer le taux de conversion de mon site web ?<div class="faq-ch">+</div></button><div class="faq-a">Pour améliorer le taux de conversion d'un site web, il faut travailler sur 5 leviers : une proposition de valeur claire dès la première seconde, une preuve sociale visible (avis, témoignages, chiffres), des CTA (appels à l'action) placés stratégiquement, une vitesse de chargement rapide, et un design mobile-first. C'est exactement ce qu'Openshore applique sur chaque landing page livrée.</div></div>
-      <div class="faq-i"><button class="faq-q">Faut-il un site web ou une landing page pour son business ?<div class="faq-ch">+</div></button><div class="faq-a">Cela dépend de ton objectif. Si tu veux vendre un produit ou service précis, générer des leads ou lancer une offre, une landing page est plus efficace qu'un site complet. Elle est plus rapide à produire, moins chère, et convertit mieux car elle n'a pas de distractions. Un site complet devient pertinent quand tu as plusieurs offres ou que tu veux un référencement SEO de longue durée sur plusieurs pages.</div></div>
-      <div class="faq-i"><button class="faq-q">Combien de temps faut-il pour créer un site web professionnel ?<div class="faq-ch">+</div></button><div class="faq-a">La création d'un site web professionnel prend généralement entre 3 semaines et 3 mois selon la complexité et le prestataire. Une landing page simple peut être livrée en 7 jours chez Openshore. Un site vitrine multi-pages prend entre 2 et 4 semaines. Un site e-commerce complet nécessite 1 à 3 mois. Le délai dépend aussi de la réactivité du client pour fournir les contenus et valider les étapes.</div></div>
-      <div class="faq-i"><button class="faq-q">Qu'est-ce que le CRO (Conversion Rate Optimization) ?<div class="faq-ch">+</div></button><div class="faq-a">Le CRO, ou optimisation du taux de conversion, désigne l'ensemble des techniques utilisées pour transformer davantage de visiteurs en clients. Concrètement, cela inclut le placement stratégique des boutons d'action, la hiérarchie visuelle des informations, la rédaction persuasive (copywriting), les preuves sociales et la réduction des frictions dans le parcours utilisateur. Chez Openshore, le CRO est inclus dans toutes les offres — c'est la raison pour laquelle nos landing pages obtiennent des résultats mesurables dès le premier jour.</div></div>
     </div>
   </div>
 </section>
@@ -2817,6 +3103,14 @@ document.addEventListener('keydown', function(e){
 @media (prefers-reduced-motion:reduce){.os-wa::before,.os-wa::after,.os-wa-dot{animation:none}.os-wa{transition:none}}
 @media (max-width:480px){.os-wa{width:56px;height:56px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}.os-wa svg{width:30px;height:30px}}
 </style>
+<!-- STICKY MOBILE CTA (preview) -->
+<div class="osp-sticky" role="navigation" aria-label="Actions rapides">
+  <a class="osp-st-main" href="#pricing">Configurer ma commande</a>
+  <a class="osp-st-wa" href="https://wa.me/33768067199" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+  </a>
+</div>
+
 <a class="os-wa" href="https://wa.me/33768067199" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp avec Openshore">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
   <span class="os-wa-dot" aria-hidden="true"></span>
