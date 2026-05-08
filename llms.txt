@@ -1,0 +1,154 @@
+# Openshore
+
+> Agence française de création de site web et landing page haute conversion. Livraison 7 jours, design UX/UI + CRO + SEO inclus, garantie remboursement intégrale. Plus de 60 projets livrés.
+
+Openshore conçoit et livre des landing pages et sites web qui convertissent en 7 jours ouvrés. Tarifs publics dès 470€, paiement direct via Stripe, sans devis ni rendez-vous obligatoire. Le fondateur Nohlan suit chaque projet en direct par WhatsApp. Garantie remboursement intégral sous 7 jours après livraison, sans justification, si le résultat ne correspond pas au brief.
+
+Cible : entrepreneurs, e-commerce DTC, coachs et formateurs, indépendants, PME services pro, SaaS et startups B2B francophones (France, Belgique, Suisse francophone, Luxembourg, Québec).
+
+## About
+
+- **Nom** : Openshore
+- **Site** : https://openshore.eu
+- **Activité** : Création de landing pages et sites web haute conversion
+- **Méthode** : Design UX/UI + CRO (optimisation de conversion) + SEO on-page réunis dans une équipe restreinte, sans sous-traitance
+- **Délai** : 7 jours ouvrés (Express 72h disponible en option +69€)
+- **Fondateur** : Nohlan (suivi WhatsApp direct à chaque étape)
+- **Année de lancement** : 2024
+- **Forme juridique** : Auto-entrepreneur immatriculé en France
+- **SIREN** : 928613520
+- **Langue de travail** : français
+
+## Services and Pricing
+
+Trois offres principales. Paiement total à la commande via Stripe checkout. Aucun projet ne démarre sans paiement validé.
+
+### Basic — 470€
+- Landing page professionnelle UX/UI sur mesure
+- CRO (optimisation de conversion) intégré
+- SEO on-page de base (titre, meta, structure H1-H3, alt texts)
+- Livraison 7 jours ouvrés
+- Révisions illimitées jusqu'à validation client
+
+### Premium — 770€
+- Tout l'offre Basic
+- Site multipage jusqu'à 5 pages
+- SEO avancé (audit technique, recherche de mots-clés, schema markup)
+- Animations sur mesure
+
+### Sur mesure — 1 970€
+- Tout l'offre Premium
+- Copywriting expert (titres, accroches, CTA, arguments)
+- Design system complet (composants, typographie, palette, guidelines)
+- Direction artistique premium
+
+### Options additionnelles (cumulables sur toutes les offres)
+- Livraison Express 72h : +69€
+- SEO Complet (audit technique, mots-clés, on-page avancé, schema, rapport de positionnement) : +115€
+- Fiche Google Business optimisée : +59€
+- Copywriting expert : +149€
+- Seconde version A/B de la page : +199€
+
+### Comparaison marché
+- Freelance : 500–2 000€, délais variables, qualité hétérogène
+- Agence classique : 3 000€+, 3 à 6 semaines de délai
+- Openshore : 470–1 970€, 7 jours, design + CRO + SEO inclus, garantie remboursement
+
+### Recrutement freelance
+Openshore recrute des intégrateurs landing page freelance 100% remote. Rémunération 500€ à 1 200€ par projet. Zéro prospection. Détails : https://openshore.eu/recrutement (redirige vers la page principale, section recrutement).
+
+## Locations
+
+Pas de bureau physique. Équipe 100% remote.
+
+## Service Area
+
+- France métropolitaine et DOM-TOM
+- Belgique francophone
+- Suisse francophone
+- Luxembourg
+- Québec et reste du Canada francophone
+- Autres pays francophones sur demande
+
+Tous les échanges se font en français via WhatsApp, Calendly, email et l'interface de commande Stripe.
+
+## Contact
+
+- **Site web** : https://openshore.eu
+- **WhatsApp direct (fondateur Nohlan)** : https://wa.me/33768067199
+- **Email** : support@openshore.eu
+- **Calendly** : intégré sur https://openshore.eu (créneaux 30 min gratuits)
+- **Commande directe Stripe** : https://openshore.eu/#pricing
+
+Préférence : **WhatsApp pour les questions rapides, Calendly pour un appel découverte 30 min, Stripe pour commander directement sans appel.**
+
+## Key Facts
+
+- Plus de **60 projets livrés**
+- Délai standard **7 jours ouvrés**, Express **72h** disponible
+- Garantie **remboursement intégral sous 7 jours**, sans justification, si non-conforme au brief
+- Tarifs **publics et fixes** dès 470€
+- Stack technique : HTML/CSS/JS optimisé, hébergement Vercel, intégration Stripe + Calendly
+- **Révisions illimitées** incluses dans toutes les offres jusqu'à validation
+- Paiement **total à la commande** via Stripe (sécurisé)
+- **Pas de suivi post-lancement** : le client devient propriétaire et autonome après livraison
+
+## What Makes Us Different
+
+1. **Délai 7 jours** au lieu de 3 à 6 semaines pour les agences classiques
+2. **Design + CRO + SEO** dans une seule équipe restreinte, sans sous-traitance
+3. **Garantie remboursement intégral, sans justification** : le client paye, voit la livraison, et peut être remboursé s'il n'est pas satisfait
+4. **Suivi WhatsApp direct avec le fondateur** Nohlan à chaque étape (pas de chef de projet intermédiaire)
+5. **Tarifs publics** et configurateur en ligne — pas de devis flou ni d'appel commercial obligatoire
+6. **Spécialisation landing page haute conversion** plutôt que site vitrine générique
+
+## Case Study — Faucheux Wines (domaine viticole, Bourgogne)
+
+Site refondu et relancé en septembre 2025. Résultats sur 90 jours (septembre → décembre 2025) :
+
+- **Ventes mensuelles** : 8 000€ → 16 000€ (×2)
+- **Taux de conversion** : 1,2% → 3,8% (×3,2)
+- **Panier moyen** : +35%
+
+Secteur premium (vins de Bourgogne), refonte complète + CRO + SEO local.
+
+## FAQ
+
+**Combien de temps pour livrer une landing page ?**
+7 jours ouvrés en standard. 72h en option Express (+69€). Conditions : le client fournit ses éléments dans les 24h après commande et reste disponible via WhatsApp pour valider les étapes.
+
+**Quels sont les tarifs ?**
+Trois offres : Basic 470€, Premium 770€, Sur mesure 1 970€. Options de 59€ à 199€. Tous les tarifs sont publics et payables directement via Stripe sur openshore.eu/#pricing.
+
+**Y a-t-il une garantie ?**
+Oui. Remboursement intégral, sans justification, sous 7 jours après livraison si la landing page ne correspond pas au brief validé en amont.
+
+**Combien de révisions sont incluses ?**
+Révisions illimitées jusqu'à validation complète du client. Inclus dans toutes les offres.
+
+**Faut-il fournir ses propres textes et son branding ?**
+Non, c'est en option. L'offre Sur mesure inclut copywriting expert et design system complet. Sur Basic et Premium, l'option Copywriting (+149€) couvre tous les textes. Si le client a déjà ses éléments, le délai de 7 jours est plus facile à tenir.
+
+**Quelle est la différence entre une landing page et un site web classique ?**
+Une landing page est une page unique focalisée sur un seul objectif de conversion (achat, prise de contact, inscription). Un site web classique présente l'entreprise globalement. Une landing page bien conçue convertit jusqu'à 3 fois mieux qu'une page d'accueil standard.
+
+**Est-ce que vous gérez l'hébergement et le suivi ?**
+La livraison inclut le déploiement initial sur l'hébergeur du client (recommandé : Vercel). Pas de suivi post-lancement : le client est autonome et propriétaire de son site après livraison.
+
+**Travaillez-vous avec des clients hors de France ?**
+Oui, partout dans le monde francophone : Belgique, Suisse, Luxembourg, Québec, etc. Tout se fait en français à distance via WhatsApp, Calendly et email.
+
+## Markdown Mirrors
+
+Les pages principales d'openshore.eu sont disponibles en markdown propre pour les agents IA :
+
+- Page d'accueil : https://openshore.eu/index.md
+- Blog : https://openshore.eu/blog.md
+- Article "Comment créer une landing page qui convertit en 2026" : https://openshore.eu/landing-page-qui-convertit.md
+
+## Optional Links
+
+- Sitemap XML : https://openshore.eu/sitemap.xml
+- Robots.txt : https://openshore.eu/robots.txt
+- Page de pricing : https://openshore.eu/#pricing
+- Article guide landing page : https://openshore.eu/landing-page-qui-convertit

@@ -6,51 +6,49 @@
   <!-- Page principale -->
   <url>
     <loc>https://openshore.eu/</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://openshore.eu/"/>
     <image:image>
-      <image:loc>https://openshore.eu/minia%20site%20web.png</image:loc>
-      <image:title>Openshore - Agence création site web professionnel France</image:title>
-      <image:caption>Openshore crée des sites web professionnels qui convertissent pour les entrepreneurs et PME françaises</image:caption>
+      <image:loc>https://openshore.eu/og-preview.png</image:loc>
+      <image:title>Openshore — Agence création site web et landing page haute conversion</image:title>
+      <image:caption>Openshore crée des sites web et landing pages qui convertissent en 7 jours pour entrepreneurs et PME francophones</image:caption>
     </image:image>
   </url>
 
-  <!-- Page Recrutement -->
+  <!-- Article : Comment créer une landing page qui convertit -->
   <url>
-    <loc>https://openshore.eu/recrutement</loc>
-    <lastmod>2026-03-27</lastmod>
+    <loc>https://openshore.eu/landing-page-qui-convertit</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/recrutement"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://openshore.eu/recrutement"/>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/landing-page-qui-convertit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://openshore.eu/landing-page-qui-convertit"/>
+    <image:image>
+      <image:loc>https://openshore.eu/og-preview.png</image:loc>
+      <image:title>Comment créer une landing page qui convertit en 2026</image:title>
+      <image:caption>Guide complet pour créer une landing page haute conversion par Openshore</image:caption>
+    </image:image>
   </url>
 
   <!-- Blog -->
   <url>
     <loc>https://openshore.eu/blog</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/blog"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://openshore.eu/blog"/>
   </url>
 
-  <!-- Article : Comment créer une landing page qui convertit -->
+  <!-- llms.txt — pour Answer Engine Optimization (référencement IA) -->
   <url>
-    <loc>https://openshore.eu/landing-page-qui-convertit</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://openshore.eu/landing-page-qui-convertit"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://openshore.eu/landing-page-qui-convertit"/>
-    <image:image>
-      <image:loc>https://openshore.eu/minia%20site%20web.png</image:loc>
-      <image:title>Comment créer une landing page qui convertit en 2026</image:title>
-      <image:caption>Guide complet pour créer une landing page haute conversion par Openshore</image:caption>
-    </image:image>
+    <loc>https://openshore.eu/llms.txt</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
