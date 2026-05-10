@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>Le Site Qui Vend — Guide gratuit Openshore</title>
+<meta name="description" content="7 décisions de design qui transforment ton site en machine à leads. Reçois le guide gratuit Openshore en 30 secondes.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Noir.png">
+<meta name="theme-color" content="#0f0b09">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Le Site Qui Vend — Guide gratuit Openshore">
+<meta property="og:description" content="7 fondamentaux d'un site qui convertit.">
+<meta property="og:image" content="https://openshore.eu/og-preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800&display=swap">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#0f0b09;-webkit-font-smoothing:antialiased; height:100%}
+
+:root{
+  --bg:#0f0b09;
+  --or:#F47B3B; --or2:#e06828; --or-soft:rgba(244,123,59,.10);
+  --wh:#f5f2ee; --mu:rgba(245,242,238,.55); --mu2:rgba(245,242,238,.35);
+  --bd:rgba(244,123,59,.22); --bd2:rgba(245,242,238,.10);
+  --sf:'Instrument Serif',Georgia,serif;
+  --ss:'Satoshi',sans-serif;
+  --ok:#5fa478;
+}
+
+body{
+  background:var(--bg); color:var(--wh);
+  font-family:var(--ss); line-height:1.6; font-size:17px;
+  min-height:100vh; min-height:100dvh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:32px 24px;
+  position:relative; overflow-x:hidden;
+}
+
+/* Halo orange centré derrière */
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 30%,rgba(244,123,59,.18) 0%,transparent 60%),
+    radial-gradient(circle at 50% 50%,transparent 30%,rgba(15,11,9,.6) 100%);
+}
+
+/* Logo en haut absolu */
+.brand{
+  position:absolute; top:28px; left:50%; transform:translateX(-50%);
+  display:flex; align-items:center; gap:8px; text-decoration:none; z-index:2;
+}
+.brand img{width:30px; height:30px; object-fit:contain}
+.brand span{font-weight:800; font-size:16px; color:var(--wh); letter-spacing:-.01em}
+.brand span em{color:var(--or); font-style:normal}
+
+/* Carte centrale */
+.card{
+  position:relative; z-index:1;
+  max-width:520px; width:100%;
+  text-align:center;
+  display:flex; flex-direction:column; gap:0;
+}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; letter-spacing:.25em; text-transform:uppercase;
+  color:var(--or); font-weight:700;
+  padding:8px 18px; border:1px solid var(--bd); border-radius:100px;
+  background:var(--or-soft);
+  align-self:center; margin-bottom:32px;
+}
+
+h1{
+  font-family:var(--sf); font-size:clamp(56px,11vw,108px);
+  line-height:.95; font-weight:400; letter-spacing:-.025em;
+  color:var(--wh); margin-bottom:24px;
+}
+h1 em{color:var(--or); font-style:italic}
+
+.promise{
+  font-size:clamp(16px,2vw,19px); color:var(--mu); line-height:1.55;
+  max-width:440px; margin:0 auto 44px;
+}
+.promise strong{color:var(--wh); font-weight:600}
+
+/* Form */
+form#optin{
+  display:flex; flex-direction:column; gap:14px;
+  max-width:420px; width:100%; margin:0 auto;
+}
+form#optin input{
+  background:rgba(15,11,9,.7); color:var(--wh);
+  border:1.5px solid var(--bd2); border-radius:14px;
+  padding:18px 22px; font-size:16px; font-family:var(--ss);
+  font-weight:500; transition:all .2s; outline:none;
+  text-align:center;
+}
+form#optin input:focus{border-color:var(--or); background:rgba(15,11,9,.9); box-shadow:0 0 0 4px rgba(244,123,59,.12)}
+form#optin input::placeholder{color:var(--mu2)}
+
+form#optin button{
+  background:var(--or); color:#fff; border:none;
+  padding:20px 28px; font-size:16px; font-weight:700;
+  border-radius:14px; cursor:pointer; transition:all .2s;
+  font-family:var(--ss);
+  box-shadow:0 6px 28px rgba(244,123,59,.35);
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  letter-spacing:-.005em;
+}
+form#optin button:hover{background:var(--or2); transform:translateY(-2px); box-shadow:0 10px 36px rgba(244,123,59,.5)}
+form#optin button:disabled{opacity:.6; cursor:wait; transform:none}
+form#optin button .spin{display:none; width:16px; height:16px; border:2px solid rgba(255,255,255,.35); border-top-color:#fff; border-radius:50%; animation:spin .8s linear infinite}
+form#optin.loading button .spin{display:inline-block}
+form#optin.loading button .label{opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Honeypot anti-bot */
+.honeypot{position:absolute; left:-10000px; opacity:0; pointer-events:none}
+
+.trust{
+  margin-top:22px;
+  font-size:12px; color:var(--mu2);
+  letter-spacing:.05em;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.trust .dot{width:3px; height:3px; border-radius:50%; background:var(--mu2)}
+
+.error-msg{
+  display:none; padding:14px 18px; background:rgba(220,80,80,.12);
+  border:1px solid rgba(220,80,80,.4); border-radius:12px;
+  font-size:13px; color:#ff8b8b;
+}
+.error-msg.show{display:block}
+
+/* Success state */
+.success{display:none; text-align:center}
+.success.show{display:flex; flex-direction:column; align-items:center; gap:0}
+.success .ico{
+  width:72px; height:72px; border-radius:50%;
+  background:rgba(95,164,120,.15); border:2px solid var(--ok);
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:28px; font-size:32px; color:var(--ok);
+}
+.success h2{
+  font-family:var(--sf); font-size:clamp(44px,8vw,68px);
+  line-height:1; font-weight:400; letter-spacing:-.02em;
+  color:var(--wh); margin-bottom:18px;
+}
+.success h2 em{color:var(--or); font-style:italic}
+.success .msg{
+  font-size:17px; color:var(--mu); line-height:1.55;
+  max-width:400px; margin:0 auto 36px;
+}
+.success .msg strong{color:var(--wh)}
+.success .actions{display:flex; flex-direction:column; gap:10px; width:100%; max-width:380px}
+.success .btn-prim{
+  background:var(--or); color:#fff; padding:18px 28px;
+  border-radius:14px; font-weight:700; font-size:15px;
+  text-decoration:none; box-shadow:0 6px 24px rgba(244,123,59,.35);
+  transition:all .2s; text-align:center;
+}
+.success .btn-prim:hover{background:var(--or2); transform:translateY(-1px)}
+.success .btn-sec{
+  background:transparent; color:var(--mu); padding:14px 20px;
+  border:1px solid var(--bd2); border-radius:14px;
+  font-weight:600; font-size:13px; text-decoration:none;
+  transition:all .2s; text-align:center;
+}
+.success .btn-sec:hover{color:var(--wh); border-color:var(--or)}
+
+/* Mini footer */
+.foot{
+  position:absolute; bottom:24px; left:0; right:0;
+  text-align:center; font-size:11px; color:var(--mu2);
+  letter-spacing:.05em; z-index:1;
+}
+.foot a{color:var(--mu2); text-decoration:none; border-bottom:1px solid transparent; transition:all .2s}
+.foot a:hover{color:var(--wh); border-color:var(--or)}
+</style>
+</head>
+<body>
+
+<a href="https://openshore.eu" class="brand">
+  <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png" alt="Openshore">
+  <span>Open<em>shore</em></span>
+</a>
+
+<div class="card">
+
+  <div id="form-wrap" style="display:flex; flex-direction:column">
+    <div class="eyebrow">✦ Guide gratuit</div>
+    <h1>Le Site<br><em>Qui Vend.</em></h1>
+    <p class="promise">7 décisions qui transforment ton site en <strong>machine à leads</strong>.</p>
+
+    <form id="optin" novalidate>
+      <input type="email" id="email" name="email" placeholder="ton@email.fr" autocomplete="email" required>
+      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+      <button type="submit">
+        <span class="label">Envoyez-moi le guide</span>
+        <span class="spin"></span>
+      </button>
+      <div id="error" class="error-msg"></div>
+    </form>
+
+    <div class="trust">
+      <span>Reçu en 30 secondes</span>
+      <span class="dot"></span>
+      <span>0 spam</span>
+      <span class="dot"></span>
+      <span>Désabo en 1 clic</span>
+    </div>
+  </div>
+
+  <div id="success" class="success">
+    <div class="ico">✓</div>
+    <h2>C'est <em>parti.</em></h2>
+    <p class="msg">Ton guide arrive dans ta boîte mail dans <strong>2 minutes max</strong>. Tu peux aussi y accéder direct ↓</p>
+    <div class="actions">
+      <a href="/guide-contenu.html" class="btn-prim">Lire le guide maintenant →</a>
+      <a href="/le-site-qui-vend.pdf" class="btn-sec" download>Télécharger le PDF</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  ✦ <a href="https://openshore.eu">openshore.eu</a>
+</div>
+
+<script>
+(function(){
+  const form = document.getElementById('optin');
+  const wrap = document.getElementById('form-wrap');
+  const success = document.getElementById('success');
+  const errorMsg = document.getElementById('error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.classList.remove('show');
+    errorMsg.textContent = '';
+
+    const email = form.email.value.trim();
+    const honeypot = form.website.value;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorMsg.textContent = 'Renseigne un email valide pour recevoir le guide.';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    form.classList.add('loading');
+    form.querySelector('button').disabled = true;
+
+    try {
+      const res = await fetch('/api/lead-magnet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'instagram', honeypot }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || 'Erreur réseau');
+      }
+
+      wrap.style.display = 'none';
+      success.classList.add('show');
+
+      if (window.dataLayer) {
+        window.dataLayer.push({ event: 'lead_magnet_optin' });
+      }
+    } catch (err) {
+      errorMsg.textContent = err.message || 'Une erreur est survenue. Réessaie ou écris à support@openshore.eu';
+      errorMsg.classList.add('show');
+      form.classList.remove('loading');
+      form.querySelector('button').disabled = false;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

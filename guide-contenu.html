@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>Le Site Qui Vend — 7 fondamentaux d'un site qui convertit | Openshore</title>
+<meta name="description" content="Le guide Openshore : 7 décisions de design qui font la différence entre un site qui ramène des leads et un brochure web qui dort. Par Nohlan Pounga, fondateur d'Openshore.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Noir.png">
+<meta name="theme-color" content="#0f0b09">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&f[]=bricolage-grotesque@400,500,600,700,800&display=swap">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:#0f0b09;-webkit-font-smoothing:antialiased}
+
+:root{
+  --bg:#0f0b09; --bg2:#15100d;
+  --or:#F47B3B; --or2:#e06828; --or-soft:rgba(244,123,59,.10);
+  --wh:#f5f2ee; --mu:rgba(245,242,238,.55); --mu2:rgba(245,242,238,.35);
+  --bd:rgba(244,123,59,.18); --bd2:rgba(245,242,238,.10);
+  --sf:'Instrument Serif',Georgia,serif;
+  --ss:'Satoshi',sans-serif;
+  --br:'Bricolage Grotesque',sans-serif;
+}
+
+body{
+  background:var(--bg); color:var(--wh);
+  font-family:var(--ss); line-height:1.65; font-size:17px;
+  overflow-x:hidden;
+}
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(244,123,59,.10) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 0% 60%,rgba(244,123,59,.05) 0%,transparent 50%),
+    radial-gradient(ellipse 60% 50% at 100% 80%,rgba(244,123,59,.06) 0%,transparent 50%);
+}
+.wrap{position:relative; z-index:1}
+
+/* ─── NAV ─── */
+nav.top{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 32px; max-width:1200px; margin:0 auto;
+}
+nav.top .logo{display:flex; align-items:center; gap:10px; text-decoration:none}
+nav.top .logo img{width:34px; height:34px; object-fit:contain}
+nav.top .logo span{font-weight:800; font-size:18px; color:var(--wh); font-family:var(--ss)}
+nav.top .logo span em{color:var(--or); font-style:normal}
+nav.top .ext{
+  font-size:13px; font-weight:500; color:var(--mu); text-decoration:none;
+  display:inline-flex; align-items:center; gap:6px; padding:8px 14px;
+  border:1px solid var(--bd2); border-radius:100px; transition:all .2s;
+}
+nav.top .ext:hover{color:var(--wh); border-color:var(--or)}
+
+/* ─── HERO COVER ─── */
+#cover{
+  max-width:920px; margin:0 auto; padding:60px 32px 80px;
+  text-align:center;
+}
+#cover .pre{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--or); font-weight:700; margin-bottom:32px;
+  padding:8px 18px; border:1px solid var(--bd); border-radius:100px;
+  background:var(--or-soft);
+}
+#cover .pre .star{font-size:13px}
+#cover h1{
+  font-family:var(--sf); font-size:clamp(56px,11vw,128px);
+  line-height:.95; font-weight:400; letter-spacing:-.025em;
+  margin-bottom:28px; color:var(--wh);
+}
+#cover h1 em{color:var(--or); font-style:italic}
+#cover .sub{
+  font-size:clamp(17px,2.2vw,22px); color:var(--mu);
+  max-width:620px; margin:0 auto 36px; line-height:1.5;
+}
+#cover .sub strong{color:var(--wh); font-weight:600}
+#cover .byline{
+  font-size:13px; color:var(--mu2); letter-spacing:.05em;
+  display:inline-flex; align-items:center; gap:14px;
+  padding-top:24px; border-top:1px solid var(--bd2);
+}
+#cover .byline strong{color:var(--wh); font-weight:600}
+
+#cover .intro{
+  margin-top:60px; padding:36px 40px;
+  background:rgba(245,242,238,.03); border:1px solid var(--bd2);
+  border-radius:20px; text-align:left;
+}
+#cover .intro p{font-size:17px; color:var(--mu); line-height:1.75; margin-bottom:14px}
+#cover .intro p:last-child{margin-bottom:0}
+#cover .intro p strong{color:var(--wh); font-weight:600}
+
+/* ─── TOC ─── */
+#toc{
+  max-width:780px; margin:0 auto; padding:60px 32px 100px;
+}
+#toc .label{
+  font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--or); font-weight:700; margin-bottom:14px;
+}
+#toc h2{
+  font-family:var(--sf); font-size:clamp(36px,5vw,52px); line-height:1;
+  font-weight:400; margin-bottom:36px; color:var(--wh); letter-spacing:-.02em;
+}
+#toc ol{list-style:none; counter-reset:c}
+#toc li{
+  counter-increment:c; border-top:1px solid var(--bd2);
+  padding:22px 0; transition:all .2s;
+}
+#toc li:last-child{border-bottom:1px solid var(--bd2)}
+#toc li a{
+  display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+  text-decoration:none; color:var(--wh);
+}
+#toc li a:hover{color:var(--or)}
+#toc li a::before{
+  content:"0" counter(c); font-family:var(--sf); font-size:32px;
+  color:var(--or); flex-shrink:0; min-width:54px; font-weight:400;
+}
+#toc li .title{
+  flex:1; font-size:21px; font-weight:600; line-height:1.3;
+}
+#toc li .pages{
+  font-size:13px; color:var(--mu2); letter-spacing:.1em;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ─── CHAPTER ─── */
+.chap{
+  max-width:880px; margin:0 auto; padding:80px 32px;
+  border-top:1px solid var(--bd2);
+}
+.chap .num-block{
+  display:flex; align-items:center; gap:18px; margin-bottom:24px;
+}
+.chap .num{
+  font-family:var(--sf); font-size:96px; line-height:.85;
+  color:var(--or); font-weight:400;
+}
+.chap .num-label{
+  font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--mu); font-weight:700;
+}
+.chap h2{
+  font-family:var(--sf); font-size:clamp(38px,5.5vw,62px); line-height:1.05;
+  font-weight:400; margin-bottom:24px; color:var(--wh); letter-spacing:-.02em;
+}
+.chap h2 em{color:var(--or); font-style:italic}
+.chap .lead{
+  font-size:21px; color:var(--wh); line-height:1.5; max-width:680px;
+  margin-bottom:48px; padding-left:20px; border-left:3px solid var(--or);
+}
+.chap h3{
+  font-family:var(--ss); font-size:14px; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--or);
+  margin:48px 0 18px;
+}
+.chap p{font-size:17px; color:var(--mu); margin-bottom:18px; line-height:1.75}
+.chap p strong{color:var(--wh); font-weight:600}
+.chap ol.steps, .chap ul.steps{
+  list-style:none; counter-reset:s; margin:24px 0;
+}
+.chap ol.steps li, .chap ul.steps li{
+  counter-increment:s; padding:18px 0 18px 56px;
+  border-bottom:1px solid var(--bd2); position:relative;
+  font-size:17px; line-height:1.55;
+}
+.chap ol.steps li::before{
+  content:counter(s,decimal-leading-zero); position:absolute; left:0; top:18px;
+  font-family:var(--sf); font-size:28px; color:var(--or); font-weight:400;
+  width:42px; line-height:1;
+}
+.chap ol.steps li strong{color:var(--wh); display:block; margin-bottom:4px; font-size:18px}
+
+/* Visual figure */
+.visual{
+  margin:48px 0; padding:32px;
+  background:linear-gradient(180deg,rgba(244,123,59,.04) 0%,rgba(15,11,9,.4) 100%);
+  border:1px solid var(--bd); border-radius:20px;
+}
+.visual .v-label{
+  display:inline-block; font-size:10px; letter-spacing:.25em;
+  text-transform:uppercase; color:var(--or); font-weight:700;
+  padding:5px 12px; border:1px solid var(--bd); border-radius:100px;
+  background:var(--or-soft); margin-bottom:20px;
+}
+
+/* Case Faucheux */
+.case{
+  margin:48px 0 0; padding:28px 32px;
+  background:rgba(244,123,59,.06); border:1px solid var(--bd);
+  border-left:4px solid var(--or); border-radius:14px;
+}
+.case .ch{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:10px; letter-spacing:.25em; text-transform:uppercase;
+  color:var(--or); font-weight:700; margin-bottom:10px;
+}
+.case h4{
+  font-family:var(--sf); font-size:24px; font-weight:400;
+  color:var(--wh); margin-bottom:10px; line-height:1.2;
+}
+.case p{font-size:15px; color:var(--mu); margin:0; line-height:1.6}
+.case p strong{color:var(--wh)}
+
+/* ─── VISUAL: HEADLINE COMPARISON ─── */
+.headline-vs{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:8px}
+.hl-card{
+  background:#1a1410; border:1px solid var(--bd2); border-radius:14px;
+  padding:24px; position:relative; min-height:200px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.hl-card.bad{border-color:rgba(220,80,80,.3)}
+.hl-card.good{border-color:rgba(120,200,150,.3)}
+.hl-card .badge{
+  position:absolute; top:-10px; left:20px; padding:4px 12px;
+  font-size:10px; font-weight:700; letter-spacing:.15em;
+  text-transform:uppercase; border-radius:100px;
+}
+.hl-card.bad .badge{background:#dc5050; color:#fff}
+.hl-card.good .badge{background:#5fa478; color:#fff}
+.hl-card .text{
+  font-family:var(--sf); font-size:24px; line-height:1.15;
+  color:var(--wh); font-weight:400;
+}
+.hl-card.bad .text{color:rgba(245,242,238,.55)}
+.hl-card .notes{
+  margin-top:16px; padding-top:14px; border-top:1px dashed var(--bd2);
+  font-size:12px; color:var(--mu2); font-style:italic; line-height:1.5;
+}
+@media(max-width:600px){.headline-vs{grid-template-columns:1fr}}
+
+/* ─── VISUAL: CTA EVOLUTION ─── */
+.cta-stack{display:flex; flex-direction:column; gap:12px; margin-top:8px}
+.cta-row{
+  display:flex; align-items:center; gap:18px;
+  padding:18px 22px; background:#1a1410;
+  border:1px solid var(--bd2); border-radius:14px;
+}
+.cta-row .btn{
+  font-family:var(--ss); font-weight:700; padding:11px 22px;
+  border-radius:8px; min-width:220px; text-align:center;
+  font-size:14px; flex-shrink:0;
+}
+.cta-row.r1 .btn{background:#3a322c; color:rgba(245,242,238,.5); border:1px solid var(--bd2)}
+.cta-row.r2 .btn{background:#3a322c; color:var(--wh); border:1px solid var(--bd2)}
+.cta-row.r3 .btn{background:var(--or); color:#fff; opacity:.6}
+.cta-row.r4 .btn{background:var(--or); color:#fff; box-shadow:0 4px 18px rgba(244,123,59,.4)}
+.cta-row .why{flex:1; font-size:13px; color:var(--mu); line-height:1.5}
+.cta-row .why strong{color:var(--wh)}
+.cta-row .score{
+  font-family:var(--sf); font-size:32px; color:var(--or);
+  font-weight:400; line-height:1; flex-shrink:0;
+}
+.cta-row.r1 .score{color:rgba(220,80,80,.7)}
+.cta-row.r4 .score{color:#5fa478}
+@media(max-width:680px){
+  .cta-row{flex-wrap:wrap; gap:12px}
+  .cta-row .btn{min-width:0; width:100%}
+}
+
+/* ─── VISUAL: TESTIMONIAL ANATOMY ─── */
+.testi-anat{
+  display:grid; grid-template-columns:1fr; gap:24px; margin-top:8px;
+}
+.testi-card{
+  background:#1a1410; border:1px solid var(--bd2); border-radius:18px;
+  padding:32px; position:relative;
+}
+.testi-card .stars{color:var(--or); font-size:14px; letter-spacing:2px; margin-bottom:16px}
+.testi-card .quote{
+  font-family:var(--sf); font-size:22px; line-height:1.45;
+  color:var(--wh); font-weight:400; margin-bottom:24px; font-style:italic;
+}
+.testi-card .author{display:flex; align-items:center; gap:14px}
+.testi-card .avatar{
+  width:48px; height:48px; border-radius:50%;
+  background:linear-gradient(135deg,var(--or) 0%,#a04020 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; color:#fff; font-size:16px; flex-shrink:0;
+}
+.testi-card .meta-name{font-weight:600; font-size:15px; color:var(--wh)}
+.testi-card .meta-role{font-size:13px; color:var(--mu2)}
+.testi-card .result{
+  position:absolute; top:32px; right:32px;
+  background:var(--or); color:#fff; padding:6px 14px;
+  border-radius:100px; font-size:12px; font-weight:700;
+}
+.testi-anat .annotations{
+  font-size:13px; color:var(--mu); padding:18px 22px;
+  background:rgba(15,11,9,.5); border-left:3px solid var(--or);
+  border-radius:0 8px 8px 0;
+}
+.testi-anat .annotations strong{color:var(--or)}
+.testi-anat .annotations ul{list-style:none; padding:0; margin-top:8px}
+.testi-anat .annotations li{padding:4px 0; border-bottom:1px solid var(--bd2)}
+.testi-anat .annotations li:last-child{border:none}
+
+/* ─── VISUAL: FRICTION FUNNEL ─── */
+.funnel{display:flex; flex-direction:column; gap:6px; margin-top:8px; align-items:stretch}
+.f-step{
+  background:#1a1410; border:1px solid var(--bd2); border-radius:10px;
+  padding:18px 24px; display:flex; align-items:center; gap:18px;
+  position:relative; transition:width .3s;
+}
+.f-step .pct{
+  font-family:var(--sf); font-size:38px; color:var(--or); line-height:1;
+  font-weight:400; flex-shrink:0; min-width:80px;
+}
+.f-step .lab{flex:1}
+.f-step .lab .t{font-weight:600; color:var(--wh); font-size:15px; margin-bottom:2px}
+.f-step .lab .s{font-size:13px; color:var(--mu)}
+.f-step.s1{width:100%}
+.f-step.s2{width:88%; align-self:flex-start}
+.f-step.s3{width:60%; align-self:flex-start}
+.f-step.s4{width:35%; align-self:flex-start}
+.f-step.s5{width:18%; align-self:flex-start; background:rgba(220,80,80,.12); border-color:rgba(220,80,80,.4)}
+.f-step.s5 .pct{color:#dc5050}
+@media(max-width:600px){.f-step{width:100% !important}}
+
+/* ─── VISUAL: PRICING 3 PLANS ─── */
+.pricing-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:8px}
+.p-card{
+  background:#1a1410; border:1px solid var(--bd2); border-radius:16px;
+  padding:24px 20px; position:relative; display:flex; flex-direction:column; gap:14px;
+}
+.p-card.featured{border-color:var(--or); background:linear-gradient(180deg,rgba(244,123,59,.08) 0%,#1a1410 100%)}
+.p-card .tag{
+  position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+  background:var(--or); color:#fff; padding:4px 14px; border-radius:100px;
+  font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+}
+.p-card .name{font-size:13px; color:var(--mu); font-weight:600; letter-spacing:.05em}
+.p-card .price{font-family:var(--sf); font-size:36px; line-height:1; color:var(--wh)}
+.p-card .price .cur{font-size:22px; vertical-align:top}
+.p-card ul{list-style:none; padding:0; margin:8px 0 0; font-size:13px}
+.p-card ul li{padding:6px 0; color:var(--mu); display:flex; gap:8px; align-items:flex-start}
+.p-card ul li::before{content:'✓'; color:var(--or); font-weight:700; flex-shrink:0}
+@media(max-width:680px){.pricing-3{grid-template-columns:1fr}}
+
+/* ─── VISUAL: WIREFRAME ─── */
+.wireframe{
+  background:#1a1410; border:1px solid var(--bd2); border-radius:14px;
+  padding:18px; display:flex; flex-direction:column; gap:8px; margin-top:8px;
+}
+.wf-block{
+  border:1px dashed var(--bd2); border-radius:8px; padding:14px 18px;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13px; color:var(--mu);
+}
+.wf-block.hero{background:rgba(244,123,59,.05); border-color:var(--bd); padding:24px 18px}
+.wf-block.hero strong{color:var(--or)}
+.wf-block .order{
+  font-family:var(--sf); font-size:14px; color:var(--or); font-weight:400;
+  width:24px;
+}
+.wf-block .lab{flex:1; font-weight:600; color:var(--wh); font-size:14px}
+.wf-block .why{font-size:12px; color:var(--mu2); font-style:italic}
+
+/* ─── VISUAL: MOBILE VS DESKTOP ─── */
+.mob-vs{display:grid; grid-template-columns:1fr 2fr; gap:18px; margin-top:8px; align-items:flex-start}
+.mock-phone{
+  background:#1a1410; border:8px solid #0f0b09; border-radius:32px;
+  aspect-ratio:9/19.5; padding:14px 8px; display:flex; flex-direction:column; gap:6px;
+  box-shadow:0 0 0 1px var(--bd);
+}
+.mock-phone .top{height:18px; background:rgba(245,242,238,.06); border-radius:4px}
+.mock-phone .h1{height:30px; background:rgba(244,123,59,.15); border-radius:4px}
+.mock-phone .lines{display:flex; flex-direction:column; gap:4px}
+.mock-phone .lines span{height:6px; background:rgba(245,242,238,.07); border-radius:2px}
+.mock-phone .lines span:nth-child(2){width:75%}
+.mock-phone .btn{height:32px; background:var(--or); border-radius:6px; margin-top:auto}
+.mock-desk{
+  background:#1a1410; border:8px solid #0f0b09; border-radius:14px;
+  aspect-ratio:16/10; padding:14px; display:flex; flex-direction:column; gap:8px;
+  box-shadow:0 0 0 1px var(--bd);
+}
+.mock-desk .top{display:flex; gap:6px}
+.mock-desk .top span{height:8px; background:rgba(245,242,238,.06); border-radius:2px; flex:1}
+.mock-desk .top span:first-child{flex:0 0 80px; background:rgba(244,123,59,.2)}
+.mock-desk .body{flex:1; display:grid; grid-template-columns:2fr 1fr; gap:10px}
+.mock-desk .col1{background:rgba(245,242,238,.04); border-radius:6px; padding:14px; display:flex; flex-direction:column; gap:8px}
+.mock-desk .col1 .h{height:22px; background:rgba(244,123,59,.2); border-radius:3px}
+.mock-desk .col1 .t{height:8px; background:rgba(245,242,238,.07); border-radius:2px}
+.mock-desk .col2{background:rgba(245,242,238,.06); border-radius:6px}
+.mob-vs .stat{
+  text-align:center; margin-top:18px; padding:16px;
+  background:rgba(244,123,59,.06); border:1px solid var(--bd);
+  border-radius:12px;
+}
+.mob-vs .stat .n{font-family:var(--sf); font-size:42px; color:var(--or); line-height:1; font-weight:400}
+.mob-vs .stat .l{font-size:12px; color:var(--mu); margin-top:4px}
+@media(max-width:680px){.mob-vs{grid-template-columns:1fr}}
+
+/* ─── CHECKLIST ─── */
+#checklist{
+  max-width:880px; margin:80px auto 0; padding:80px 32px;
+  border-top:1px solid var(--bd2);
+}
+#checklist .pre{
+  display:inline-block; font-size:11px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--or); font-weight:700;
+  padding:8px 18px; border:1px solid var(--bd); border-radius:100px;
+  background:var(--or-soft); margin-bottom:24px;
+}
+#checklist h2{
+  font-family:var(--sf); font-size:clamp(38px,5.5vw,62px); line-height:1.05;
+  font-weight:400; margin-bottom:24px; color:var(--wh); letter-spacing:-.02em;
+}
+#checklist h2 em{color:var(--or); font-style:italic}
+#checklist .desc{font-size:18px; color:var(--mu); margin-bottom:42px; max-width:580px}
+#checklist .grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:36px;
+}
+.check-group h3{
+  font-family:var(--ss); font-size:14px; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--or);
+  margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--bd);
+}
+.check-group ul{list-style:none}
+.check-group li{
+  display:flex; gap:12px; padding:10px 0; font-size:14px;
+  color:var(--wh); line-height:1.45; border-bottom:1px solid var(--bd2);
+}
+.check-group li::before{
+  content:''; width:16px; height:16px; border:1.5px solid var(--or);
+  border-radius:4px; flex-shrink:0; margin-top:2px;
+}
+@media(max-width:680px){#checklist .grid{grid-template-columns:1fr}}
+
+/* ─── OUTRO ─── */
+#outro{
+  max-width:880px; margin:80px auto 0; padding:100px 32px 80px;
+  border-top:1px solid var(--bd2); text-align:center;
+}
+#outro .pre{
+  display:inline-block; font-size:11px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--or); font-weight:700; margin-bottom:24px;
+}
+#outro h2{
+  font-family:var(--sf); font-size:clamp(40px,6vw,72px); line-height:1.05;
+  font-weight:400; margin-bottom:28px; color:var(--wh); letter-spacing:-.02em;
+}
+#outro h2 em{color:var(--or); font-style:italic}
+#outro p{font-size:18px; color:var(--mu); max-width:540px; margin:0 auto 40px}
+#outro .cta{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--or); color:#fff; font-weight:700;
+  padding:18px 32px; border-radius:100px; font-size:16px;
+  text-decoration:none; transition:all .2s;
+  box-shadow:0 4px 22px rgba(244,123,59,.3);
+}
+#outro .cta:hover{background:var(--or2); transform:translateY(-2px); box-shadow:0 8px 32px rgba(244,123,59,.5)}
+#outro .sig{
+  margin-top:64px; padding-top:32px; border-top:1px solid var(--bd2);
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  font-size:13px; color:var(--mu2);
+}
+#outro .sig .star{color:var(--or)}
+
+/* ─── PRINT (PDF) ─── */
+@media print{
+  @page{size:A4; margin:18mm 16mm}
+  html,body{background:#fff; color:#0f0b09}
+  body::before{display:none}
+  nav.top{display:none}
+  #cover{padding:20mm 0; page-break-after:always}
+  #cover h1{color:#0f0b09; font-size:64pt}
+  #cover h1 em{color:#F47B3B}
+  #cover .sub{color:#444}
+  #cover .intro{background:#f5f2ee; border-color:#ddd}
+  #cover .intro p{color:#333}
+  #cover .intro p strong{color:#0f0b09}
+  #toc{padding:0; page-break-after:always}
+  #toc h2,.chap h2,.chap h3,#checklist h2,#outro h2{color:#0f0b09}
+  #toc li{border-color:#ddd}
+  #toc li a{color:#0f0b09}
+  #toc li a::before{color:#F47B3B}
+  .chap{page-break-before:always; padding:10mm 0}
+  .chap .num{color:#F47B3B}
+  .chap .lead{color:#0f0b09; border-color:#F47B3B}
+  .chap p{color:#333}
+  .chap p strong{color:#0f0b09}
+  .chap ol.steps li{border-color:#ddd}
+  .chap ol.steps li::before{color:#F47B3B}
+  .visual{background:#f5f2ee; border-color:#ddd; page-break-inside:avoid}
+  .case{background:#fef3e8; border-color:#F47B3B; page-break-inside:avoid}
+  .case h4{color:#0f0b09}
+  .case p{color:#333}
+  .hl-card,.cta-row,.testi-card,.f-step,.p-card,.wireframe,.mock-phone,.mock-desk{
+    background:#fff; border:1px solid #ddd; color:#0f0b09;
+  }
+  .hl-card .text,.testi-card .quote,.cta-row .why,.cta-row .why strong{color:#0f0b09}
+  .check-group h3{color:#F47B3B; border-color:#F47B3B}
+  .check-group li{color:#0f0b09; border-color:#eee}
+  #checklist{page-break-before:always}
+  #outro{page-break-before:always}
+  #outro p{color:#333}
+  #outro .cta{background:#F47B3B; color:#fff; box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="top">
+  <a href="https://openshore.eu" class="logo">
+    <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png" alt="Openshore">
+    <span>Open<em>shore</em></span>
+  </a>
+  <a href="https://openshore.eu" class="ext">openshore.eu →</a>
+</nav>
+
+<!-- ═══ COVER ═══ -->
+<section id="cover">
+  <div class="pre"><span class="star">✦</span> Le Guide Openshore</div>
+  <h1>Le Site<br><em>Qui Vend.</em></h1>
+  <p class="sub">7 décisions de design qui font la différence entre un site qui ramène des leads et <strong>un brochure web qui dort.</strong></p>
+  <div class="byline">
+    <span>Par <strong>Nohlan Pounga</strong></span>
+    <span>·</span>
+    <span>Openshore</span>
+    <span>·</span>
+    <span>Mai 2026</span>
+  </div>
+
+  <div class="intro">
+    <p><strong>90% des sites de PME ne convertissent pas.</strong> C'est pas une question de talent, de design, ni de budget — c'est 7 décisions qu'on prend mal.</p>
+    <p>Sur les 60+ projets qu'on a livrés chez Openshore, on a vu les mêmes 7 erreurs revenir. Toujours. Sur tous les secteurs. Une fois corrigées, les sites doublent leurs ventes en 90 jours (cas Faucheux Wines, Sept→Déc 2025).</p>
+    <p>Ce guide te donne <strong>les 7 fondamentaux</strong>, pourquoi ils comptent, et comment les appliquer à ton site dès cette semaine. Pas de théorie, pas de fluff. Juste ce qui marche.</p>
+  </div>
+</section>
+
+<!-- ═══ TOC ═══ -->
+<section id="toc">
+  <div class="label">Au sommaire</div>
+  <h2>Les 7 fondamentaux.</h2>
+  <ol>
+    <li><a href="#chap-1"><span class="title">La promesse en 3 secondes</span><span class="pages">3 min</span></a></li>
+    <li><a href="#chap-2"><span class="title">Le bouton qui vend</span><span class="pages">2 min</span></a></li>
+    <li><a href="#chap-3"><span class="title">La preuve qui rassure</span><span class="pages">2 min</span></a></li>
+    <li><a href="#chap-4"><span class="title">La friction qui tue</span><span class="pages">2 min</span></a></li>
+    <li><a href="#chap-5"><span class="title">Le pricing qui ferme</span><span class="pages">2 min</span></a></li>
+    <li><a href="#chap-6"><span class="title">La structure qui guide</span><span class="pages">2 min</span></a></li>
+    <li><a href="#chap-7"><span class="title">Le mobile qui convertit</span><span class="pages">2 min</span></a></li>
+  </ol>
+</section>
+
+<!-- ═══ CHAPITRE 1 — HEADLINE ═══ -->
+<article class="chap" id="chap-1">
+  <div class="num-block">
+    <div class="num">01</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>La promesse en <em>3 secondes.</em></h2>
+  <p class="lead">Le headline de ta home détermine 80% de la réussite de ton site. Si le visiteur ne comprend pas ce que tu fais en 3 secondes, il part. Définitif.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Le visiteur arrive sur ta page. Il a déjà 7 onglets ouverts. Son cerveau cherche <strong>une raison de rester</strong>, pas une raison de partir. Si ton headline est générique ("Bienvenue sur notre site", "Qualité et expertise depuis 2010"), il n'a aucune raison de scroller. Tu as perdu avant même d'avoir commencé.</p>
+  <p>Les chiffres : <strong>55% des visiteurs passent moins de 15 secondes sur une page</strong> (étude Chartbeat 2024). De ces 15 secondes, les 3 premières décident s'ils restent ou non.</p>
+
+  <h3>Les 3 critères d'un headline qui vend</h3>
+  <ol class="steps">
+    <li><strong>QUI tu sers (audience claire).</strong> Pas "tout le monde". Une personne précise qui se reconnaît instantanément.</li>
+    <li><strong>QUOI tu fais (action concrète).</strong> Pas "accompagnement", pas "expertise". Un verbe d'action que ta grand-mère comprend.</li>
+    <li><strong>QUEL résultat (bénéfice mesurable).</strong> Pas "performance" ou "succès". Un chiffre, une transformation, un délai.</li>
+  </ol>
+
+  <figure class="visual">
+    <div class="v-label">Exemple : Avant / Après</div>
+    <div class="headline-vs">
+      <div class="hl-card bad">
+        <div class="badge">Avant</div>
+        <div class="text">"Bienvenue sur notre site. Qualité et expertise depuis 2010."</div>
+        <div class="notes">→ 0 audience identifiée · 0 action concrète · 0 résultat. Le visiteur ne sait pas si c'est pour lui.</div>
+      </div>
+      <div class="hl-card good">
+        <div class="badge">Après</div>
+        <div class="text">"Pour les PME en croissance : un site qui convertit en 7 jours, dès 470€."</div>
+        <div class="notes">→ Audience (PME en croissance) · Action (site qui convertit) · Résultat (7 jours / 470€). Décision possible en 3 secondes.</div>
+      </div>
+    </div>
+  </figure>
+
+  <aside class="case">
+    <div class="ch">✦ Cas Faucheux Wines</div>
+    <h4>De "Cave familiale depuis 1985" à "Découvrez nos cuvées rares à prix juste, livrées sous 48h"</h4>
+    <p>Avant : headline générique sur l'historique. Après : promesse claire (cuvées rares, prix juste, livraison 48h). <strong>Résultat : +35% de panier moyen en 90 jours.</strong></p>
+  </aside>
+</article>
+
+<!-- ═══ CHAPITRE 2 — CTA ═══ -->
+<article class="chap" id="chap-2">
+  <div class="num-block">
+    <div class="num">02</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>Le bouton <em>qui vend.</em></h2>
+  <p class="lead">Le CTA est le seul vrai métrique de ton site. Si ton bouton dit "En savoir plus" ou "Contactez-nous", t'as déjà perdu 60% de ton potentiel.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Tout ton site existe pour amener à une action : remplir un formulaire, prendre un RDV, acheter. Le bouton CTA est la passerelle. Sa <strong>copy, sa couleur, sa position et sa fréquence</strong> déterminent si le visiteur passe à l'action ou pas.</p>
+  <p>Erreur classique : un bouton "En savoir plus" ne dit ni ce qu'on va apprendre, ni ce qui se passe au clic. Le cerveau du visiteur n'a aucune raison de cliquer. Inverse : "Réserver mon appel offert (15 min)" — promesse précise + bénéfice + format clair.</p>
+
+  <h3>L'évolution d'un CTA, du nul au surconvertissant</h3>
+  <figure class="visual">
+    <div class="v-label">Le scoring CTA Openshore</div>
+    <div class="cta-stack">
+      <div class="cta-row r1">
+        <div class="btn">En savoir plus</div>
+        <div class="why">Vague. Aucune promesse, aucun bénéfice. <strong>Le visiteur ne sait pas où il atterrit.</strong></div>
+        <div class="score">1/10</div>
+      </div>
+      <div class="cta-row r2">
+        <div class="btn">Contactez-nous</div>
+        <div class="why">Passif. Demande au visiteur de produire l'effort. <strong>Sentiment de friction.</strong></div>
+        <div class="score">3/10</div>
+      </div>
+      <div class="cta-row r3">
+        <div class="btn">Demander un devis</div>
+        <div class="why">Clair, mais lourd. <strong>"Devis" = engagement, négociation, peur du prix.</strong></div>
+        <div class="score">6/10</div>
+      </div>
+      <div class="cta-row r4">
+        <div class="btn">Réserver mon appel offert (15 min)</div>
+        <div class="why">Action précise + bénéfice (offert) + format rassurant (15 min). <strong>Le visiteur sait exactement ce qui se passe.</strong></div>
+        <div class="score">9/10</div>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Les 4 règles d'un CTA qui convertit</h3>
+  <ol class="steps">
+    <li><strong>1ère personne, verbe d'action.</strong> "Réserver mon..." > "Cliquez ici". Le possessif crée l'appropriation.</li>
+    <li><strong>Bénéfice ou format dans la copy.</strong> "Offert", "gratuit", "15 min", "sans engagement" — tout ce qui réduit la friction.</li>
+    <li><strong>Sticky sur mobile.</strong> Le visiteur scrolle. Le CTA doit le suivre. Bouton fixe en bas d'écran sur mobile = +40% de clics.</li>
+    <li><strong>Une seule action principale par page.</strong> Si tu mets 3 CTAs différents, tu en perds 2. Choisis et répète.</li>
+  </ol>
+</article>
+
+<!-- ═══ CHAPITRE 3 — PREUVE ═══ -->
+<article class="chap" id="chap-3">
+  <div class="num-block">
+    <div class="num">03</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>La preuve <em>qui rassure.</em></h2>
+  <p class="lead">88% des acheteurs B2B lisent les témoignages avant de te contacter. Si t'en as 0 ou si t'as 3 quotes anonymes au fond de la page, t'es perçu comme amateur.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Acheter c'est risquer. Surtout en B2B. Le visiteur se demande : <strong>"Est-ce que ces gens livrent vraiment ce qu'ils promettent ?"</strong> La preuve sociale répond à cette question avant même qu'elle soit posée. Sans preuve, ton headline le plus brillant est juste une promesse de plus.</p>
+  <p>Les témoignages les plus puissants ne sont pas "Super travail, je recommande !". Ce sont ceux qui <strong>citent un résultat chiffré, mentionnent une objection levée, ou racontent une transformation.</strong></p>
+
+  <h3>L'anatomie d'un témoignage qui convertit</h3>
+  <figure class="visual">
+    <div class="v-label">À reproduire pour chaque cas client</div>
+    <div class="testi-anat">
+      <div class="testi-card">
+        <div class="result">+200% ventes / 90j</div>
+        <div class="stars">★★★★★</div>
+        <div class="quote">"Au début j'étais sceptique sur le prix. Mais le site a doublé mes ventes en 90 jours. Le ROI s'est fait en 6 semaines, le reste c'est du bénéfice."</div>
+        <div class="author">
+          <div class="avatar">J</div>
+          <div>
+            <div class="meta-name">Jean Faucheux</div>
+            <div class="meta-role">Caviste, Faucheux Wines · Vouvray</div>
+          </div>
+        </div>
+      </div>
+      <div class="annotations">
+        <strong>Ce qui rend ce témoignage puissant :</strong>
+        <ul>
+          <li>1. <strong>Photo + nom + rôle + entreprise + ville</strong> = vrai humain identifiable</li>
+          <li>2. <strong>Résultat chiffré au-dessus du fold</strong> (+200% / 90j) = preuve immédiate</li>
+          <li>3. <strong>Objection levée</strong> ("au début sceptique sur le prix") = répond à la peur du visiteur</li>
+          <li>4. <strong>Transformation racontée</strong> = pas juste "satisfait", un avant/après concret</li>
+        </ul>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Les 3 erreurs qui tuent ta preuve</h3>
+  <ol class="steps">
+    <li><strong>Témoignage anonyme</strong> ("Marie D., entrepreneure"). Sans photo et sans entreprise, c'est perçu comme inventé. Pire que pas de témoignage.</li>
+    <li><strong>Section "Ils nous font confiance" en bas de page.</strong> Si tu mets tes proofs après ton offre, c'est trop tard. Ils doivent être <strong>au-dessus du fold</strong> ou juste après le hero.</li>
+    <li><strong>Quotes vides</strong> ("Super travail, je recommande !"). Demande à tes clients : <em>"Quel résultat chiffré tu peux partager ? Quelle objection tu avais avant ?"</em></li>
+  </ol>
+</article>
+
+<!-- ═══ CHAPITRE 4 — FRICTION ═══ -->
+<article class="chap" id="chap-4">
+  <div class="num-block">
+    <div class="num">04</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>La friction <em>qui tue.</em></h2>
+  <p class="lead">À chaque étape, tu perds des gens. C'est inévitable. Le job c'est de réduire la perte au minimum — chaque champ supplémentaire dans ton formulaire = -11% de conversion.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Le visiteur veut le résultat, pas le processus. Chaque clic supplémentaire, chaque champ obligatoire, chaque seconde de chargement = autant de raisons d'abandonner. Et il abandonne. Sans même se rendre compte qu'il abandonne.</p>
+  <p>Les chiffres sont brutaux : <strong>1 seconde de chargement en plus = -7% de conversion</strong> (étude Akamai). Un formulaire qui passe de 3 à 5 champs perd 25% des soumissions. Demander un numéro de téléphone fait fuir 37% des visiteurs B2B.</p>
+
+  <h3>Le funnel de friction d'un site moyen</h3>
+  <figure class="visual">
+    <div class="v-label">Drop-off à chaque étape</div>
+    <div class="funnel">
+      <div class="f-step s1">
+        <div class="pct">100%</div>
+        <div class="lab">
+          <div class="t">Arrive sur la page</div>
+          <div class="s">Ton trafic total</div>
+        </div>
+      </div>
+      <div class="f-step s2">
+        <div class="pct">88%</div>
+        <div class="lab">
+          <div class="t">Voit le CTA</div>
+          <div class="s">-12% si CTA en bas / sous le fold</div>
+        </div>
+      </div>
+      <div class="f-step s3">
+        <div class="pct">60%</div>
+        <div class="lab">
+          <div class="t">Clique le CTA</div>
+          <div class="s">-28% si copy floue ("En savoir plus")</div>
+        </div>
+      </div>
+      <div class="f-step s4">
+        <div class="pct">35%</div>
+        <div class="lab">
+          <div class="t">Remplit le champ 1</div>
+          <div class="s">-25% si formulaire long visible</div>
+        </div>
+      </div>
+      <div class="f-step s5">
+        <div class="pct">18%</div>
+        <div class="lab">
+          <div class="t">Soumet le formulaire</div>
+          <div class="s">-17% par champ obligatoire au-delà de 3</div>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Les 4 sources de friction à éliminer</h3>
+  <ol class="steps">
+    <li><strong>Vitesse mobile.</strong> Si ta home charge en >2s sur 4G, t'as déjà perdu 30% du trafic mobile. Outil : Google PageSpeed.</li>
+    <li><strong>Champs de formulaire en trop.</strong> Garde 2-3 max au début (email + prénom). Le téléphone, l'entreprise = à la 2e étape, après l'engagement.</li>
+    <li><strong>Demander des infos pas nécessaires.</strong> "Comment vous nous avez connu ?", "Taille de votre équipe ?" = à virer. Les questions inutiles flinguent ta conversion.</li>
+    <li><strong>Pop-ups intrusifs.</strong> Newsletter pop-up qui s'ouvre 2s après l'arrivée = perçu comme du spam, -22% temps passé.</li>
+  </ol>
+</article>
+
+<!-- ═══ CHAPITRE 5 — PRICING ═══ -->
+<article class="chap" id="chap-5">
+  <div class="num-block">
+    <div class="num">05</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>Le pricing <em>qui ferme.</em></h2>
+  <p class="lead">Cacher tes prix = perdre 65% des prospects qualifiés. Ils partent voir tes concurrents qui les affichent. Pricing visible = filtre qui qualifie automatiquement.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Croyance fausse : "Si je cache mes prix, j'aurai plus de leads à qualifier au téléphone." Réalité : la majorité de tes leads <strong>ne te contactera jamais</strong> parce qu'elle veut filtrer rapidement. Ils iront voir 3 concurrents, choisir ceux qui affichent les prix, et tu rates le shortlist.</p>
+  <p>Les prix affichés font <strong>3 jobs</strong> en même temps : ils <em>filtrent</em> les leads non qualifiés (gain de temps), ils <em>ancrent</em> ta valeur perçue, et ils <em>signalent</em> que t'as confiance dans ton offre.</p>
+
+  <h3>Le pricing à 3 plans qui maximise la valeur perçue</h3>
+  <figure class="visual">
+    <div class="v-label">Anatomie pricing — exemple Openshore</div>
+    <div class="pricing-3">
+      <div class="p-card">
+        <div class="name">BASIC</div>
+        <div class="price"><span class="cur">€</span>470</div>
+        <ul>
+          <li>Site one-page sur mesure</li>
+          <li>Mobile-first responsive</li>
+          <li>Livraison 7 jours</li>
+          <li>1 révision incluse</li>
+        </ul>
+      </div>
+      <div class="p-card featured">
+        <div class="tag">Le + choisi</div>
+        <div class="name">PREMIUM</div>
+        <div class="price"><span class="cur">€</span>770</div>
+        <ul>
+          <li>Tout du Basic +</li>
+          <li>Up to 5 sections sur mesure</li>
+          <li>SEO de base inclus</li>
+          <li>Calendly + formulaire</li>
+          <li>3 révisions incluses</li>
+        </ul>
+      </div>
+      <div class="p-card">
+        <div class="name">SUR MESURE</div>
+        <div class="price"><span class="cur">€</span>1970</div>
+        <ul>
+          <li>Tout du Premium +</li>
+          <li>Multi-pages illimité</li>
+          <li>Intégrations Stripe / Calendly</li>
+          <li>SEO complet + AEO</li>
+          <li>Révisions illimitées</li>
+        </ul>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Les 3 leviers pricing les plus sous-utilisés</h3>
+  <ol class="steps">
+    <li><strong>L'ancrage par le plan le plus cher.</strong> Mets ton plan le plus cher en 1er ou en 3e. Il rend les autres "raisonnables".</li>
+    <li><strong>Le plan recommandé visuellement distingué.</strong> Bordure colorée, badge "Le + choisi", légèrement plus grand. Sans ça, 70% choisissent le moins cher.</li>
+    <li><strong>La garantie ou le remboursement.</strong> Une phrase ("Garantie remboursement si pas satisfait sous 14j") = +28% de conversion. Tu pénalises pas tes ventes, tu rassures les indécis.</li>
+  </ol>
+
+  <aside class="case">
+    <div class="ch">✦ Cas Openshore</div>
+    <h4>Le passage de "Devis sur mesure" à 3 plans visibles a multiplié les demandes par 3,2</h4>
+    <p>Avant : "Devis sur mesure, contactez-nous". Après : 3 plans (470€ / 770€ / 1970€) visibles dès le hero. <strong>Résultat : +220% de demandes qualifiées sur 60 jours.</strong> Et 0 perte de marge — au contraire, le panier moyen est passé de 600€ à 870€ grâce à l'ancrage.</p>
+  </aside>
+</article>
+
+<!-- ═══ CHAPITRE 6 — STRUCTURE ═══ -->
+<article class="chap" id="chap-6">
+  <div class="num-block">
+    <div class="num">06</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>La structure <em>qui guide.</em></h2>
+  <p class="lead">L'ordre des sections sur ta page n'est pas optionnel. C'est lui qui détermine si le visiteur arrive jusqu'à l'action ou s'il abandonne en route.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Une page web n'est pas un magazine — on ne la feuillette pas dans n'importe quel ordre. C'est <strong>un parcours linéaire avec une logique de persuasion</strong> : tu accroches, tu prouves, tu démontres, tu rassures, tu fermes. Si tu mets la FAQ avant l'offre ou les témoignages après le pricing, tu casses le rythme et tu perds.</p>
+
+  <h3>L'ordre Openshore qui marche sur 90% des sites B2B</h3>
+  <figure class="visual">
+    <div class="v-label">Wireframe : ordre des sections d'une homepage qui convertit</div>
+    <div class="wireframe">
+      <div class="wf-block hero">
+        <div class="order">01</div>
+        <div class="lab"><strong>HERO</strong> — Headline + sous-titre + CTA principal + visuel</div>
+        <div class="why">Promesse en 3s</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">02</div>
+        <div class="lab">PROOF</div>
+        <div class="why">Logos clients / chiffre marquant immédiat</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">03</div>
+        <div class="lab">BÉNÉFICES (3-4 max)</div>
+        <div class="why">Pour qui c'est fait + ce que ça change</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">04</div>
+        <div class="lab">CAS CLIENT (1 détaillé)</div>
+        <div class="why">Avant/après chiffré, pas un quote</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">05</div>
+        <div class="lab">OFFRE / PRICING</div>
+        <div class="why">3 plans visibles, plan recommandé highlighted</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">06</div>
+        <div class="lab">TÉMOIGNAGES (3-5)</div>
+        <div class="why">Photo + résultat chiffré + objection levée</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">07</div>
+        <div class="lab">FAQ</div>
+        <div class="why">5-8 questions qui répondent aux objections</div>
+      </div>
+      <div class="wf-block">
+        <div class="order">08</div>
+        <div class="lab">CTA FINAL</div>
+        <div class="why">Le même que le hero, dernière chance</div>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Les 3 erreurs de structure les plus courantes</h3>
+  <ol class="steps">
+    <li><strong>"À propos" en haut.</strong> Personne ne vient sur ton site pour lire ton histoire. Mets-le en bas ou sur une page séparée.</li>
+    <li><strong>Pricing en fin de page.</strong> Les visiteurs scrollent jusqu'au prix. Si tu le caches, ils partent. Pricing dans le 1er tiers de la page.</li>
+    <li><strong>Trop de sections.</strong> Au-delà de 8 sections, l'attention décroche. Si tu hésites entre 9 et 8 sections, c'est 8.</li>
+  </ol>
+</article>
+
+<!-- ═══ CHAPITRE 7 — MOBILE ═══ -->
+<article class="chap" id="chap-7">
+  <div class="num-block">
+    <div class="num">07</div>
+    <div class="num-label">Fondamental</div>
+  </div>
+  <h2>Le mobile <em>qui convertit.</em></h2>
+  <p class="lead">75% du trafic vient du mobile. Mais 95% des sites sont d'abord pensés desktop, puis "adaptés mobile". C'est l'inverse qu'il faut faire.</p>
+
+  <h3>Pourquoi c'est fondamental</h3>
+  <p>Sur mobile, la conversion moyenne d'un site est <strong>2,5× inférieure au desktop</strong>. Pourquoi ? Parce que la quasi-totalité des sites est designée d'abord pour desktop, et le mobile est une réflexion après-coup. Les boutons sont trop petits, le texte trop dense, le scroll infini.</p>
+  <p>Un site mobile-first n'est pas un site desktop rétréci. C'est un site <strong>conçu pour un pouce qui scrolle</strong>, des sections courtes, et des CTAs gigantesques.</p>
+
+  <figure class="visual">
+    <div class="v-label">Mobile-first vs Desktop-first</div>
+    <div class="mob-vs">
+      <div>
+        <div class="mock-phone">
+          <div class="top"></div>
+          <div class="h1"></div>
+          <div class="lines">
+            <span></span><span></span>
+          </div>
+          <div class="btn"></div>
+        </div>
+        <div class="stat">
+          <div class="n">75%</div>
+          <div class="l">du trafic est mobile</div>
+        </div>
+      </div>
+      <div>
+        <div class="mock-desk">
+          <div class="top">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="body">
+            <div class="col1">
+              <div class="h"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
+            </div>
+            <div class="col2"></div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="n">2,5×</div>
+          <div class="l">moins de conversion sur mobile que sur desktop pour les sites desktop-first</div>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Les 5 règles du mobile qui convertit</h3>
+  <ol class="steps">
+    <li><strong>Boutons gros, espacés, sticky.</strong> Min 48×48px (taille du pouce). Le CTA principal est fixé en bas d'écran.</li>
+    <li><strong>Sections courtes, 1 idée par écran.</strong> Pas de paragraphes denses. Des phrases courtes, des sauts visuels.</li>
+    <li><strong>Charge en moins de 2s sur 4G.</strong> Compresse les images (WebP), pas de JS lourd au-dessus du fold.</li>
+    <li><strong>Pas de menu burger pour les CTAs critiques.</strong> Le téléphone, le devis, l'achat — visibles direct, pas cachés dans un menu.</li>
+    <li><strong>Texte minimum 16px.</strong> En dessous, illisible sur mobile. La typographie devient critique.</li>
+  </ol>
+</article>
+
+<!-- ═══ CHECKLIST ═══ -->
+<section id="checklist">
+  <div class="pre">✦ Bonus : Checklist 25 critères</div>
+  <h2>Mon site <em>convertit-il ?</em></h2>
+  <p class="desc">Coche chaque case que ton site valide. Si tu coches moins de 18/25, ton site sous-performe — et c'est probablement réparable en 1 semaine.</p>
+
+  <div class="grid">
+    <div class="check-group">
+      <h3>Hero & Headline</h3>
+      <ul>
+        <li>Mon headline dit QUI je sers en 3 secondes</li>
+        <li>Mon headline contient un bénéfice mesurable</li>
+        <li>Mon CTA principal est visible sans scroller</li>
+        <li>Mon hero a un visuel qui supporte le message (pas décoratif)</li>
+        <li>Mon site charge en moins de 2 secondes sur mobile</li>
+      </ul>
+    </div>
+    <div class="check-group">
+      <h3>CTA & Bouton</h3>
+      <ul>
+        <li>Mon CTA principal commence par un verbe d'action</li>
+        <li>Mon CTA contient un bénéfice ou un format ("offert", "15 min")</li>
+        <li>Mon CTA est sticky en bas d'écran sur mobile</li>
+        <li>J'ai 1 seul CTA principal répété (pas 3 différents)</li>
+      </ul>
+    </div>
+    <div class="check-group">
+      <h3>Preuve & Témoignages</h3>
+      <ul>
+        <li>J'ai au moins 3 témoignages visibles dans le 1er tiers de la page</li>
+        <li>Chaque témoignage a une photo, un nom et un rôle</li>
+        <li>Au moins 2 témoignages contiennent un résultat chiffré</li>
+        <li>J'ai au moins 1 cas client détaillé (avant/après)</li>
+      </ul>
+    </div>
+    <div class="check-group">
+      <h3>Pricing & Offre</h3>
+      <ul>
+        <li>Mes prix sont visibles (pas "devis sur mesure")</li>
+        <li>J'ai 3 plans avec un plan recommandé highlighted</li>
+        <li>J'ai une garantie ou un essai sans risque visible</li>
+      </ul>
+    </div>
+    <div class="check-group">
+      <h3>Friction & Formulaire</h3>
+      <ul>
+        <li>Mon formulaire principal a 3 champs ou moins</li>
+        <li>Je ne demande pas de numéro de téléphone obligatoire</li>
+        <li>Pas de pop-up dans les 5 premières secondes</li>
+        <li>Mon site fonctionne sans erreur sur Safari mobile</li>
+      </ul>
+    </div>
+    <div class="check-group">
+      <h3>Structure & Mobile</h3>
+      <ul>
+        <li>Mes sections sont dans l'ordre : hero → proof → bénéfices → offre → témoignages → FAQ → CTA</li>
+        <li>J'ai entre 6 et 8 sections (pas plus)</li>
+        <li>Mes textes font 16px minimum</li>
+        <li>Mes boutons font 48px de hauteur minimum</li>
+        <li>Le site est testable et convertissant sur iPhone SE (le plus petit)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTRO ═══ -->
+<section id="outro">
+  <div class="pre">✦ Si tu veux qu'on s'en occupe</div>
+  <h2>Tu sais maintenant <em>quoi faire.</em></h2>
+  <p>Si tu veux qu'on l'applique à ton site sans perdre 3 mois à apprendre, on livre des sites qui convertissent en 7 jours, à partir de 470€. Garantie remboursement.</p>
+  <a href="https://openshore.eu" class="cta">Voir l'offre Openshore →</a>
+  <div class="sig">
+    <span class="star">✦</span>
+    <span>Le Site Qui Vend · Openshore · Mai 2026 · Par Nohlan Pounga</span>
+    <span class="star">✦</span>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
