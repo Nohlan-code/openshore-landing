@@ -124,12 +124,14 @@ function buildEmailHtml({ greeting, guideUrl, pdfUrl }) {
   <tr>
     <td align="center">
       <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(15,11,9,.08);">
-        <!-- Header noir -->
+        <!-- Header noir avec logo -->
         <tr>
-          <td style="background:#0f0b09; padding:28px 32px; text-align:center;">
-            <div style="font-size:18px; font-weight:800; color:#f5f2ee; letter-spacing:-.01em;">
-              Open<span style="color:#F47B3B;">shore</span>
-            </div>
+          <td style="background:#0f0b09; padding:32px 32px; text-align:center;">
+            <img src="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Blanc.png"
+                 alt="Openshore"
+                 width="160"
+                 height="auto"
+                 style="display:inline-block; max-width:160px; height:auto; border:0; outline:none; text-decoration:none;">
           </td>
         </tr>
         <!-- Body -->
