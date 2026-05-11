@@ -39,8 +39,11 @@ body{
   font-family:var(--ss); line-height:1.6; font-size:17px;
   min-height:100vh; min-height:100dvh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding:32px 24px;
+  padding:110px 24px 70px;
   position:relative; overflow-x:hidden;
+}
+@media(max-height:780px){
+  body{justify-content:flex-start; padding-top:100px}
 }
 
 /* Halo orange centré derrière */
