@@ -32,6 +32,8 @@
     }
   ],
   "rewrites": [
-    {"source": "/recrutement", "destination": "/"}
+    {"source": "/recrutement", "destination": "/"},
+    {"source": "/guide", "destination": "/guide.html"},
+    {"source": "/guide-contenu", "destination": "/guide-contenu.html"}
   ]
 }
