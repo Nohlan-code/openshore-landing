@@ -203,7 +203,14 @@
 <script>
 (function () {
   const STORAGE_KEY = 'os_insights_secret';
-  let secret = localStorage.getItem(STORAGE_KEY) || new URL(location.href).searchParams.get('key') || '';
+  const stored = localStorage.getItem(STORAGE_KEY);
+  const fromUrl = new URL(location.href).searchParams.get('key');
+  let secret = stored || fromUrl || '';
+  // If key came from URL, persist it now and clean the URL so it doesn't stay in history
+  if (!stored && fromUrl) {
+    try { localStorage.setItem(STORAGE_KEY, fromUrl); } catch (e) {}
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+  }
   const charts = {};
 
   // ─── Safe DOM helpers ───────────────────────
