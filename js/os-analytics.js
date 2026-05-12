@@ -24,6 +24,21 @@
       return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
     });
 
+  // SHA-256 hex via SubtleCrypto (built-in, no dependency, ~10ms)
+  async function sha256(text) {
+    if (!text || !window.crypto || !window.crypto.subtle) return null;
+    try {
+      const data = new TextEncoder().encode(String(text));
+      const hash = await window.crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, '0')).join('');
+    } catch (e) { return null; }
+  }
+
+  // Meta Pixel data normalization (per Meta CAPI docs)
+  const normalizeEmail = (s) => (s || '').trim().toLowerCase();
+  const normalizeName = (s) => (s || '').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const normalizePhone = (s) => (s || '').replace(/\D/g, '');
+
   const getDistinctId = () => {
     let id = localStorage.getItem(DISTINCT_ID_KEY);
     if (!id) {
@@ -504,7 +519,49 @@
         form_id: form.id || form.name || 'unknown',
         action: form.action || null,
       });
+      // Meta Advanced Matching: hash user data + fire Lead event when applicable
+      enrichMetaFromForm(form).catch(() => {});
     });
+  }
+
+  // Extract form fields, SHA-256 hash them, re-init fbq with Advanced Matching params,
+  // then fire Meta Lead event. Lifts Match Quality from ~5/10 to ~8/10.
+  async function enrichMetaFromForm(form) {
+    if (!window.fbq || !cfg.metaPixelId || !consent.grantedFor('marketing')) return;
+
+    const emailEl = form.querySelector('input[type="email"], input[name*="email" i], input[name*="mail" i]');
+    const nameEl = form.querySelector('input[name*="prenom" i], input[name*="firstname" i], input[name*="name" i]:not([type="email"])');
+    const phoneEl = form.querySelector('input[type="tel"], input[name*="phone" i], input[name*="tel" i]');
+
+    const userData = {};
+    const eventId = uuid();
+
+    if (emailEl && emailEl.value) {
+      const h = await sha256(normalizeEmail(emailEl.value));
+      if (h) userData.em = h;
+    }
+    if (nameEl && nameEl.value) {
+      const h = await sha256(normalizeName(nameEl.value));
+      if (h) userData.fn = h;
+    }
+    if (phoneEl && phoneEl.value) {
+      const digits = normalizePhone(phoneEl.value);
+      if (digits) {
+        const h = await sha256(digits);
+        if (h) userData.ph = h;
+      }
+    }
+
+    userData.external_id = getDistinctId();
+    userData.country = 'fr'; // best guess for openshore.eu — Meta hashes country anyway
+
+    // Re-init fbq with user data (Advanced Matching) — Meta uses these params on all subsequent events
+    if (Object.keys(userData).length > 0) {
+      window.fbq('init', cfg.metaPixelId, userData);
+    }
+
+    // Fire Lead event with eventID for CAPI deduplication
+    window.fbq('track', 'Lead', {}, { eventID: eventId });
   }
 
   // ─── Time on page ───────────────────────────────────
