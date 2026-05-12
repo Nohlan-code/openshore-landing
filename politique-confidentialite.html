@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de confidentialité — Openshore</title>
+<meta name="description" content="Politique de confidentialité et gestion des cookies sur openshore.eu — RGPD, droits utilisateurs, outils d'analyse.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Noir.png">
+<link rel="canonical" href="https://openshore.eu/politique-confidentialite">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root{--ink:#0F0B09;--paper:#F5F2EE;--orange:#F47B3B;--muted:#6b6661}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:16px}
+  .container{max-width:760px;margin:0 auto;padding:80px 24px 120px}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:48px;transition:color .2s}
+  .back:hover{color:var(--orange)}
+  h1{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:56px;line-height:1.05;letter-spacing:-.02em;margin-bottom:8px}
+  h1 em{color:var(--orange);font-style:italic}
+  .lead{color:var(--muted);font-size:18px;margin-bottom:48px}
+  h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:32px;line-height:1.2;margin:48px 0 16px;letter-spacing:-.01em}
+  h3{font-weight:600;font-size:17px;margin:24px 0 8px;color:var(--ink)}
+  p{margin-bottom:16px;color:#3a3530}
+  ul{margin:8px 0 16px 20px}
+  li{margin-bottom:8px;color:#3a3530}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid #e8e3dc}
+  th{background:#ebe5dc;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}
+  td{color:#3a3530}
+  a{color:var(--orange);text-decoration:underline}
+  a:hover{color:#d96a2f}
+  .meta{color:var(--muted);font-size:13px;margin-top:48px;padding-top:24px;border-top:1px solid #e8e3dc}
+  .cookie-reset{display:inline-block;margin-top:8px;padding:10px 18px;background:var(--ink);color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;border:0;cursor:pointer;font-family:inherit}
+  .cookie-reset:hover{background:#2a2520;color:#fff}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/" class="back">← Retour à openshore.eu</a>
+  <h1>Politique de <em>confidentialité</em></h1>
+  <p class="lead">Comment Openshore traite tes données quand tu visites openshore.eu.</p>
+
+  <h2>1. Qui est responsable</h2>
+  <p>
+    <strong>Openshore</strong> — entreprise individuelle représentée par Nohlan Pounga<br>
+    SIREN <strong>928 613 520</strong> · siège : France<br>
+    Contact : <a href="mailto:support@openshore.eu">support@openshore.eu</a>
+  </p>
+
+  <h2>2. Données collectées</h2>
+  <h3>Sans consentement (essentiel)</h3>
+  <ul>
+    <li>Logs serveur Vercel (IP anonymisée, user-agent, page demandée) — conservation 30 jours, base légale : intérêt légitime (sécurité, performance)</li>
+    <li>Vercel Web Analytics — données agrégées sans cookies (Core Web Vitals, pages vues)</li>
+  </ul>
+
+  <h3>Avec consentement Analytics</h3>
+  <ul>
+    <li><strong>PostHog (EU)</strong> — events de navigation, scroll, clics, durée, session replay anonymisé. Hébergé à Francfort. Conservation 12 mois.</li>
+    <li><strong>Microsoft Clarity</strong> — heatmaps et enregistrements de session anonymisés. Conservation 13 mois.</li>
+    <li><strong>Google Analytics 4</strong> — pages vues, sources, événements. IP anonymisée. Conservation 14 mois.</li>
+  </ul>
+
+  <h3>Avec consentement Marketing</h3>
+  <ul>
+    <li><strong>Meta Pixel (Facebook)</strong> — événements de conversion pour reciblage publicitaire Facebook/Instagram. Conservation 180 jours.</li>
+  </ul>
+
+  <h3>Données utilisateur fournies volontairement</h3>
+  <ul>
+    <li>Formulaire lead magnet (/guide) — email + prénom (optionnel). Stocké dans Google Sheets et envoyé via Resend.</li>
+    <li>Commande Stripe — informations de paiement gérées par Stripe (PCI-DSS). Openshore ne stocke pas les données de carte.</li>
+    <li>Échanges email ou Calendly — conservés pour le suivi commercial.</li>
+  </ul>
+
+  <h2>3. Outils tiers et transferts hors UE</h2>
+  <table>
+    <thead><tr><th>Outil</th><th>Finalité</th><th>Pays</th></tr></thead>
+    <tbody>
+      <tr><td>Vercel</td><td>Hébergement</td><td>UE (Frankfurt) — entreprise US, clauses contractuelles types</td></tr>
+      <tr><td>PostHog Cloud EU</td><td>Analytics + session replay</td><td>UE (Frankfurt)</td></tr>
+      <tr><td>Microsoft Clarity</td><td>Heatmaps</td><td>UE/US — clauses contractuelles types</td></tr>
+      <tr><td>Google Analytics 4</td><td>Analytics web</td><td>US — Data Privacy Framework</td></tr>
+      <tr><td>Meta Pixel</td><td>Reciblage publicitaire</td><td>US — Data Privacy Framework</td></tr>
+      <tr><td>Resend</td><td>Envoi d'emails</td><td>US — Data Privacy Framework</td></tr>
+      <tr><td>Stripe</td><td>Paiement</td><td>UE/US — PCI-DSS, clauses contractuelles</td></tr>
+      <tr><td>Google Sheets / Apps Script</td><td>Stockage emails leads</td><td>UE — Data Privacy Framework</td></tr>
+      <tr><td>Calendly</td><td>Prise de RDV</td><td>US — Data Privacy Framework</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. Tes droits (RGPD)</h2>
+  <p>Tu peux à tout moment :</p>
+  <ul>
+    <li><strong>Accéder</strong> à tes données</li>
+    <li><strong>Rectifier</strong> ou <strong>effacer</strong> tes données</li>
+    <li><strong>T'opposer</strong> à un traitement</li>
+    <li><strong>Demander la portabilité</strong> de tes données</li>
+    <li><strong>Retirer ton consentement</strong> à tout moment (bouton ci-dessous)</li>
+    <li>Déposer une réclamation auprès de la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a></li>
+  </ul>
+  <p>Pour exercer ces droits : <a href="mailto:support@openshore.eu">support@openshore.eu</a></p>
+
+  <h2>5. Gérer mes cookies</h2>
+  <p>Tu peux modifier tes préférences cookies à tout moment :</p>
+  <button class="cookie-reset" type="button" id="reset-consent">Modifier mes préférences cookies</button>
+
+  <h2>6. Cookies utilisés</h2>
+  <table>
+    <thead><tr><th>Nom</th><th>Type</th><th>Durée</th><th>Finalité</th></tr></thead>
+    <tbody>
+      <tr><td>os_consent_v1</td><td>Essentiel</td><td>12 mois</td><td>Mémoriser ton choix de consentement</td></tr>
+      <tr><td>os_distinct_id</td><td>Analytics</td><td>12 mois</td><td>ID anonyme pour relier tes visites</td></tr>
+      <tr><td>ph_*</td><td>Analytics</td><td>12 mois</td><td>PostHog — session, distinct_id</td></tr>
+      <tr><td>_clck, _clsk, MUID</td><td>Analytics</td><td>13 mois</td><td>Microsoft Clarity</td></tr>
+      <tr><td>_ga, _ga_*</td><td>Analytics</td><td>14 mois</td><td>Google Analytics 4</td></tr>
+      <tr><td>_fbp</td><td>Marketing</td><td>3 mois</td><td>Meta Pixel</td></tr>
+    </tbody>
+  </table>
+
+  <div class="meta">
+    Dernière mise à jour : 12 mai 2026 · Openshore — SIREN 928 613 520
+  </div>
+</div>
+
+<script>
+  document.getElementById('reset-consent').addEventListener('click', function () {
+    try {
+      localStorage.removeItem('os_consent_v1');
+      ['_ga','_fbp','_clck','_clsk','MUID'].forEach(function(k){
+        document.cookie = k + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      });
+    } catch (e) {}
+    location.reload();
+  });
+</script>
+</body>
+</html>

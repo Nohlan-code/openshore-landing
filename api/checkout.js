@@ -1,3 +1,5 @@
+import { captureServer, getDistinctIdFromReq } from './_lib/posthog.js';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -60,6 +62,23 @@ export default async function handler(req, res) {
   });
 
   const session = await response.json();
+
+  // PostHog server-side capture
+  const distinctId = getDistinctIdFromReq(req);
+  const upsellLabels = (items || []).map((i) => i.label);
+  const upsellTotal = (items || []).reduce((sum, i) => sum + (i.price || 0), 0);
+  captureServer({
+    distinctId,
+    event: 'checkout_initiated',
+    properties: {
+      total_eur: 470 + upsellTotal,
+      upsells: upsellLabels,
+      upsell_count: upsellLabels.length,
+      stripe_session_ok: !!session.url,
+      stripe_error: session.error?.message || null,
+    },
+    req,
+  }).catch(() => {});
 
   if (session.url) {
     return res.status(200).json({ url: session.url });
