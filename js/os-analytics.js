@@ -171,11 +171,15 @@
   }
 
   function loadVercelAnalytics() {
-    if (window.va) return;
+    // Use Vercel's public CDN URL — works for any project type (Next.js, static HTML, etc.)
+    // The /_vercel/insights/script.js route is only auto-served for detected frameworks.
+    if (window.__vercelLoaded) return;
+    window.__vercelLoaded = true;
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     const s = document.createElement('script');
     s.defer = true;
-    s.src = '/_vercel/insights/script.js';
+    s.src = 'https://va.vercel-scripts.com/v1/script.js';
+    s.setAttribute('data-endpoint', '/_vercel/insights');
     document.head.appendChild(s);
   }
 
