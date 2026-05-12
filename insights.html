@@ -185,15 +185,34 @@
 
     <div class="grid">
       <div class="panel col-12">
+        <div class="panel-title">Meta <span class="accent">Pixel</span> · events envoyés (mapping client-side)</div>
+        <div id="t-meta"></div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--bord);font-size:12px;color:var(--mu);line-height:1.6">
+          Ces events ont été poussés vers Meta Pixel <code style="background:#f5f2ee;padding:1px 6px;border-radius:4px;font-family:ui-monospace,Menlo,monospace;font-size:11px">1270032531883475</code> depuis ton site (avec consent marketing).
+          Pour voir les events réellement reçus côté Meta + status CAPI + match quality → <a href="https://business.facebook.com/events_manager2/list/pixel/1270032531883475/overview" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:underline">Meta Events Manager ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel col-12">
         <div class="panel-title">Sessions <span class="accent">les plus actives</span> (clic = ouvrir replay PostHog)</div>
         <div id="t-sessions"></div>
       </div>
     </div>
 
     <footer class="foot">
+      <div style="margin-bottom:14px">
+        <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink)">Outils connectés</span>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:18px">
+        <a href="https://eu.posthog.com/project/177752" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--bord);border-radius:8px;background:var(--card);font-size:12px;font-weight:600">📊 PostHog</a>
+        <a href="https://clarity.microsoft.com/projects/view/wq2b5t1v4h/dashboard" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--bord);border-radius:8px;background:var(--card);font-size:12px;font-weight:600">🔥 Clarity heatmaps</a>
+        <a href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--bord);border-radius:8px;background:var(--card);font-size:12px;font-weight:600">📈 Google Analytics 4</a>
+        <a href="https://business.facebook.com/events_manager2/list/pixel/1270032531883475/overview" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--bord);border-radius:8px;background:var(--card);font-size:12px;font-weight:600">🎯 Meta Events Manager</a>
+        <a href="https://vercel.com/nohlan-codes-projects/openshore-landing/analytics" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none;padding:8px 14px;border:1px solid var(--bord);border-radius:8px;background:var(--card);font-size:12px;font-weight:600">▲ Vercel Analytics</a>
+      </div>
       Période : <span id="foot-period">—</span> · Généré : <span id="foot-gen">—</span><br>
-      <a href="https://eu.posthog.com/project/177752" target="_blank" rel="noopener">Ouvrir PostHog ↗</a>
-      &nbsp;·&nbsp;
       <a href="/politique-confidentialite">Politique de confidentialité</a>
     </footer>
 
@@ -303,9 +322,40 @@
     renderReferrers(d.referrers || []);
     renderFriction(d.friction || []);
     renderRage(d.rage_targets || []);
+    renderMeta(d);
     renderSessions(d.top_sessions || []);
     document.getElementById('foot-period').textContent = (d.period?.from || '?') + ' → ' + (d.period?.to || '?') + ' (' + (d.period?.days || '?') + 'j)';
     document.getElementById('foot-gen').textContent = fmtDate(d.generated_at);
+  }
+
+  function renderMeta(d) {
+    const container = document.getElementById('t-meta');
+    clear(container);
+    // Map our events to Meta event names (mirrors os-analytics.js metaMap)
+    const ctaMap = {};
+    (d.cta_clicks || []).forEach((r) => {
+      const evt = r.event ?? r[0];
+      const clicks = r.clicks ?? r[1];
+      ctaMap[evt] = clicks;
+    });
+    const totalPageViews = (d.pages || []).reduce((sum, r) => sum + (r.views ?? r[1] ?? 0), 0);
+    const metaEvents = [
+      { meta: 'PageView', source: 'page_view (toutes pages)', count: totalPageViews, desc: 'Auto sur chaque chargement de page' },
+      { meta: 'Lead', source: 'lead_magnet_submitted', count: d.kpis?.lead_magnet_signups || 0, desc: 'Form /guide soumis' },
+      { meta: 'InitiateCheckout', source: 'checkout_initiated', count: d.kpis?.checkouts_initiated || 0, desc: 'Clic vers Stripe' },
+      { meta: 'Schedule', source: 'cta_calendly_click', count: ctaMap.cta_calendly_click || 0, desc: 'Clic Calendly' },
+      { meta: 'Contact', source: 'cta_whatsapp_click', count: ctaMap.cta_whatsapp_click || 0, desc: 'Clic WhatsApp' },
+      { meta: 'ViewContent', source: 'pricing_pack_viewed', count: 0, desc: 'Section pricing vue (à activer)' },
+    ];
+    const trs = metaEvents.map((m) => el('tr', null, [
+      el('td', null, [el('b', { text: m.meta })]),
+      el('td', { style: { color: 'var(--mu)', fontSize: '12px', fontFamily: 'ui-monospace,Menlo,monospace' }, text: m.source }),
+      el('td', { style: { color: 'var(--mu)', fontSize: '12px' }, text: m.desc }),
+      el('td', { class: 'num', text: num(m.count) }),
+    ]));
+    container.appendChild(makeTable([
+      { label: 'Meta event' }, { label: 'Source event' }, { label: 'Description' }, { label: 'Count', cls: 'num' },
+    ], trs));
   }
 
   function makeKpi(label, value, trendText, trendCls, valCls) {
