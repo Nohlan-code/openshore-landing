@@ -67,6 +67,8 @@ export default async function handler(req, res) {
       vslPlays,
       guidePageViews,
       homePageViews,
+      packViewsRaw,
+      packClicksRaw,
     ] = await Promise.all([
       q(`SELECT count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND timestamp > now() - INTERVAL ${days} DAY`),
       q(`SELECT count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND timestamp > now() - INTERVAL ${days * 2} DAY AND timestamp <= now() - INTERVAL ${days} DAY`),
@@ -85,6 +87,8 @@ export default async function handler(req, res) {
       q(`SELECT count() AS total, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'vsl_play_click' AND timestamp > now() - INTERVAL ${days} DAY`),
       q(`SELECT count() AS views, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND properties.$page = 'guide-optin' AND timestamp > now() - INTERVAL ${days} DAY`),
       q(`SELECT count() AS views, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND properties.$page = 'home' AND timestamp > now() - INTERVAL ${days} DAY`),
+      q(`SELECT properties.pack AS pack, count() AS views, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'pricing_pack_viewed' AND timestamp > now() - INTERVAL ${days} DAY GROUP BY pack ORDER BY views DESC`),
+      q(`SELECT properties.pack AS pack, count() AS clicks FROM events WHERE event = 'pricing_pack_cta_clicked' AND timestamp > now() - INTERVAL ${days} DAY GROUP BY pack ORDER BY clicks DESC`),
     ]);
 
     const unique = uniques[0]?.uniques || 0;
@@ -143,6 +147,10 @@ export default async function handler(req, res) {
         home_page_views: homeViews,
         home_page_uniques: homeUniques,
         play_rate_pct: homeUniques > 0 ? Math.round((vslPlaysUniques / homeUniques) * 100) : null,
+      },
+      pack_interest: {
+        views: packViewsRaw.map(rowToObj(['pack', 'views', 'uniques'])),
+        clicks: packClicksRaw.map(rowToObj(['pack', 'clicks'])),
       },
       pages: pageViews.map(rowToObj(['page', 'views', 'uniques'])),
       referrers: referrers.map(rowToObj(['referrer', 'visits'])),

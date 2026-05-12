@@ -198,6 +198,13 @@
     </div>
 
     <div class="grid">
+      <div class="panel col-12">
+        <div class="panel-title">Intérêt par <span class="accent">pack pricing</span> (vues + clics CTA)</div>
+        <div id="t-packs"></div>
+      </div>
+    </div>
+
+    <div class="grid">
       <div class="panel col-6">
         <div class="panel-title">Funnel <span class="accent">formulaires</span> (lead magnet)</div>
         <div id="t-funnel"></div>
@@ -356,6 +363,7 @@
     renderChartSections(d.section_views || []);
     renderPages(d.pages || []);
     renderReferrers(d.referrers || []);
+    renderPacks(d.pack_interest || {});
     renderFunnel(d.form_funnel || {});
     renderVSL(d.vsl_engagement || {});
     renderFriction(d.friction || []);
@@ -382,6 +390,38 @@
     bar.appendChild(countNode);
     wrapper.appendChild(bar);
     return wrapper;
+  }
+  function renderPacks(p) {
+    const container = document.getElementById('t-packs');
+    clear(container);
+    const views = p.views || [];
+    const clicks = p.clicks || [];
+    if (views.length === 0 && clicks.length === 0) {
+      container.appendChild(el('div', { class: 'panel-empty', text: 'Aucune donnée pricing sur cette période. Le tracking s\'active dès que quelqu\'un voit la section pricing.' }));
+      return;
+    }
+    const clicksMap = {};
+    clicks.forEach((r) => { clicksMap[r.pack ?? r[0]] = r.clicks ?? r[1]; });
+    const packLabels = { basic: 'Basic (470€)', premium: 'Premium (770€) ⚡', 'sur-mesure': 'Sur mesure (1970€)' };
+    const trs = [];
+    views.forEach((v) => {
+      const pack = v.pack ?? v[0];
+      const viewsCount = v.views ?? v[1];
+      const uniquesCount = v.uniques ?? v[2];
+      const clicksCount = clicksMap[pack] || 0;
+      const ctr = uniquesCount > 0 ? Math.round((clicksCount / uniquesCount) * 100) : 0;
+      trs.push(el('tr', null, [
+        el('td', null, [el('b', { text: packLabels[pack] || pack })]),
+        el('td', { class: 'num', text: num(viewsCount) }),
+        el('td', { class: 'num', text: num(uniquesCount) }),
+        el('td', { class: 'num', text: num(clicksCount) }),
+        el('td', { class: 'num', text: ctr + '%' }),
+      ]));
+    });
+    container.appendChild(makeTable([
+      { label: 'Pack' }, { label: 'Vues', cls: 'num' }, { label: 'Visiteurs uniques', cls: 'num' }, { label: 'Clics CTA', cls: 'num' }, { label: 'CTR', cls: 'num' },
+    ], trs));
+    container.appendChild(el('div', { style: { fontSize: '12px', color: 'var(--mu)', marginTop: '12px', lineHeight: '1.5' }, text: 'CTR = (Clics CTA / Visiteurs uniques ayant vu le pack). Sain : 8-15% sur le pack populaire. Sous 3% sur tous les packs = problème de pricing ou de copy.' }));
   }
 
   function renderFunnel(f) {

@@ -352,6 +352,25 @@
     });
   }
 
+  // ─── Auto-tracking: pricing packs (passive view per pack) ───
+  const packFired = new Set();
+  function observePackCards() {
+    if (!('IntersectionObserver' in window)) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          const pack = entry.target.getAttribute('data-pack');
+          const price = entry.target.getAttribute('data-pack-price');
+          if (pack && !packFired.has(pack)) {
+            packFired.add(pack);
+            track('pricing_pack_viewed', { pack, price: price ? Number(price) : null });
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-pack]').forEach((el) => obs.observe(el));
+  }
+
   // ─── Auto-tracking: data-track clicks + smart CTA detection ───
   function bindClickTracking() {
     document.addEventListener('click', (e) => {
@@ -517,6 +536,7 @@
     }
 
     observeSections();
+    observePackCards();
     bindClickTracking();
     detectRageClicks();
     detectDeadClicks();
