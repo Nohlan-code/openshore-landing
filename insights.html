@@ -93,6 +93,31 @@
   .loading{display:none;text-align:center;padding:80px 20px;color:var(--mu)}
   .loading.show{display:block}
   .loading .ld-star{font-family:'Instrument Serif',Georgia,serif;font-size:32px;color:var(--orange)}
+
+  /* Funnel visualization */
+  .funnel-step{margin-bottom:10px}
+  .funnel-step .fs-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;gap:8px}
+  .funnel-step .fs-label{font-size:12px;color:var(--ink);font-weight:500}
+  .funnel-step .fs-meta{font-size:11px;color:var(--mu);font-family:ui-monospace,Menlo,monospace}
+  .funnel-step .fs-bar{height:24px;background:#f3eee5;border-radius:6px;overflow:hidden;position:relative}
+  .funnel-step .fs-bar-fill{height:100%;background:linear-gradient(90deg,var(--orange) 0%,#e96a2a 100%);border-radius:6px;transition:width .6s ease-out}
+  .funnel-step .fs-count{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .funnel-step .fs-count.dark{color:var(--ink);text-shadow:none}
+  .funnel-stats{margin-top:14px;padding-top:14px;border-top:1px solid var(--bord);display:flex;gap:20px;flex-wrap:wrap}
+  .funnel-stats .fs-stat{flex:1;min-width:120px}
+  .funnel-stats .fs-stat-lbl{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  .funnel-stats .fs-stat-val{font-family:'Instrument Serif',Georgia,serif;font-size:28px;line-height:1.1;margin-top:2px}
+  .funnel-stats .fs-stat-val.good{color:var(--ok)}
+  .funnel-stats .fs-stat-val.bad{color:var(--bad)}
+
+  /* VSL panel */
+  .vsl-num{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px}
+  .vsl-num .vn{padding:14px;background:#f5f2ee;border-radius:8px;border:1px solid var(--bord)}
+  .vsl-num .vn-lbl{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  .vsl-num .vn-val{font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.1;margin-top:4px}
+  .vsl-rate{background:var(--ink);color:#fff;padding:14px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+  .vsl-rate-lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-weight:700}
+  .vsl-rate-val{font-family:'Instrument Serif',Georgia,serif;font-size:36px;line-height:1}
 </style>
 </head>
 <body>
@@ -169,6 +194,17 @@
       <div class="panel col-6">
         <div class="panel-title">Sections <span class="accent">vues</span></div>
         <canvas id="chart-sections" style="max-height:280px"></canvas>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel col-6">
+        <div class="panel-title">Funnel <span class="accent">formulaires</span> (lead magnet)</div>
+        <div id="t-funnel"></div>
+      </div>
+      <div class="panel col-6">
+        <div class="panel-title">Engagement <span class="accent">VSL</span> (vidéo hero)</div>
+        <div id="t-vsl"></div>
       </div>
     </div>
 
@@ -320,12 +356,116 @@
     renderChartSections(d.section_views || []);
     renderPages(d.pages || []);
     renderReferrers(d.referrers || []);
+    renderFunnel(d.form_funnel || {});
+    renderVSL(d.vsl_engagement || {});
     renderFriction(d.friction || []);
     renderRage(d.rage_targets || []);
     renderMeta(d);
     renderSessions(d.top_sessions || []);
     document.getElementById('foot-period').textContent = (d.period?.from || '?') + ' → ' + (d.period?.to || '?') + ' (' + (d.period?.days || '?') + 'j)';
     document.getElementById('foot-gen').textContent = fmtDate(d.generated_at);
+  }
+
+  function makeFunnelStep(label, count, maxCount, color, meta) {
+    const pct = maxCount > 0 ? Math.max((count / maxCount) * 100, count > 0 ? 8 : 0) : 0;
+    const wrapper = el('div', { class: 'funnel-step' });
+    const row = el('div', { class: 'fs-row' });
+    row.appendChild(el('div', { class: 'fs-label', text: label }));
+    if (meta) row.appendChild(el('div', { class: 'fs-meta', text: meta }));
+    wrapper.appendChild(row);
+    const bar = el('div', { class: 'fs-bar' });
+    const fill = el('div', { class: 'fs-bar-fill' });
+    fill.style.width = pct + '%';
+    if (color) fill.style.background = color;
+    bar.appendChild(fill);
+    const countNode = el('span', { class: 'fs-count' + (pct < 25 ? ' dark' : ''), text: num(count) });
+    bar.appendChild(countNode);
+    wrapper.appendChild(bar);
+    return wrapper;
+  }
+
+  function renderFunnel(f) {
+    const container = document.getElementById('t-funnel');
+    clear(container);
+
+    const guideUniques = f.guide_page_uniques || 0;
+    const started = f.form_started || 0;
+    const submitted = f.form_submitted || 0;
+    const completed = f.lead_magnet_completed || 0;
+    const max = Math.max(guideUniques, started, submitted, completed, 1);
+
+    if (max === 1 && guideUniques === 0 && started === 0 && submitted === 0 && completed === 0) {
+      container.appendChild(el('div', { class: 'panel-empty', text: 'Aucune donnée funnel sur cette période. Le funnel s\'active dès la 1ère visite /guide.' }));
+      return;
+    }
+
+    const steps = [
+      ['1. Visite /guide (uniques)', guideUniques, 'Page opt-in atteinte'],
+      ['2. Form ouvert (focus)', started, 'A cliqué dans le champ email'],
+      ['3. Form soumis', submitted, 'A envoyé le formulaire'],
+      ['4. Lead capturé server-side', completed, 'API + email Resend OK'],
+    ];
+    steps.forEach((s, i) => container.appendChild(makeFunnelStep(s[0], s[1], max, null, s[2])));
+
+    // Stats
+    const stats = el('div', { class: 'funnel-stats' });
+    const completionPct = f.completion_rate;
+    const abandonPct = f.abandonment_rate;
+
+    const sCompletion = el('div', { class: 'fs-stat' });
+    sCompletion.appendChild(el('div', { class: 'fs-stat-lbl', text: 'Taux de complétion' }));
+    sCompletion.appendChild(el('div', { class: 'fs-stat-val' + (completionPct !== null && completionPct >= 50 ? ' good' : ''), text: completionPct === null ? 'N/A' : completionPct + '%' }));
+    stats.appendChild(sCompletion);
+
+    const sAbandon = el('div', { class: 'fs-stat' });
+    sAbandon.appendChild(el('div', { class: 'fs-stat-lbl', text: 'Taux d\'abandon' }));
+    sAbandon.appendChild(el('div', { class: 'fs-stat-val' + (abandonPct !== null && abandonPct > 50 ? ' bad' : ''), text: abandonPct === null ? 'N/A' : abandonPct + '%' }));
+    stats.appendChild(sAbandon);
+
+    const sConv = el('div', { class: 'fs-stat' });
+    sConv.appendChild(el('div', { class: 'fs-stat-lbl', text: 'Conv. globale' }));
+    const conv = guideUniques > 0 ? Math.round((submitted / guideUniques) * 100) : null;
+    sConv.appendChild(el('div', { class: 'fs-stat-val', text: conv === null ? 'N/A' : conv + '%' }));
+    stats.appendChild(sConv);
+
+    container.appendChild(stats);
+  }
+
+  function renderVSL(v) {
+    const container = document.getElementById('t-vsl');
+    clear(container);
+
+    const plays = v.plays_total || 0;
+    const playUniques = v.plays_uniques || 0;
+    const homeUniques = v.home_page_uniques || 0;
+    const rate = v.play_rate_pct;
+
+    if (plays === 0 && homeUniques === 0) {
+      container.appendChild(el('div', { class: 'panel-empty', text: 'Aucune donnée VSL sur cette période. Tracker actif sur le bouton Play hero.' }));
+      return;
+    }
+
+    const grid = el('div', { class: 'vsl-num' });
+    const n1 = el('div', { class: 'vn' });
+    n1.appendChild(el('div', { class: 'vn-lbl', text: 'Plays totaux' }));
+    n1.appendChild(el('div', { class: 'vn-val', text: num(plays) }));
+    grid.appendChild(n1);
+    const n2 = el('div', { class: 'vn' });
+    n2.appendChild(el('div', { class: 'vn-lbl', text: 'Viewers uniques' }));
+    n2.appendChild(el('div', { class: 'vn-val', text: num(playUniques) }));
+    grid.appendChild(n2);
+    container.appendChild(grid);
+
+    const rateBox = el('div', { class: 'vsl-rate' });
+    rateBox.appendChild(el('div', null, [
+      el('div', { class: 'vsl-rate-lbl', text: 'Play rate' }),
+      el('div', { style: { fontSize: '11px', color: '#999', marginTop: '4px' }, text: 'plays uniques / uniques sur home' }),
+    ]));
+    rateBox.appendChild(el('div', { class: 'vsl-rate-val', text: rate === null ? 'N/A' : rate + '%' }));
+    container.appendChild(rateBox);
+
+    const ctx = el('div', { style: { fontSize: '12px', color: 'var(--mu)', marginTop: '12px', lineHeight: '1.5' }, text: 'Home page uniques : ' + num(homeUniques) + ' · benchmark sain VSL : 15-30% play rate. Sous 10% = hook hero pas assez fort.' });
+    container.appendChild(ctx);
   }
 
   function renderMeta(d) {

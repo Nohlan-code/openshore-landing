@@ -62,6 +62,11 @@ export default async function handler(req, res) {
       rageTargets,
       dailyVisitors,
       topSessions,
+      formStartedCount,
+      formStartedByForm,
+      vslPlays,
+      guidePageViews,
+      homePageViews,
     ] = await Promise.all([
       q(`SELECT count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND timestamp > now() - INTERVAL ${days} DAY`),
       q(`SELECT count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND timestamp > now() - INTERVAL ${days * 2} DAY AND timestamp <= now() - INTERVAL ${days} DAY`),
@@ -75,6 +80,11 @@ export default async function handler(req, res) {
       q(`SELECT properties.text AS text, count() AS rages FROM events WHERE event = 'rage_click' AND timestamp > now() - INTERVAL ${days} DAY GROUP BY text ORDER BY rages DESC LIMIT 5`),
       q(`SELECT toDate(timestamp) AS day, count(DISTINCT distinct_id) AS visitors FROM events WHERE event = 'page_view' AND timestamp > now() - INTERVAL ${days} DAY GROUP BY day ORDER BY day ASC`),
       q(`SELECT $session_id AS session_id, count() AS events, min(timestamp) AS started, max(timestamp) AS ended, any(distinct_id) AS distinct_id FROM events WHERE timestamp > now() - INTERVAL ${days} DAY AND $session_id IS NOT NULL GROUP BY session_id ORDER BY events DESC LIMIT 10`),
+      q(`SELECT count() AS total FROM events WHERE event = 'form_started' AND timestamp > now() - INTERVAL ${days} DAY`),
+      q(`SELECT properties.form_id AS form_id, count() AS started FROM events WHERE event = 'form_started' AND timestamp > now() - INTERVAL ${days} DAY GROUP BY form_id ORDER BY started DESC`),
+      q(`SELECT count() AS total, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'vsl_play_click' AND timestamp > now() - INTERVAL ${days} DAY`),
+      q(`SELECT count() AS views, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND properties.$page = 'guide-optin' AND timestamp > now() - INTERVAL ${days} DAY`),
+      q(`SELECT count() AS views, count(DISTINCT distinct_id) AS uniques FROM events WHERE event = 'page_view' AND properties.$page = 'home' AND timestamp > now() - INTERVAL ${days} DAY`),
     ]);
 
     const unique = uniques[0]?.uniques || 0;
@@ -96,6 +106,14 @@ export default async function handler(req, res) {
       frictionMap[event] = count;
     });
 
+    const formStartedTotal = formStartedCount[0]?.total || (Array.isArray(formStartedCount[0]) ? formStartedCount[0][0] : 0) || 0;
+    const formSubmittedTotal = conversionsMap.form_submitted || 0;
+    const vslPlaysTotal = vslPlays[0]?.total || (Array.isArray(vslPlays[0]) ? vslPlays[0][0] : 0) || 0;
+    const vslPlaysUniques = vslPlays[0]?.uniques || (Array.isArray(vslPlays[0]) ? vslPlays[0][1] : 0) || 0;
+    const homeViews = homePageViews[0]?.views || (Array.isArray(homePageViews[0]) ? homePageViews[0][0] : 0) || 0;
+    const homeUniques = homePageViews[0]?.uniques || (Array.isArray(homePageViews[0]) ? homePageViews[0][1] : 0) || 0;
+    const guideUniques = guidePageViews[0]?.uniques || (Array.isArray(guidePageViews[0]) ? guidePageViews[0][1] : 0) || 0;
+
     return res.status(200).json({
       ok: true,
       period: { days, from: daysAgo(days), to: today() },
@@ -105,10 +123,26 @@ export default async function handler(req, res) {
         wow_pct: wow,
         lead_magnet_signups: conversionsMap.lead_magnet_submitted || 0,
         checkouts_initiated: conversionsMap.checkout_initiated || 0,
-        form_submissions: conversionsMap.form_submitted || 0,
+        form_submissions: formSubmittedTotal,
         rage_clicks: frictionMap.rage_click || 0,
         dead_clicks: frictionMap.dead_click || 0,
         js_errors: frictionMap.js_error || 0,
+      },
+      form_funnel: {
+        guide_page_uniques: guideUniques,
+        form_started: formStartedTotal,
+        form_submitted: formSubmittedTotal,
+        lead_magnet_completed: conversionsMap.lead_magnet_submitted || 0,
+        abandonment_rate: formStartedTotal > 0 ? Math.round(((formStartedTotal - formSubmittedTotal) / formStartedTotal) * 100) : null,
+        completion_rate: formStartedTotal > 0 ? Math.round((formSubmittedTotal / formStartedTotal) * 100) : null,
+      },
+      form_breakdown: formStartedByForm.map(rowToObj(['form_id', 'started'])),
+      vsl_engagement: {
+        plays_total: vslPlaysTotal,
+        plays_uniques: vslPlaysUniques,
+        home_page_views: homeViews,
+        home_page_uniques: homeUniques,
+        play_rate_pct: homeUniques > 0 ? Math.round((vslPlaysUniques / homeUniques) * 100) : null,
       },
       pages: pageViews.map(rowToObj(['page', 'views', 'uniques'])),
       referrers: referrers.map(rowToObj(['referrer', 'visits'])),
