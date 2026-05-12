@@ -3,12 +3,16 @@
  * - Reçoit email + prénom depuis /guide.html
  * - Push vers Google Sheet via Apps Script Web App
  * - Envoie email avec lien guide via Resend
+ * - Capture event PostHog server-side (lead_magnet_submitted)
  *
  * Env vars requises (Vercel) :
  * - GOOGLE_APPS_SCRIPT_URL  : URL du Apps Script déployé en Web App
  * - RESEND_API_KEY          : clé API Resend (re_xxx)
  * - EMAIL_FROM              : optionnel, défaut "Openshore <support@openshore.eu>"
+ * - POSTHOG_API_KEY         : phc_... pour tracking server-side
  */
+
+import { captureServer, getDistinctIdFromReq } from './_lib/posthog.js';
 
 export default async function handler(req, res) {
   // CORS basique (même origin OK, mais juste au cas où)
@@ -92,6 +96,21 @@ export default async function handler(req, res) {
 
   // Log pour debug
   console.log(`Lead: ${cleanEmail} · Sheet: ${sheetOk ? 'ok' : 'fail'} · Email: ${emailOk ? 'ok' : 'fail'}`);
+
+  // PostHog server-side capture (survives adblockers)
+  const distinctId = getDistinctIdFromReq(req) || cleanEmail;
+  captureServer({
+    distinctId,
+    event: 'lead_magnet_submitted',
+    properties: {
+      email: cleanEmail,
+      first_name: cleanPrenom || null,
+      source: cleanSource,
+      sheet_ok: sheetOk,
+      email_ok: emailOk,
+    },
+    req,
+  }).catch(() => {}); // fire-and-forget
 
   // Si email échoué mais sheet OK → on accepte quand même (le lead est capturé, on peut renvoyer à la main)
   // Si tout a échoué → on retourne une erreur pour que le form affiche un message

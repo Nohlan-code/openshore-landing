@@ -29,11 +29,21 @@
         {"key": "Content-Type", "value": "text/plain; charset=utf-8"},
         {"key": "X-Robots-Tag", "value": "all"}
       ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [
+        {"key": "Cache-Control", "value": "public, max-age=300, s-maxage=300"}
+      ]
     }
   ],
   "rewrites": [
     {"source": "/recrutement", "destination": "/"},
     {"source": "/guide", "destination": "/guide.html"},
-    {"source": "/guide-contenu", "destination": "/guide-contenu.html"}
+    {"source": "/guide-contenu", "destination": "/guide-contenu.html"},
+    {"source": "/politique-confidentialite", "destination": "/politique-confidentialite.html"}
+  ],
+  "crons": [
+    {"path": "/api/weekly-insights", "schedule": "0 8 * * 1"}
   ]
 }
