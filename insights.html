@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Openshore Insights — Dashboard</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Nohlan-code/openshore-landing/main/Logo%20Openshore%20Noir.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--ink:#0F0B09;--paper:#F5F2EE;--orange:#F47B3B;--orange-dim:#d96a2f;--mu:#6b6661;--mu2:#9c9690;--bord:#e8e3dc;--card:#fff;--ok:#0d9466;--warn:#c2750c;--bad:#b91c1c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink)}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;line-height:1.5;font-size:14px;min-height:100vh}
+
+  #gate{display:none;position:fixed;inset:0;background:var(--ink);color:var(--paper);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:24px;padding:24px}
+  #gate.show{display:flex}
+  #gate .gate-logo{font-family:'Instrument Serif',Georgia,serif;font-size:48px;letter-spacing:-.02em}
+  #gate .gate-logo em{color:var(--orange);font-style:italic}
+  #gate .gate-help{color:#999;font-size:13px;text-align:center;max-width:420px}
+  #gate .gate-help code{background:#1a1410;padding:2px 6px;border-radius:4px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+  #gate input{background:transparent;border:1px solid #333;border-radius:8px;padding:14px 16px;color:#fff;font-size:14px;width:380px;max-width:90vw;font-family:inherit;outline:none}
+  #gate input:focus{border-color:var(--orange)}
+  #gate button{background:var(--orange);color:#fff;border:0;padding:14px 28px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+  #gate button:hover{background:var(--orange-dim)}
+  #gate .gate-err{color:#fca5a5;font-size:13px;min-height:18px}
+
+  #app{display:none}
+  #app.show{display:block}
+  .container{max-width:1280px;margin:0 auto;padding:32px 24px 80px}
+
+  .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+  .head .brand{display:flex;align-items:center;gap:14px}
+  .head .brand-mark{width:36px;height:36px;background:var(--ink);border-radius:8px;color:var(--orange);font-family:'Instrument Serif',Georgia,serif;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .head .brand-text{font-family:'Instrument Serif',Georgia,serif;font-size:26px;line-height:1;letter-spacing:-.01em}
+  .head .brand-text em{color:var(--orange);font-style:italic}
+  .head .brand-sub{font-size:11px;color:var(--mu);letter-spacing:.18em;text-transform:uppercase;margin-top:4px;font-family:'Inter',-apple-system,sans-serif}
+  .head .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .head select,.head button{font-family:inherit;font-size:13px;padding:8px 12px;border-radius:8px;cursor:pointer;border:1px solid var(--bord);background:var(--card)}
+  .head select:hover,.head button:hover{border-color:var(--ink)}
+  .head .btn-ai{background:var(--orange);color:#fff;border-color:var(--orange)}
+  .head .btn-ai:hover{background:var(--orange-dim);border-color:var(--orange-dim)}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
+  .kpi{background:var(--card);padding:18px 20px;border-radius:12px;border:1px solid var(--bord)}
+  .kpi-lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+  .kpi-val{font-family:'Instrument Serif',Georgia,serif;font-size:36px;line-height:1.1;font-weight:400;margin-top:6px;letter-spacing:-.02em}
+  .kpi-val.warn{color:var(--warn)}
+  .kpi-val.bad{color:var(--bad)}
+  .kpi-trend{font-size:12px;margin-top:4px;color:var(--mu)}
+  .kpi-trend.up{color:var(--ok)}
+  .kpi-trend.down{color:var(--bad)}
+
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-bottom:16px}
+  .panel{background:var(--card);border:1px solid var(--bord);border-radius:12px;padding:20px}
+  .panel-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink);margin-bottom:14px}
+  .panel-title .accent{color:var(--orange)}
+  .panel-empty{color:var(--mu);font-size:13px;padding:30px 0;text-align:center;font-style:italic}
+
+  .col-12{grid-column:span 12}
+  .col-8{grid-column:span 8}
+  .col-6{grid-column:span 6}
+  .col-4{grid-column:span 4}
+  @media (max-width:900px){.col-12,.col-8,.col-6,.col-4{grid-column:span 12}}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  table th{text-align:left;padding:8px 10px;font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--bord);font-weight:600}
+  table td{padding:10px 10px;border-bottom:1px solid #f3eee5}
+  table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+  table tr.clickable{cursor:pointer}
+  table tr.clickable:hover{background:#faf6ef}
+  .url-cell{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--ink);max-width:380px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
+
+  #ai-panel{background:var(--ink);color:var(--paper);border-radius:12px;padding:28px;margin-bottom:24px;display:none}
+  #ai-panel.show{display:block;animation:slidein .3s ease-out}
+  @keyframes slidein{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+  #ai-panel .ai-tag{font-size:11px;color:var(--orange);letter-spacing:.18em;font-weight:700;margin-bottom:8px}
+  #ai-panel .ai-summary{font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.25;margin-bottom:20px;letter-spacing:-.01em}
+  #ai-panel .ai-meta{font-size:12px;color:#999}
+  #ai-panel .ai-loading{text-align:center;padding:40px 0;color:#999;font-style:italic}
+  #ai-panel .ai-err{text-align:center;padding:40px 0;color:#fca5a5}
+
+  .foot{margin-top:32px;padding-top:20px;border-top:1px solid var(--bord);font-size:11px;color:var(--mu);text-align:center}
+  .foot a{color:var(--mu);text-decoration:underline}
+
+  .pill{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#f5f2ee;border-radius:999px;font-size:11px;color:var(--mu);font-weight:500}
+  .pill.live::before{content:'';width:6px;height:6px;background:var(--ok);border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  .loading{display:none;text-align:center;padding:80px 20px;color:var(--mu)}
+  .loading.show{display:block}
+  .loading .ld-star{font-family:'Instrument Serif',Georgia,serif;font-size:32px;color:var(--orange)}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-logo">Openshore <em>Insights</em></div>
+  <div class="gate-help">Dashboard privé. Colle ta clé d'accès (le <code>CRON_SECRET</code>).</div>
+  <input type="password" id="gate-input" placeholder="Clé d'accès" autocomplete="off">
+  <button id="gate-btn">Entrer →</button>
+  <div class="gate-err" id="gate-err"></div>
+</div>
+
+<div class="loading" id="loading">
+  <div class="ld-star">✦</div>
+  <div style="margin-top:14px">Chargement des données PostHog…</div>
+</div>
+
+<div id="app">
+  <div class="container">
+
+    <header class="head">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <div class="brand-text">Openshore <em>Insights</em></div>
+          <div class="brand-sub">Dashboard interne · openshore.eu</div>
+        </div>
+      </div>
+      <div class="actions">
+        <span class="pill live">LIVE</span>
+        <select id="period">
+          <option value="1">Aujourd'hui</option>
+          <option value="7" selected>7 derniers jours</option>
+          <option value="30">30 derniers jours</option>
+          <option value="90">90 derniers jours</option>
+        </select>
+        <button id="btn-refresh">↻ Refresh</button>
+        <button id="btn-ai" class="btn-ai">✦ Générer insight IA</button>
+        <button id="btn-logout" title="Déconnexion">⎋</button>
+      </div>
+    </header>
+
+    <div id="ai-panel"></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="grid">
+      <div class="panel col-8">
+        <div class="panel-title">Visiteurs <span class="accent">·</span> par jour</div>
+        <canvas id="chart-visitors" style="max-height:260px"></canvas>
+      </div>
+      <div class="panel col-4">
+        <div class="panel-title">Profondeur de <span class="accent">scroll</span></div>
+        <canvas id="chart-scroll" style="max-height:260px"></canvas>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel col-6">
+        <div class="panel-title">Top <span class="accent">pages</span></div>
+        <div id="t-pages"></div>
+      </div>
+      <div class="panel col-6">
+        <div class="panel-title">Top <span class="accent">sources</span></div>
+        <div id="t-referrers"></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel col-6">
+        <div class="panel-title">Clics sur <span class="accent">CTAs</span></div>
+        <canvas id="chart-cta" style="max-height:280px"></canvas>
+      </div>
+      <div class="panel col-6">
+        <div class="panel-title">Sections <span class="accent">vues</span></div>
+        <canvas id="chart-sections" style="max-height:280px"></canvas>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel col-4">
+        <div class="panel-title">Friction <span class="accent">signals</span></div>
+        <div id="t-friction"></div>
+      </div>
+      <div class="panel col-8">
+        <div class="panel-title">Top <span class="accent">rage clicks</span> (frustrations)</div>
+        <div id="t-rage"></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel col-12">
+        <div class="panel-title">Sessions <span class="accent">les plus actives</span> (clic = ouvrir replay PostHog)</div>
+        <div id="t-sessions"></div>
+      </div>
+    </div>
+
+    <footer class="foot">
+      Période : <span id="foot-period">—</span> · Généré : <span id="foot-gen">—</span><br>
+      <a href="https://eu.posthog.com/project/177752" target="_blank" rel="noopener">Ouvrir PostHog ↗</a>
+      &nbsp;·&nbsp;
+      <a href="/politique-confidentialite">Politique de confidentialité</a>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  const STORAGE_KEY = 'os_insights_secret';
+  let secret = localStorage.getItem(STORAGE_KEY) || new URL(location.href).searchParams.get('key') || '';
+  const charts = {};
+
+  // ─── Safe DOM helpers ───────────────────────
+  function el(tag, attrs, children) {
+    const node = document.createElement(tag);
+    if (attrs) {
+      for (const k in attrs) {
+        if (k === 'class') node.className = attrs[k];
+        else if (k === 'text') node.textContent = attrs[k];
+        else if (k === 'html') { /* never used */ }
+        else if (k === 'style') Object.assign(node.style, attrs[k]);
+        else if (k.startsWith('on')) node.addEventListener(k.slice(2), attrs[k]);
+        else if (k.startsWith('data-')) node.setAttribute(k, attrs[k]);
+        else if (k in node) node[k] = attrs[k];
+        else node.setAttribute(k, attrs[k]);
+      }
+    }
+    (children || []).forEach((c) => {
+      if (c == null) return;
+      node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return node;
+  }
+  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+  function shorten(s) { if (!s) return '—'; try { const u = new URL(s); return u.hostname + u.pathname.slice(0, 30); } catch { return s.slice(0, 50); } }
+  function num(n) { return (n || 0).toLocaleString('fr-FR'); }
+  function fmtDate(s) { try { return new Date(s).toLocaleString('fr-FR'); } catch { return s || '—'; } }
+
+  // ─── Auth ───────────────────────────────────
+  function showErr(s) { document.getElementById('gate-err').textContent = s; }
+  function logout() { localStorage.removeItem(STORAGE_KEY); location.reload(); }
+  async function auth() {
+    const v = document.getElementById('gate-input').value.trim();
+    if (!v) { showErr('Colle la clé'); return; }
+    secret = v;
+    showErr('Vérification…');
+    try {
+      const r = await fetch('/api/dashboard-data?secret=' + encodeURIComponent(secret) + '&days=1');
+      if (!r.ok) { showErr('Clé invalide.'); return; }
+      localStorage.setItem(STORAGE_KEY, secret);
+      document.getElementById('gate').classList.remove('show');
+      document.getElementById('app').classList.add('show');
+      loadData();
+    } catch (e) { showErr('Erreur: ' + e.message); }
+  }
+
+  document.getElementById('gate-btn').addEventListener('click', auth);
+  document.getElementById('gate-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') auth(); });
+  document.getElementById('btn-refresh').addEventListener('click', loadData);
+  document.getElementById('btn-ai').addEventListener('click', generateAI);
+  document.getElementById('btn-logout').addEventListener('click', logout);
+  document.getElementById('period').addEventListener('change', loadData);
+
+  // ─── Init ───────────────────────────────────
+  if (secret) {
+    document.getElementById('app').classList.add('show');
+    loadData();
+  } else {
+    document.getElementById('gate').classList.add('show');
+    document.getElementById('gate-input').focus();
+  }
+
+  // ─── Data fetch ─────────────────────────────
+  async function loadData() {
+    const days = document.getElementById('period').value;
+    document.getElementById('loading').classList.add('show');
+    document.getElementById('app').style.opacity = '.4';
+    try {
+      const r = await fetch('/api/dashboard-data?secret=' + encodeURIComponent(secret) + '&days=' + days);
+      if (r.status === 401) { logout(); return; }
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      renderAll(data);
+    } catch (e) {
+      alert('Erreur: ' + e.message);
+    } finally {
+      document.getElementById('loading').classList.remove('show');
+      document.getElementById('app').style.opacity = '1';
+    }
+  }
+
+  // ─── Render ─────────────────────────────────
+  function renderAll(d) {
+    renderKpis(d.kpis || {});
+    renderChartVisitors(d.daily_visitors || []);
+    renderChartScroll(d.scroll_depth || []);
+    renderChartCTA(d.cta_clicks || []);
+    renderChartSections(d.section_views || []);
+    renderPages(d.pages || []);
+    renderReferrers(d.referrers || []);
+    renderFriction(d.friction || []);
+    renderRage(d.rage_targets || []);
+    renderSessions(d.top_sessions || []);
+    document.getElementById('foot-period').textContent = (d.period?.from || '?') + ' → ' + (d.period?.to || '?') + ' (' + (d.period?.days || '?') + 'j)';
+    document.getElementById('foot-gen').textContent = fmtDate(d.generated_at);
+  }
+
+  function makeKpi(label, value, trendText, trendCls, valCls) {
+    return el('div', { class: 'kpi' }, [
+      el('div', { class: 'kpi-lbl', text: label }),
+      el('div', { class: 'kpi-val' + (valCls ? ' ' + valCls : ''), text: value }),
+      el('div', { class: 'kpi-trend' + (trendCls ? ' ' + trendCls : ''), text: trendText }),
+    ]);
+  }
+
+  function renderKpis(k) {
+    const container = document.getElementById('kpis');
+    clear(container);
+    const wow = k.wow_pct;
+    let wowText = 'vs précédent : N/A';
+    let wowCls = '';
+    if (wow !== null && wow !== undefined) {
+      const arrow = wow > 0 ? '↗ +' : (wow < 0 ? '↘ ' : '→ ');
+      wowText = arrow + wow + '% vs précédent';
+      wowCls = wow > 0 ? 'up' : (wow < 0 ? 'down' : '');
+    }
+    container.appendChild(makeKpi('Visiteurs uniques', num(k.unique_visitors), wowText, wowCls));
+    container.appendChild(makeKpi('Lead magnet', num(k.lead_magnet_signups), 'opt-ins'));
+    container.appendChild(makeKpi('Checkouts', num(k.checkouts_initiated), 'initiés (Stripe)'));
+    container.appendChild(makeKpi('Formulaires', num(k.form_submissions), 'soumis'));
+    container.appendChild(makeKpi('Rage clicks', num(k.rage_clicks), 'clics frustrés', null, k.rage_clicks > 0 ? 'bad' : ''));
+    container.appendChild(makeKpi('Erreurs JS', num(k.js_errors), 'bugs frontend', null, k.js_errors > 0 ? 'warn' : ''));
+  }
+
+  function makeTable(headers, rows) {
+    const table = el('table');
+    const thead = el('thead');
+    const trH = el('tr');
+    headers.forEach((h) => {
+      trH.appendChild(el('th', { class: h.cls || '', text: h.label }));
+    });
+    thead.appendChild(trH);
+    table.appendChild(thead);
+    const tbody = el('tbody');
+    rows.forEach((r) => tbody.appendChild(r));
+    table.appendChild(tbody);
+    return table;
+  }
+
+  function emptyState(container, msg) {
+    clear(container);
+    container.appendChild(el('div', { class: 'panel-empty', text: msg || 'Aucune donnée sur cette période' }));
+  }
+
+  function renderPages(rows) {
+    const container = document.getElementById('t-pages');
+    clear(container);
+    if (!rows.length) return emptyState(container);
+    const trs = rows.map((r) => {
+      const page = r.page || r[0] || '/';
+      const views = r.views ?? r[1];
+      const uniques = r.uniques ?? r[2];
+      return el('tr', null, [
+        el('td', null, [el('span', { class: 'url-cell', text: page })]),
+        el('td', { class: 'num', text: num(views) }),
+        el('td', { class: 'num', text: num(uniques) }),
+      ]);
+    });
+    container.appendChild(makeTable([
+      { label: 'Page' }, { label: 'Vues', cls: 'num' }, { label: 'Uniques', cls: 'num' },
+    ], trs));
+  }
+
+  function renderReferrers(rows) {
+    const container = document.getElementById('t-referrers');
+    clear(container);
+    if (!rows.length) return emptyState(container);
+    const trs = rows.map((r) => {
+      const ref = r.referrer ?? r[0];
+      const visits = r.visits ?? r[1];
+      return el('tr', null, [
+        el('td', null, [el('span', { class: 'url-cell', text: shorten(ref) })]),
+        el('td', { class: 'num', text: num(visits) }),
+      ]);
+    });
+    container.appendChild(makeTable([
+      { label: 'Source' }, { label: 'Visites', cls: 'num' },
+    ], trs));
+  }
+
+  function renderFriction(rows) {
+    const container = document.getElementById('t-friction');
+    clear(container);
+    if (!rows.length) return emptyState(container);
+    const labels = { rage_click: 'Rage clicks', dead_click: 'Dead clicks', js_error: 'Erreurs JS' };
+    const trs = rows.map((r) => {
+      const evt = Array.isArray(r) ? r[0] : r.event;
+      const count = Array.isArray(r) ? r[1] : r.count;
+      return el('tr', null, [
+        el('td', { text: labels[evt] || evt }),
+        el('td', { class: 'num', text: num(count) }),
+      ]);
+    });
+    container.appendChild(makeTable([
+      { label: 'Type' }, { label: 'Count', cls: 'num' },
+    ], trs));
+  }
+
+  function renderRage(rows) {
+    const container = document.getElementById('t-rage');
+    clear(container);
+    if (!rows.length) return emptyState(container);
+    const trs = rows.map((r) => {
+      const text = r.text ?? r[0];
+      const rages = r.rages ?? r[1];
+      return el('tr', null, [
+        el('td', { text: text || '(sans texte)' }),
+        el('td', { class: 'num', text: num(rages) }),
+      ]);
+    });
+    container.appendChild(makeTable([
+      { label: 'Élément cliqué (texte)' }, { label: 'Rages', cls: 'num' },
+    ], trs));
+  }
+
+  function renderSessions(rows) {
+    const container = document.getElementById('t-sessions');
+    clear(container);
+    if (!rows.length) return emptyState(container, 'Aucune session enregistrée. Les session replays prennent ~5 min à apparaître après une visite.');
+    const trs = rows.map((r) => {
+      const sid = r.session_id ?? r[0];
+      const events = r.events ?? r[1];
+      const started = r.started ?? r[2];
+      const ended = r.ended ?? r[3];
+      const did = r.distinct_id ?? r[4];
+      const dur = started && ended ? Math.round((new Date(ended) - new Date(started)) / 1000) : 0;
+      const replayUrl = 'https://eu.posthog.com/project/177752/replay/' + encodeURIComponent(sid || '');
+      const tr = el('tr', { class: 'clickable', onclick: () => window.open(replayUrl, '_blank', 'noopener') }, [
+        el('td', null, [el('span', { class: 'url-cell', text: (sid || '').slice(0, 12) + '…' })]),
+        el('td', null, [el('span', { class: 'url-cell', text: (did || '').slice(0, 12) + '…' })]),
+        el('td', { text: started ? fmtDate(started) : '—' }),
+        el('td', { text: dur + 's' }),
+        el('td', { class: 'num', text: num(events) }),
+      ]);
+      return tr;
+    });
+    container.appendChild(makeTable([
+      { label: 'Session' }, { label: 'Visiteur' }, { label: 'Début' }, { label: 'Durée' }, { label: 'Events', cls: 'num' },
+    ], trs));
+  }
+
+  // ─── Charts ─────────────────────────────────
+  function destroyChart(id) { if (charts[id]) { charts[id].destroy(); delete charts[id]; } }
+
+  function renderChartVisitors(rows) {
+    destroyChart('visitors');
+    const labels = rows.map((r) => r.day ?? r[0]);
+    const values = rows.map((r) => r.visitors ?? r[1]);
+    charts.visitors = new Chart(document.getElementById('chart-visitors').getContext('2d'), {
+      type: 'line',
+      data: { labels, datasets: [{ data: values, borderColor: '#F47B3B', backgroundColor: 'rgba(244,123,59,.12)', fill: true, tension: .35, pointBackgroundColor: '#F47B3B', pointRadius: 4, borderWidth: 2 }] },
+      options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }, responsive: true, maintainAspectRatio: false },
+    });
+  }
+
+  function renderChartScroll(rows) {
+    destroyChart('scroll');
+    const labels = rows.map((r) => (r.depth ?? r[0]) + '%');
+    const values = rows.map((r) => r.hits ?? r[1]);
+    charts.scroll = new Chart(document.getElementById('chart-scroll').getContext('2d'), {
+      type: 'bar',
+      data: { labels, datasets: [{ data: values, backgroundColor: '#0F0B09', borderRadius: 4 }] },
+      options: { plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }, responsive: true, maintainAspectRatio: false, indexAxis: 'y' },
+    });
+  }
+
+  function renderChartCTA(rows) {
+    destroyChart('cta');
+    const labels = rows.map((r) => (r.event ?? r[0]).replace(/^cta_/, '').replace(/_/g, ' '));
+    const values = rows.map((r) => r.clicks ?? r[1]);
+    charts.cta = new Chart(document.getElementById('chart-cta').getContext('2d'), {
+      type: 'bar',
+      data: { labels, datasets: [{ data: values, backgroundColor: '#F47B3B', borderRadius: 4 }] },
+      options: { plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }, responsive: true, maintainAspectRatio: false, indexAxis: 'y' },
+    });
+  }
+
+  function renderChartSections(rows) {
+    destroyChart('sections');
+    const labels = rows.map((r) => (r.event ?? r[0]).replace(/^section_/, '').replace(/_viewed$/, '').replace(/_/g, ' '));
+    const values = rows.map((r) => r.views ?? r[1]);
+    charts.sections = new Chart(document.getElementById('chart-sections').getContext('2d'), {
+      type: 'bar',
+      data: { labels, datasets: [{ data: values, backgroundColor: '#7A4E3B', borderRadius: 4 }] },
+      options: { plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }, responsive: true, maintainAspectRatio: false, indexAxis: 'y' },
+    });
+  }
+
+  // ─── AI insight ────────────────────────────
+  async function generateAI() {
+    const panel = document.getElementById('ai-panel');
+    clear(panel);
+    panel.appendChild(el('div', { class: 'ai-loading', text: '✦ Claude Sonnet 4.6 analyse ta data… (~25s)' }));
+    panel.classList.add('show');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      const r = await fetch('/api/weekly-insights?secret=' + encodeURIComponent(secret));
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      renderAI(data);
+    } catch (e) {
+      clear(panel);
+      panel.appendChild(el('div', { class: 'ai-err', text: 'Erreur IA : ' + e.message }));
+    }
+  }
+
+  function renderAI(d) {
+    const panel = document.getElementById('ai-panel');
+    clear(panel);
+    if (!d.ok) {
+      panel.appendChild(el('div', { class: 'ai-err', text: d.error || 'Erreur inconnue' }));
+      return;
+    }
+    panel.appendChild(el('div', { class: 'ai-tag', text: '✦ INSIGHT IA — ' + new Date().toLocaleString('fr-FR') }));
+    panel.appendChild(el('div', { class: 'ai-summary', text: d.summary || 'Pas de synthèse disponible' }));
+    panel.appendChild(el('div', { class: 'ai-meta', text: 'Détails complets envoyés par email à ' + (d.recipient || '?') + ' · généré en ' + (d.duration_ms || 0) + 'ms' }));
+  }
+})();
+</script>
+</body>
+</html>

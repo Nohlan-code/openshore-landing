@@ -41,7 +41,8 @@
     {"source": "/recrutement", "destination": "/"},
     {"source": "/guide", "destination": "/guide.html"},
     {"source": "/guide-contenu", "destination": "/guide-contenu.html"},
-    {"source": "/politique-confidentialite", "destination": "/politique-confidentialite.html"}
+    {"source": "/politique-confidentialite", "destination": "/politique-confidentialite.html"},
+    {"source": "/insights", "destination": "/insights.html"}
   ],
   "crons": [
     {"path": "/api/weekly-insights", "schedule": "0 8 * * 1"}
